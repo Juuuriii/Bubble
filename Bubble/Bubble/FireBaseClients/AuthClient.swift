@@ -13,6 +13,10 @@ class AuthClient {
     static let shared = AuthClient()
     private let auth = Auth.auth()
     
+    func checkAuth() -> FirebaseAuth.User? {
+        return auth.currentUser
+    }
+    
     func register(email: String, password: String) async throws -> FirebaseAuth.User {
         
         let result = try await auth.createUser(withEmail: email, password: password)
