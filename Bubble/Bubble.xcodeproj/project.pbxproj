@@ -14,6 +14,7 @@
 		3A4606AC2C733C960019EFA2 /* BubbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606AB2C733C960019EFA2 /* BubbleTests.swift */; };
 		3A4606B62C733C960019EFA2 /* BubbleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606B52C733C960019EFA2 /* BubbleUITests.swift */; };
 		3A4606B82C733C960019EFA2 /* BubbleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606B72C733C960019EFA2 /* BubbleUITestsLaunchTests.swift */; };
+		3A4606C52C75CA230019EFA2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606C42C75CA230019EFA2 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		3A4606B12C733C960019EFA2 /* BubbleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BubbleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A4606B52C733C960019EFA2 /* BubbleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleUITests.swift; sourceTree = "<group>"; };
 		3A4606B72C733C960019EFA2 /* BubbleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3A4606C42C75CA230019EFA2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		3A46068E2C733C950019EFA2 = {
 			isa = PBXGroup;
 			children = (
+				3A4606C42C75CA230019EFA2 /* README.md */,
 				3A4606992C733C950019EFA2 /* Bubble */,
 				3A4606AA2C733C960019EFA2 /* BubbleTests */,
 				3A4606B42C733C960019EFA2 /* BubbleUITests */,
@@ -231,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A4606C52C75CA230019EFA2 /* README.md in Resources */,
 				3A4606A22C733C960019EFA2 /* Preview Assets.xcassets in Resources */,
 				3A46069F2C733C960019EFA2 /* Assets.xcassets in Resources */,
 			);
