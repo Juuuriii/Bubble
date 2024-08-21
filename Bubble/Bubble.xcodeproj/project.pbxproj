@@ -19,6 +19,7 @@
 		3A4606D02C760CDA0019EFA2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606CF2C760CDA0019EFA2 /* FirebaseStorage */; };
 		3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D32C760DE50019EFA2 /* AuthClient.swift */; };
 		3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D52C760F950019EFA2 /* FirestoreClient.swift */; };
+		3A4606D92C7610890019EFA2 /* BubbleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D82C7610890019EFA2 /* BubbleUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		3A4606C62C760C7D0019EFA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A4606D32C760DE50019EFA2 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		3A4606D52C760F950019EFA2 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
+		3A4606D82C7610890019EFA2 /* BubbleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		3A4606992C733C950019EFA2 /* Bubble */ = {
 			isa = PBXGroup;
 			children = (
+				3A4606D72C7610710019EFA2 /* Models */,
 				3A4606D12C760DBC0019EFA2 /* FireBaseClients */,
 				3A4606C62C760C7D0019EFA2 /* GoogleService-Info.plist */,
 				3A46069A2C733C950019EFA2 /* BubbleApp.swift */,
@@ -128,6 +131,14 @@
 				3A4606D52C760F950019EFA2 /* FirestoreClient.swift */,
 			);
 			path = FireBaseClients;
+			sourceTree = "<group>";
+		};
+		3A4606D72C7610710019EFA2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3A4606D82C7610890019EFA2 /* BubbleUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 				3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */,
 				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,
+				3A4606D92C7610890019EFA2 /* BubbleUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
