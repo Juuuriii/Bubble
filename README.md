@@ -11,9 +11,9 @@ Vermeide es, hier allzusehr in technische Details zu gehen.
 ## Geplantes Design
 Füge hier einige repräsentative Designs deiner App ein (z.B. aus Figma)
 <p>
-  <img src="./img/app_design_1.png" width="200">
-  <img src="./img/app_design_2.png" width="200">
-  <img src="./img/app_design_3.png" width="200">
+  <img src="./img/home_screen.png" width="200">
+  <img src="./img/current_expenses.png" width="200">
+  <img src="./img/settings.png" width="200">
 </p>
 
 ## Features
