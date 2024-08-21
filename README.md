@@ -1,8 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/oXOEvXHr)
 # Bubble
 
-****
-
 Bubble ist für jede Person die ihren Umgang mit Geld erleichtern möchte. Mit all den ausgaben die wir 
 heutzutage haben, ist es leicht den Überblick zu verlieren. Dazu kommt noch, dass wir auch Geld beiseite legen
 wollen um zum Beispiel in den Urlaub zu fahren oder sich ein neues Smartphone zu gönnen. Dies wird durch Bubble erleichtert,
@@ -18,9 +16,9 @@ da der Nutzer Sparziele erstellen und verwalten kann.
 ## Features
 Hier kommen alle geplanten Features der App rein mit dem Status, ob es bereits umgesetzt wurde.
 
-- [Erstellen und Pflegen von Sparzielen(z.B. nächster Urlaub, neues Smartphone usw.)] Feature 1
-- [Tracken von Einkommen und Ausgaben] Feature 2
-- [Gamification durch ein kleines Spiel in der App. Vorteile für die App durch spielen des Spiels und Vorteile für das Spiel durch nutzung der App]
+- Erstellen und Pflegen von Sparzielen(z.B. nächster Urlaub, neues Smartphone usw.)
+- Tracken von Einkommen und Ausgaben
+- Gamification durch ein kleines Spiel in der App. Vorteile für die App durch spielen des Spiels und Vorteile für das Spiel durch nutzung der App
 
 ## Technischer Aufbau
 
