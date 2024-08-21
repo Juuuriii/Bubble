@@ -1,15 +1,14 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/oXOEvXHr)
 # Bubble
 
-**(Optional) Füge hier einen kurzen, knackigen Slogan ein, um deine App zu bewerben.**
+****
 
-Beschreibe hier in ein paar Sätzen, was deine App bietet.
-
-Für wen ist sie geeignet? Welches Problem löst sie? Was macht deine App anders / besser als andere Apps?
-Vermeide es, hier allzusehr in technische Details zu gehen.
+Bubble ist für jede Person die ihren Umgang mit Geld erleichtern möchte. Mit all den ausgaben die wir 
+heutzutage haben, ist es leicht den Überblick zu verlieren. Dazu kommt noch, dass wir auch Geld beiseite legen
+wollen um zum Beispiel in den Urlaub zu fahren oder sich ein neues Smartphone zu gönnen. Dies wird durch Bubble erleichtert,
+da der Nutzer Sparziele erstellen und verwalten kann.
 
 ## Geplantes Design
-Füge hier einige repräsentative Designs deiner App ein (z.B. aus Figma)
 <p>
   <img src="./img/home_screen.png" width="200">
   <img src="./img/current_expenses.png" width="200">
@@ -19,26 +18,23 @@ Füge hier einige repräsentative Designs deiner App ein (z.B. aus Figma)
 ## Features
 Hier kommen alle geplanten Features der App rein mit dem Status, ob es bereits umgesetzt wurde.
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] ...
-
+- [Erstellen und Pflegen von Sparzielen(z.B. nächster Urlaub, neues Smartphone usw.)] Feature 1
+- [Tracken von Einkommen und Ausgaben] Feature 2
+- [Gamification durch ein kleines Spiel in der App. Vorteile für die App durch spielen des Spiels und Vorteile für das Spiel durch nutzung der App]
 
 ## Technischer Aufbau
 
 #### Projektaufbau
-Eine kurze Beschreibung deiner Ordnerstruktur und Architektur (MVVM, Repositories?) um Außenstehenden zu helfen, sich in deinem Projekt zurecht zu finden.
+Das Projekt wird nach der MVVM-Architektur aufgebaut. Ich werde also Repositories, ViewModels, Models und Views anlegen.
 
 #### Datenspeicherung
-Welche Daten speicherst du? Wo und wie (Firebase, Core Data)?
+Für die Datenspeicherung wird Firebase und Core Data genutzt.
 
 #### API Calls
 Welche APIs verwendest du?
 
 #### 3rd-Party Frameworks
-Verwendest du Frameworks, die nicht von dir stammen? Bspw. Swift Packages für Firebase, fertige SwiftUI-Views o.Ä.? Gib diese hier an.
-
+Bis jetzt wird nur Firebase als 3rd-Party Framework verwendet.
 
 ## Ausblick
-Beschreibe hier, wo die Reise nach deinem Praxisprojekt hin geht. Was möchtest du in Zukunft noch ergänzen? Erstelle auch hierzu Issues und verlinke sie, wie oben.
- 
+In Zukunft möchte ich das Spiel ausbauen. Außerdem möchte ich es dem Nutzer ermöglichen seine Konten einzubinden und dann Einkommen und Ausgaben direkt zu tracken.
