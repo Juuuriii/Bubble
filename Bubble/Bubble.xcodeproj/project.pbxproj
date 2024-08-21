@@ -11,15 +11,14 @@
 		3A46069D2C733C950019EFA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46069C2C733C950019EFA2 /* ContentView.swift */; };
 		3A46069F2C733C960019EFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46069E2C733C960019EFA2 /* Assets.xcassets */; };
 		3A4606A22C733C960019EFA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606A12C733C960019EFA2 /* Preview Assets.xcassets */; };
-		3A4606AC2C733C960019EFA2 /* BubbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606AB2C733C960019EFA2 /* BubbleTests.swift */; };
-		3A4606B62C733C960019EFA2 /* BubbleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606B52C733C960019EFA2 /* BubbleUITests.swift */; };
-		3A4606B82C733C960019EFA2 /* BubbleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606B72C733C960019EFA2 /* BubbleUITestsLaunchTests.swift */; };
 		3A4606C52C75CA230019EFA2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606C42C75CA230019EFA2 /* README.md */; };
 		3A4606C72C760C7D0019EFA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606C62C760C7D0019EFA2 /* GoogleService-Info.plist */; };
 		3A4606CA2C760CDA0019EFA2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606C92C760CDA0019EFA2 /* FirebaseAuth */; };
 		3A4606CC2C760CDA0019EFA2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606CB2C760CDA0019EFA2 /* FirebaseCrashlytics */; };
 		3A4606CE2C760CDA0019EFA2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606CD2C760CDA0019EFA2 /* FirebaseFirestore */; };
 		3A4606D02C760CDA0019EFA2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606CF2C760CDA0019EFA2 /* FirebaseStorage */; };
+		3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D32C760DE50019EFA2 /* AuthClient.swift */; };
+		3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D52C760F950019EFA2 /* FirestoreClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,12 +45,11 @@
 		3A46069E2C733C960019EFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A4606A12C733C960019EFA2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A4606A72C733C960019EFA2 /* BubbleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BubbleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A4606AB2C733C960019EFA2 /* BubbleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTests.swift; sourceTree = "<group>"; };
 		3A4606B12C733C960019EFA2 /* BubbleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BubbleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A4606B52C733C960019EFA2 /* BubbleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleUITests.swift; sourceTree = "<group>"; };
-		3A4606B72C733C960019EFA2 /* BubbleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3A4606C42C75CA230019EFA2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3A4606C62C760C7D0019EFA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A4606D32C760DE50019EFA2 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
+		3A4606D52C760F950019EFA2 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +86,6 @@
 			children = (
 				3A4606C42C75CA230019EFA2 /* README.md */,
 				3A4606992C733C950019EFA2 /* Bubble */,
-				3A4606AA2C733C960019EFA2 /* BubbleTests */,
-				3A4606B42C733C960019EFA2 /* BubbleUITests */,
 				3A4606982C733C950019EFA2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +103,7 @@
 		3A4606992C733C950019EFA2 /* Bubble */ = {
 			isa = PBXGroup;
 			children = (
+				3A4606D12C760DBC0019EFA2 /* FireBaseClients */,
 				3A4606C62C760C7D0019EFA2 /* GoogleService-Info.plist */,
 				3A46069A2C733C950019EFA2 /* BubbleApp.swift */,
 				3A46069C2C733C950019EFA2 /* ContentView.swift */,
@@ -124,21 +121,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3A4606AA2C733C960019EFA2 /* BubbleTests */ = {
+		3A4606D12C760DBC0019EFA2 /* FireBaseClients */ = {
 			isa = PBXGroup;
 			children = (
-				3A4606AB2C733C960019EFA2 /* BubbleTests.swift */,
+				3A4606D32C760DE50019EFA2 /* AuthClient.swift */,
+				3A4606D52C760F950019EFA2 /* FirestoreClient.swift */,
 			);
-			path = BubbleTests;
-			sourceTree = "<group>";
-		};
-		3A4606B42C733C960019EFA2 /* BubbleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3A4606B52C733C960019EFA2 /* BubbleUITests.swift */,
-				3A4606B72C733C960019EFA2 /* BubbleUITestsLaunchTests.swift */,
-			);
-			path = BubbleUITests;
+			path = FireBaseClients;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A46069D2C733C950019EFA2 /* ContentView.swift in Sources */,
+				3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */,
+				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,7 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A4606AC2C733C960019EFA2 /* BubbleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +289,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A4606B82C733C960019EFA2 /* BubbleUITestsLaunchTests.swift in Sources */,
-				3A4606B62C733C960019EFA2 /* BubbleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
