@@ -29,7 +29,7 @@ Das Projekt wird nach der MVVM-Architektur aufgebaut. Ich werde also Repositorie
 Für die Datenspeicherung wird Firebase und Core Data genutzt.
 
 #### API Calls
-Welche APIs verwendest du?
+Welche APIs verwendest du? -> https://api-ninjas.com/api/quotes
 
 #### 3rd-Party Frameworks
 Bis jetzt wird nur Firebase als 3rd-Party Framework verwendet.
