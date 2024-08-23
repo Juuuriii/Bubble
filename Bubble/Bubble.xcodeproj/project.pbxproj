@@ -20,9 +20,9 @@
 		3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D32C760DE50019EFA2 /* AuthClient.swift */; };
 		3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D52C760F950019EFA2 /* FirestoreClient.swift */; };
 		3A4606D92C7610890019EFA2 /* BubbleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D82C7610890019EFA2 /* BubbleUser.swift */; };
-		3A4606DD2C76137A0019EFA2 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606DC2C76137A0019EFA2 /* AuthView.swift */; };
 		3A4606DF2C7613990019EFA2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606DE2C7613990019EFA2 /* AuthViewModel.swift */; };
 		3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */; };
+		3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606E32C7873F90019EFA2 /* AuthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +55,9 @@
 		3A4606D32C760DE50019EFA2 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		3A4606D52C760F950019EFA2 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
 		3A4606D82C7610890019EFA2 /* BubbleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleUser.swift; sourceTree = "<group>"; };
-		3A4606DC2C76137A0019EFA2 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3A4606DE2C7613990019EFA2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexExtention.swift; sourceTree = "<group>"; };
+		3A4606E32C7873F90019EFA2 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,8 +160,8 @@
 		3A4606DB2C7613690019EFA2 /* AuthView */ = {
 			isa = PBXGroup;
 			children = (
-				3A4606DC2C76137A0019EFA2 /* AuthView.swift */,
 				3A4606DE2C7613990019EFA2 /* AuthViewModel.swift */,
+				3A4606E32C7873F90019EFA2 /* AuthView.swift */,
 			);
 			path = AuthView;
 			sourceTree = "<group>";
@@ -317,11 +317,11 @@
 			files = (
 				3A46069D2C733C950019EFA2 /* ContentView.swift in Sources */,
 				3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */,
-				3A4606DD2C76137A0019EFA2 /* AuthView.swift in Sources */,
 				3A4606DF2C7613990019EFA2 /* AuthViewModel.swift in Sources */,
 				3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */,
 				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,
+				3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */,
 				3A4606D92C7610890019EFA2 /* BubbleUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

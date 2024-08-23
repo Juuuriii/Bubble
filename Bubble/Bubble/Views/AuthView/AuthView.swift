@@ -2,12 +2,15 @@
 //  AuthView.swift
 //  Bubble
 //
-//  Created by Juri Huhn on 21.08.24.
+//  Created by Juri Huhn on 23.08.24.
 //
 
 import SwiftUI
 
 struct AuthView: View {
+    
+   // @StateObject var viewModel = AuthViewModel()
+    
     var body: some View {
         VStack{
             Image("logo")
@@ -31,6 +34,8 @@ struct AuthView: View {
                         .tint(Color(hex: "#14135B"))
                         Spacer()
                     }
+                    TextField("Email", text: .constant(""))
+                    
                     Spacer()
                 }
             }

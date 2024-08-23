@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-@MainActor
+
 class AuthViewModel: ObservableObject {
     
     private let authClient = AuthClient.shared
@@ -17,10 +17,10 @@ class AuthViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     
-    @Published var user: FirebaseAuth.User?
+    @Published var user: FirebaseAuth.User? = nil
     
     init() {
-        user = authClient.checkAuth()
+      //  user = authClient.checkAuth()
     }
     
     func register() {

@@ -11,7 +11,6 @@ import FirebaseFirestore
 class FirestoreClient {
     
     static let shared = FirestoreClient()
-    
     private let store = Firestore.firestore()
     
     func createUser(uid: String, email: String, username: String) throws {

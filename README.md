@@ -14,7 +14,6 @@ da der Nutzer Sparziele erstellen und verwalten kann.
 </p>
 
 ## Features
-Hier kommen alle geplanten Features der App rein mit dem Status, ob es bereits umgesetzt wurde.
 
 - Erstellen und Pflegen von Sparzielen(z.B. nächster Urlaub, neues Smartphone usw.)
 - Tracken von Einkommen und Ausgaben
@@ -26,7 +25,8 @@ Hier kommen alle geplanten Features der App rein mit dem Status, ob es bereits u
 Das Projekt wird nach der MVVM-Architektur aufgebaut. Ich werde also Repositories, ViewModels, Models und Views anlegen.
 
 #### Datenspeicherung
-Für die Datenspeicherung wird Firebase und Core Data genutzt.
+Für die Datenspeicherung wird Firebase und Core Data genutzt. Firebase um die Anmeldedaten zu speichern und eine kombination
+aus Core Data und Firebase um die restlichen Daten zu sichern.
 
 #### API Calls
 https://api-ninjas.com/api/quotes
