@@ -6,15 +6,15 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+
 
 struct AuthView: View {
     
-  //  @StateObject var viewModel = AuthViewModel()
+    @StateObject var viewModel = AuthViewModel()
     
     var body: some View {
         VStack{
-            
+            Text("Hello")
         }
     }
 }

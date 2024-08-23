@@ -13,7 +13,7 @@
 		3A4606A22C733C960019EFA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606A12C733C960019EFA2 /* Preview Assets.xcassets */; };
 		3A4606C52C75CA230019EFA2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606C42C75CA230019EFA2 /* README.md */; };
 		3A4606C72C760C7D0019EFA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606C62C760C7D0019EFA2 /* GoogleService-Info.plist */; };
-		3A4606CA2C760CDA0019EFA2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606C92C760CDA0019EFA2 /* FirebaseAuth */; };
+		3A4606CA2C760CDA0019EFA2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606C92C760CDA0019EFA2 /* FirebaseAuth */; settings = {ATTRIBUTES = (Required, ); }; };
 		3A4606CC2C760CDA0019EFA2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606CB2C760CDA0019EFA2 /* FirebaseCrashlytics */; };
 		3A4606CE2C760CDA0019EFA2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606CD2C760CDA0019EFA2 /* FirebaseFirestore */; };
 		3A4606D02C760CDA0019EFA2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3A4606CF2C760CDA0019EFA2 /* FirebaseStorage */; };
