@@ -23,7 +23,7 @@ da der Nutzer Sparziele erstellen und verwalten kann.
 ## Technischer Aufbau
 
 #### Projektaufbau
-Das Projekt wird nach der MVVM-Architektur aufgebaut. Ich werde also Repositories, ViewModels, Models und Views anlegen.
+Das Projekt wird nach der MVVM-Architektur aufgebaut. Ich werde also Repositories, ViewModels, Models und Views anlegen. Die Ordnerstruktur wird featurebasiert sein.
 
 #### Datenspeicherung
 Für die Datenspeicherung wird Firebase und Core Data genutzt. Firebase um die Anmeldedaten zu speichern und eine kombination
@@ -33,7 +33,11 @@ aus Core Data und Firebase um die restlichen Daten zu sichern.
 https://api-ninjas.com/api/quotes
 
 #### 3rd-Party Frameworks
-Bis jetzt wird nur Firebase als 3rd-Party Framework verwendet.
+
+- Firebase iOS SDK
+- FirebaseAuth
+- FirebaseFirestore
+- FirebaseStorage
 
 ## Ausblick
 In Zukunft möchte ich das Spiel ausbauen. Außerdem möchte ich es dem Nutzer ermöglichen seine Konten einzubinden und dann Einkommen und Ausgaben direkt zu tracken.
