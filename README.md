@@ -15,10 +15,10 @@ da der Nutzer Sparziele erstellen und verwalten kann.
 
 ## Features
 
-[] Erstellen eines Nutzerprofils
-- Erstellen und Pflegen von Sparzielen(z.B. nächster Urlaub, neues Smartphone usw.)
-- Tracken von Einkommen und Ausgaben
-- Gamification durch ein kleines Spiel in der App. Vorteile für die App durch spielen des Spiels und Vorteile für das Spiel durch nutzung der App
+- [] Erstellen eines Nutzerprofils
+- [] Erstellen und Pflegen von Sparzielen(z.B. nächster Urlaub, neues Smartphone usw.)
+- [] Tracken von Einkommen und Ausgaben
+- [] Gamification durch ein kleines Spiel in der App. Vorteile für die App durch spielen des Spiels und Vorteile für das Spiel durch nutzung der App
 
 ## Technischer Aufbau
 
