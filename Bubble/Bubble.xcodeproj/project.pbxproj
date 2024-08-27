@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46069A2C733C950019EFA2 /* BubbleApp.swift */; };
-		3A46069D2C733C950019EFA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46069C2C733C950019EFA2 /* ContentView.swift */; };
 		3A46069F2C733C960019EFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46069E2C733C960019EFA2 /* Assets.xcassets */; };
 		3A4606A22C733C960019EFA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606A12C733C960019EFA2 /* Preview Assets.xcassets */; };
 		3A4606C52C75CA230019EFA2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606C42C75CA230019EFA2 /* README.md */; };
@@ -45,7 +44,6 @@
 /* Begin PBXFileReference section */
 		3A4606972C733C950019EFA2 /* Bubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bubble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A46069A2C733C950019EFA2 /* BubbleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleApp.swift; sourceTree = "<group>"; };
-		3A46069C2C733C950019EFA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A46069E2C733C960019EFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A4606A12C733C960019EFA2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A4606A72C733C960019EFA2 /* BubbleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BubbleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +115,6 @@
 				3A4606D12C760DBC0019EFA2 /* FireBaseClients */,
 				3A4606C62C760C7D0019EFA2 /* GoogleService-Info.plist */,
 				3A46069A2C733C950019EFA2 /* BubbleApp.swift */,
-				3A46069C2C733C950019EFA2 /* ContentView.swift */,
 				3A46069E2C733C960019EFA2 /* Assets.xcassets */,
 				3A4606A02C733C960019EFA2 /* Preview Content */,
 			);
@@ -315,7 +312,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A46069D2C733C950019EFA2 /* ContentView.swift in Sources */,
 				3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */,
 				3A4606DF2C7613990019EFA2 /* AuthViewModel.swift in Sources */,
 				3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */,
