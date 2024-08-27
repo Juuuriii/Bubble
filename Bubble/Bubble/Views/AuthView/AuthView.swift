@@ -11,56 +11,67 @@ import SwiftUI
 struct AuthView: View {
     
     @StateObject var viewModel = AuthViewModel()
+    @State var text = ""
     
     var body: some View {
-        VStack{
-            Image("logo")
-            
-            ZStack{
-                
-                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                VStack{
-                    HStack{
-                        Button("Sign in"){
-                            
-                        }
-                        .foregroundStyle(.blue)
-                        
-                        Button("Sign up"){
-                            
-                        }
-                        .foregroundStyle(.blue)
-                    }
+       
+            GeometryReader{ proxy in
+                VStack(spacing: 64){
+                    Spacer()
+                    Image("logo")
                     
-                    ScrollView(.horizontal) {
-                        VStack() {
-                            TextField("Email", text: .constant(""))
-                                .textFieldStyle(.roundedBorder)
-                            
-                            SecureField("Password", text: .constant(""))
-                                .textFieldStyle(.roundedBorder)
-                            
-                            Button{
-                                
-                            } label: {
-                                Text("Sign in")
+                    RoundedRectangle(cornerRadius: 25.0)
+                        .foregroundStyle(.white)
+                        .frame(width: 0.9*proxy.size.width, height: 0.4*proxy.size.height)
+                        .overlay{
+                            VStack{
+                                HStack{
+                                    Button("Sign in"){
+                                        
+                                    }
+                                    Spacer()
+                                        .frame(width: 120)
+                                    Button("Sign up"){
+                                        
+                                    }
+                                }
+                                VStack{
+                                    ZStack{
+                                        Capsule()
+                                            .foregroundStyle(.cyan.opacity(0.5))
+                                            .frame(height: 48)
+
+                                        TextField("Email", text: $text)
+                                            .padding()
+                                    }
+                                    .padding(.horizontal)
+                                    
+                                    ZStack{
+                                        Capsule()
+                                            .foregroundStyle(.cyan.opacity(0.5))
+                                            .frame(height: 48)
+
+                                        SecureField("Password", text: $text)
+                                            .padding()
+                                    }
+                                    .padding(.horizontal)
+                                    
+                                    Button("Sign in") {
+                                        
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .buttonBorderShape(.capsule)
+                                }
                             }
-                            .buttonStyle(.borderedProminent)
                         }
-                        .frame(maxWidth: .infinity)
-                        .background(.orange)
-                    }
-                    .background(.red)
-                    
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.blue.opacity(0.2))
             }
-            .padding()
-            .foregroundStyle(.white)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.blue.opacity(0.2))
-    }
+            
 }
+
 
 #Preview {
     AuthView()
