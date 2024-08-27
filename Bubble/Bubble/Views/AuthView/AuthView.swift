@@ -24,7 +24,7 @@ struct AuthView: View {
                         .foregroundStyle(.white)
                         .frame(width: 0.9*proxy.size.width, height: 0.4*proxy.size.height)
                         .overlay{
-                            VStack{
+                            VStack(spacing: 32){
                                 HStack{
                                     Button("Sign in"){
                                         
@@ -35,10 +35,10 @@ struct AuthView: View {
                                         
                                     }
                                 }
-                                VStack{
+                                
                                     ZStack{
                                         Capsule()
-                                            .foregroundStyle(.cyan.opacity(0.5))
+                                            .foregroundStyle(Color(hex: "#CFE0EA"))
                                             .frame(height: 48)
 
                                         TextField("Email", text: $text)
@@ -48,7 +48,7 @@ struct AuthView: View {
                                     
                                     ZStack{
                                         Capsule()
-                                            .foregroundStyle(.cyan.opacity(0.5))
+                                            .foregroundStyle(Color(hex: "#CFE0EA"))
                                             .frame(height: 48)
 
                                         SecureField("Password", text: $text)
@@ -62,7 +62,7 @@ struct AuthView: View {
                                     .buttonStyle(.borderedProminent)
                                     .buttonBorderShape(.capsule)
                                 }
-                            }
+                            
                         }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
