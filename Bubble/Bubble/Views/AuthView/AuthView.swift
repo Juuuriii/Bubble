@@ -16,21 +16,22 @@ struct AuthView: View {
     
     var body: some View {
         
-        GeometryReader{ proxy in
+        
             VStack(spacing: 64){
                 Spacer()
                 Image("logo")
                 RoundedRectangle(cornerRadius: 25.0)
                     .foregroundStyle(.white)
-                    .frame(width: 0.9*proxy.size.width, height: 0.4*proxy.size.height)
+                  //  .frame(width: 0.9*proxy.size.width, height: 0.4*proxy.size.height)
                     .overlay{
-                        VStack(spacing: 32){
+                        VStack{
                             HStack{
                                 Button("Sign in"){
                                     withAnimation{
                                         selectedTab = 1
                                     }
                                 }
+                                .padding(.vertical)
                                 Spacer()
                                     .frame(width: 120)
                                 Button("Sign up"){
@@ -38,9 +39,11 @@ struct AuthView: View {
                                         selectedTab = 2
                                     }
                                 }
+                                .padding(.vertical)
                             }
                             TabView(selection: $selectedTab){
-                                VStack{
+                                
+                                VStack(spacing: 24){
                                     TextField("Email", text: $viewModel.email)
                                         .bubbleTextFieldStyle()
                             
@@ -54,9 +57,7 @@ struct AuthView: View {
                                     
                                 }
                                 .tag(1)
-                              
-                                
-                                VStack{
+                                VStack(spacing: 24){
                                     TextField("Email", text: $viewModel.email)
                                         .bubbleTextFieldStyle()
                             
@@ -74,11 +75,10 @@ struct AuthView: View {
                             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                         }
                     }
+                    .padding()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.blue.opacity(0.2))
-            
-        }
     }
     
 }
