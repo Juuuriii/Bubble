@@ -11,65 +11,76 @@ import SwiftUI
 struct AuthView: View {
     
     @StateObject var viewModel = AuthViewModel()
-    @State var text = ""
+   
+    @State var selectedTab = 1
     
     var body: some View {
-       
-            GeometryReader{ proxy in
-                VStack(spacing: 64){
-                    Spacer()
-                    Image("logo")
-                    
-                    RoundedRectangle(cornerRadius: 25.0)
-                        .foregroundStyle(.white)
-                        .frame(width: 0.9*proxy.size.width, height: 0.4*proxy.size.height)
-                        .overlay{
-                            VStack(spacing: 32){
-                                HStack{
-                                    Button("Sign in"){
-                                        
-                                    }
-                                    Spacer()
-                                        .frame(width: 120)
-                                    Button("Sign up"){
-                                        
+        
+        GeometryReader{ proxy in
+            VStack(spacing: 64){
+                Spacer()
+                Image("logo")
+                RoundedRectangle(cornerRadius: 25.0)
+                    .foregroundStyle(.white)
+                    .frame(width: 0.9*proxy.size.width, height: 0.4*proxy.size.height)
+                    .overlay{
+                        VStack(spacing: 32){
+                            HStack{
+                                Button("Sign in"){
+                                    withAnimation{
+                                        selectedTab = 1
                                     }
                                 }
+                                Spacer()
+                                    .frame(width: 120)
+                                Button("Sign up"){
+                                    withAnimation{
+                                        selectedTab = 2
+                                    }
+                                }
+                            }
+                            TabView(selection: $selectedTab){
+                                VStack{
+                                    TextField("Email", text: $viewModel.email)
+                                        .bubbleTextFieldStyle()
+                            
+                                    SecureField("Password", text: $viewModel.password)
+                                        .bubbleTextFieldStyle()
                                 
-                                    ZStack{
-                                        Capsule()
-                                            .foregroundStyle(Color(hex: "#CFE0EA"))
-                                            .frame(height: 48)
-
-                                        TextField("Email", text: $text)
-                                            .padding()
-                                    }
-                                    .padding(.horizontal)
-                                    
-                                    ZStack{
-                                        Capsule()
-                                            .foregroundStyle(Color(hex: "#CFE0EA"))
-                                            .frame(height: 48)
-
-                                        SecureField("Password", text: $text)
-                                            .padding()
-                                    }
-                                    .padding(.horizontal)
-                                    
                                     Button("Sign in") {
                                         
                                     }
-                                    .buttonStyle(.borderedProminent)
-                                    .buttonBorderShape(.capsule)
+                                    .authButtonStyle()
+                                    
                                 }
+                                .tag(1)
+                              
+                                
+                                VStack{
+                                    TextField("Email", text: $viewModel.email)
+                                        .bubbleTextFieldStyle()
                             
+                                    SecureField("Password", text: $viewModel.password)
+                                        .bubbleTextFieldStyle()
+                                    
+
+                                    Button("Sign up") {
+                                    }
+                                    .authButtonStyle()
+                                }
+                                .tag(2)
+                                
+                            }
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                         }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(.blue.opacity(0.2))
+                    }
             }
-        }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.blue.opacity(0.2))
             
+        }
+    }
+    
 }
 
 

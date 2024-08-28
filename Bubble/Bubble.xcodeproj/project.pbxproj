@@ -22,6 +22,8 @@
 		3A4606DF2C7613990019EFA2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606DE2C7613990019EFA2 /* AuthViewModel.swift */; };
 		3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */; };
 		3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606E32C7873F90019EFA2 /* AuthView.swift */; };
+		3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */; };
+		3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		3A4606DE2C7613990019EFA2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexExtention.swift; sourceTree = "<group>"; };
 		3A4606E32C7873F90019EFA2 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
+		3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */,
+				3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */,
+				3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,7 +319,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */,
+				3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */,
 				3A4606DF2C7613990019EFA2 /* AuthViewModel.swift in Sources */,
+				3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */,
 				3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */,
 				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,

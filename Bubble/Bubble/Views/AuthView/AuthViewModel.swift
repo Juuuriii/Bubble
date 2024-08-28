@@ -19,6 +19,8 @@ class AuthViewModel: ObservableObject {
     
     @Published var user: FirebaseAuth.User? = nil
     
+    
+    
     init() {
       //  user = authClient.checkAuth()
     }
