@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AuthView: View {
     
-    @StateObject var viewModel = AuthViewModel()
+    @ObservedObject var viewModel: AuthViewModel
    
     @State var scrollPosition = 0
     let colors: [Color] = [.red, .green, .blue]
@@ -22,8 +22,10 @@ struct AuthView: View {
                 
         GeometryReader { proxy in
             VStack{
-                Spacer()
                 Image("logo")
+            }
+            VStack{
+                Spacer()
                 HStack{
                     Button("Sign in"){
                         
@@ -54,34 +56,37 @@ struct AuthView: View {
                                     .bubbleTextFieldStyle()
                                 
                                 Button("Sign in") {
-                                    
+                                    viewModel.login()
                                 }
                                 .authButtonStyle()
-                                
                             }
                             .id(0)
                             .frame(width: proxy.size.width)
                             
+                            
                             VStack(spacing: 24){
+                                TextField("Username", text: $viewModel.username)
+                                    .bubbleTextFieldStyle()
+                                
                                 TextField("Email", text: $viewModel.email)
                                     .bubbleTextFieldStyle()
                                 
                                 SecureField("Password", text: $viewModel.password)
                                     .bubbleTextFieldStyle()
                                 
-                                
                                 Button("Sign up") {
+                                    viewModel.register()
                                 }
                                 .authButtonStyle()
                             }
                             .id(1)
                             .frame(width: proxy.size.width)
                             
-                            
                         }
-                        
                         .scrollTargetLayout()
+                        
                     }
+                    .background(.orange)
                     .scrollTargetBehavior(.viewAligned)
                     .onChange(of: scrollPosition) {
                         withAnimation{
@@ -89,17 +94,18 @@ struct AuthView: View {
                         }
                     }
                     .scrollDisabled(true)
-                    
                 }
-                
+            }
+            .background{
+                RoundedRectangle(cornerRadius: 25)
+                    .foregroundStyle(.white)
             }
         }
         .background(.blue.opacity(0.2))
     }
-    
 }
 
 
 #Preview {
-    AuthView()
+    AuthView(viewModel: AuthViewModel())
 }

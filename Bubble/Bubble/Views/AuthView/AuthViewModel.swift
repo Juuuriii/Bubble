@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-
+@MainActor
 class AuthViewModel: ObservableObject {
     
     private let authClient = AuthClient.shared
@@ -16,13 +16,14 @@ class AuthViewModel: ObservableObject {
     
     @Published var email = ""
     @Published var password = ""
+    @Published var username = ""
     
     @Published var user: FirebaseAuth.User? = nil
     
     
     
     init() {
-      //  user = authClient.checkAuth()
+        user = authClient.checkAuth()
     }
     
     func register() {
@@ -30,7 +31,7 @@ class AuthViewModel: ObservableObject {
             do {
                 user = try await authClient.register(email: email, password: password)
                 guard let user else { return }
-                try firestoreClient.createUser(uid: user.uid, email: email, username: "")
+                try firestoreClient.createUser(uid: user.uid, email: email, username: username)
             } catch {
                 print(error)
             }
@@ -43,7 +44,7 @@ class AuthViewModel: ObservableObject {
                 user = try await authClient.login(email: email, password: password)
                 guard let user else { return }
                 if await firestoreClient.getUser(uid: user.uid) == nil {
-                    try firestoreClient.createUser(uid: user.uid, email: email, username: "")
+                    try firestoreClient.createUser(uid: user.uid, email: email, username: username)
                 }
                 
             } catch {
@@ -55,6 +56,7 @@ class AuthViewModel: ObservableObject {
     func logout() {
         do {
             try authClient.logout()
+            user = authClient.checkAuth()
         } catch {
             print(error)
         }
