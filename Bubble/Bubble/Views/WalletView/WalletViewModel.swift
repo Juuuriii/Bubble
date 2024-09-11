@@ -7,11 +7,34 @@
 
 import Foundation
 
+enum PaymentType: String, CaseIterable {
+    case yearly
+    case monthly
+    case weekly
+    case oneTime = "One-Time"
+}
+
 @MainActor
 class WalletViewModel: ObservableObject {
     
+    enum PaymentType: String, CaseIterable {
+        case yearly
+        case monthly
+        case weekly
+        case oneTime = "One-Time"
+    }
+    
     private let authClient = AuthClient.shared
     private let firestoreClient = FirestoreClient.shared
+    
+    @Published var showNewSavingGoalSheet = false
+    
+    @Published var savingGoalName = ""
+    @Published var savingGoalType = ""
+    @Published var savingGoalPaymentType: PaymentType = .oneTime
+    @Published var savingGoalDeadline = Date.now
+    @Published var savingGoalTargetAmount = ""
+    @Published var savingGoalAmountSaved = ""
     
     let uid: String?
     
@@ -33,9 +56,32 @@ class WalletViewModel: ObservableObject {
     
     func createSavingGoal() {
         do {
-            try firestoreClient.createSavingGoal(uid: uid ?? "", name: "Urlaub", type: "Family", targetDate: Date.now, repeats: "Yearly", targetAmount: 1000.0, savedAmount: 0.0)
+            
+            guard let savingGoalTargetAmount = Double(savingGoalTargetAmount) else {
+                return
+            }
+            
+            guard let savingGoalAmountSaved = Double(savingGoalAmountSaved) else {
+                return
+            }
+            
+            try firestoreClient.createSavingGoal(uid: uid ?? "",
+                                                 name: savingGoalName,
+                                                 type: savingGoalType,
+                                                 targetDate: savingGoalDeadline,
+                                                 repeats: savingGoalPaymentType.rawValue,
+                                                 targetAmount: savingGoalTargetAmount,
+                                                 savedAmount: savingGoalAmountSaved)
         } catch {
             print(error)
         }
+    }
+    
+    func deleteSavingGoal(id: String) {
+        firestoreClient.deleteSavingGoal(uid: uid ?? "", id: id)
+    }
+    
+    func toggleNewSavingGoalSheet() {
+        showNewSavingGoalSheet.toggle()
     }
 }

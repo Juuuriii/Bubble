@@ -26,6 +26,7 @@
 		3A55DA702C8849A50009D514 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA6F2C8849A50009D514 /* WalletView.swift */; };
 		3A55DA722C8849B30009D514 /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA712C8849B30009D514 /* WalletViewModel.swift */; };
 		3A55DA742C8850C50009D514 /* SavingGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA732C8850C50009D514 /* SavingGoal.swift */; };
+		3A55DA762C9178240009D514 /* NewSavingGoalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */; };
 		3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */; };
 		3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */; };
 		3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */; };
@@ -67,6 +68,7 @@
 		3A55DA6F2C8849A50009D514 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		3A55DA712C8849B30009D514 /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		3A55DA732C8850C50009D514 /* SavingGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoal.swift; sourceTree = "<group>"; };
+		3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSavingGoalSheet.swift; sourceTree = "<group>"; };
 		3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonStyle.swift; sourceTree = "<group>"; };
 		3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewTabButton.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				3A55DA6F2C8849A50009D514 /* WalletView.swift */,
 				3A55DA712C8849B30009D514 /* WalletViewModel.swift */,
+				3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */,
 			);
 			path = WalletView;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			files = (
 				3A55DA742C8850C50009D514 /* SavingGoal.swift in Sources */,
 				3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */,
+				3A55DA762C9178240009D514 /* NewSavingGoalSheet.swift in Sources */,
 				3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */,
 				3A55DA722C8849B30009D514 /* WalletViewModel.swift in Sources */,
 				3A4606DF2C7613990019EFA2 /* AuthViewModel.swift in Sources */,

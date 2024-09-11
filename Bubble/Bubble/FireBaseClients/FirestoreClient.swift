@@ -60,4 +60,14 @@ class FirestoreClient {
         return result
         
     }
+    
+    func deleteSavingGoal(uid: String ,id: String)  {
+        
+            store.collection("users")
+            .document(uid)
+            .collection("wallet")
+            .document(id)
+            .delete()
+        
+    }
 }

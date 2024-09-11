@@ -14,7 +14,8 @@ struct WalletView: View {
     var body: some View {
         
         NavigationStack{
-            ScrollView{
+            List {
+                
                 ForEach(viewModel.savingGoals){ savingGoal in
                     VStack{
                         HStack{
@@ -62,12 +63,19 @@ struct WalletView: View {
                                 }
                         }
                     }
+                    .swipeActions{
+                        Button(role: .destructive){
+                            viewModel.deleteSavingGoal(id: savingGoal.id.uuidString)
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                    }
                     .padding()
                     .background{
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(Color(hex: "14135B"))
                     }
-                    .padding()
+                    
                 }
             }
             .frame(maxWidth: .infinity)
@@ -75,8 +83,7 @@ struct WalletView: View {
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     Button{
-                        viewModel.createSavingGoal()
-                        viewModel.getSavingGoals()
+                        viewModel.toggleNewSavingGoalSheet()
                     } label: {
                         Image(systemName: "plus")
                         Text("Saving Goal")
@@ -85,6 +92,9 @@ struct WalletView: View {
             }
             .onAppear{
                 viewModel.getSavingGoals()
+            }
+            .sheet(isPresented: $viewModel.showNewSavingGoalSheet){
+                NewSavingGoalSheet(viewModel: viewModel)
             }
         }
     }
