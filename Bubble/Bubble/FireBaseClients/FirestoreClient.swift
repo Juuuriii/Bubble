@@ -70,4 +70,10 @@ class FirestoreClient {
             .delete()
         
     }
+    
+    func updateSavingGoal(){
+        
+        
+        
+    }
 }

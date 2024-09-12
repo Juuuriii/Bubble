@@ -31,7 +31,7 @@ struct BubbleApp: App {
         WindowGroup {
             
             if authViewModel.user != nil {
-                HomeView(authViewModel: authViewModel)
+                MainView(authViewModel: authViewModel)
             } else {
                 AuthView(viewModel: authViewModel)
             }

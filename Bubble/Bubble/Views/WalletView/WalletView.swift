@@ -14,72 +14,32 @@ struct WalletView: View {
     var body: some View {
         
         NavigationStack{
-            List {
-                
-                ForEach(viewModel.savingGoals){ savingGoal in
-                    VStack{
-                        HStack{
-                            VStack{
-                                Image("editIconSavingGoal")
-                                Spacer()
-                            }
-                            VStack{
-                                Text(savingGoal.name)
-                                    .foregroundStyle(.white)
-                                ProgressView(value: progress, total: 100)
-                                Text("\(savingGoal.savedAmount)/\(savingGoal.targetAmount)")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(.white)
-                            }
-                            VStack{
-                                Image("addButtonSavingGoal")
-                            }
-                        }
-                        
-                        HStack{
-                            HStack{
-                                Image(systemName: "circle")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(.white)
-                                Text("04 Jun. 2024")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(.white)
-                            }
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background{
-                                Capsule()
-                                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [4]))
-                                    .foregroundStyle(.white)
-                            }
-                            Text(savingGoal.type)
-                                .font(.system(size: 14))
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
-                                .background{
-                                    Capsule()
-                                        .foregroundStyle(Color(hex: "49B0EA"))
-                                        .frame(maxWidth: .infinity)
-                                }
-                        }
-                    }
-                    .swipeActions{
-                        Button(role: .destructive){
-                            viewModel.deleteSavingGoal(id: savingGoal.id.uuidString)
-                        } label: {
-                            Image(systemName: "trash")
-                        }
-                    }
-                    .padding()
-                    .background{
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(Color(hex: "14135B"))
-                    }
-                    
+            GeometryReader { proxy in
+            ScrollView {
+                VStack() {
+                    Text("Savings")
+                        .font(.title)
+                    Text("Budget & Track Future Expenses")
+                        .font(.footnote)
                 }
-            }
-            .frame(maxWidth: .infinity)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 8)
+                .background{
+                    Capsule()
+                        .foregroundStyle(Color(hex: "84C6EB"))
+                }
+                .padding()
+                ForEach($viewModel.savingGoals){ savingGoal in
+                       
+                           SavingGoalListItem(savingGoal: savingGoal)
+                            .shadow(radius: 4, y: 4)
+                            .padding(.bottom, 8)
+                        }
+                    }
             .background(Color(hex: "A4D8F5"))
+                
+            }
+            
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     Button{
@@ -90,6 +50,7 @@ struct WalletView: View {
                     }
                 }
             }
+            .toolbarBackground(Color(hex: "#49B0EA"), for: .navigationBar)
             .onAppear{
                 viewModel.getSavingGoals()
             }

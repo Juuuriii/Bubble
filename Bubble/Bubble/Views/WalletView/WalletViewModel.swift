@@ -17,12 +17,7 @@ enum PaymentType: String, CaseIterable {
 @MainActor
 class WalletViewModel: ObservableObject {
     
-    enum PaymentType: String, CaseIterable {
-        case yearly
-        case monthly
-        case weekly
-        case oneTime = "One-Time"
-    }
+    
     
     private let authClient = AuthClient.shared
     private let firestoreClient = FirestoreClient.shared

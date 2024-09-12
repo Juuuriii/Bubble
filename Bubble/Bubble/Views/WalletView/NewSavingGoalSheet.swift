@@ -48,8 +48,9 @@ struct NewSavingGoalSheet: View {
                             Text("e.g. Repeats yearly, one-time")
                                 .font(.footnote)
                             Picker("Payment Type", selection: $viewModel.savingGoalPaymentType) {
-                                ForEach(PaymentType.allCases, id: \.rawValue){ paymentType in
+                                ForEach(PaymentType.allCases, id: \.self){ paymentType in
                                     Text(paymentType.rawValue.capitalized)
+                                        .tag(paymentType)
                                 }
                             }
                             
