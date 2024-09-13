@@ -22,21 +22,21 @@ struct NewSavingGoalSheet: View {
                     .font(.title)
                 
                 VStack(alignment: .leading){
-                    Text("Name of your Saving Goal")
+                    Text("Name")
                     
-                    Text("e.g. Berlin trip, Overdue Electricity Bill")
-                        .font(.footnote)
+                   
+                        
                     TextField("Name of your Saving Goal", text: $viewModel.savingGoalName)
                         .textFieldStyle(.roundedBorder)
                 }
                 .padding()
                 
                 VStack(alignment: .leading){
-                    Text("Type of Saving")
+                    Text("Category")
                     
-                    Text("e.g. Fitness, Self-Care, Family")
-                        .font(.footnote)
-                    TextField("Name of your Saving Goal", text: $viewModel.savingGoalType)
+                    
+                        
+                    TextField("e.g. Family, Personal", text: $viewModel.savingGoalType)
                         .textFieldStyle(.roundedBorder)
                 }
                 .padding()
@@ -45,8 +45,6 @@ struct NewSavingGoalSheet: View {
                     HStack{
                         VStack(alignment: .leading){
                             Text("Type of Payment")
-                            Text("e.g. Repeats yearly, one-time")
-                                .font(.footnote)
                             Picker("Payment Type", selection: $viewModel.savingGoalPaymentType) {
                                 ForEach(PaymentType.allCases, id: \.self){ paymentType in
                                     Text(paymentType.rawValue.capitalized)
@@ -57,8 +55,8 @@ struct NewSavingGoalSheet: View {
                             
                         }
                         VStack(alignment: .trailing){
-                            Text("Target Date")
-                            Text("Set a deadline!")
+                            Text("Deadline")
+                            
                             DatePicker("", selection: $viewModel.savingGoalDeadline, in: Date.now..., displayedComponents: .date)
                         }
                     }

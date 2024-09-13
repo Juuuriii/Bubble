@@ -22,6 +22,11 @@ class WalletViewModel: ObservableObject {
     private let authClient = AuthClient.shared
     private let firestoreClient = FirestoreClient.shared
     
+    
+    
+    @Published var showAddMoneySheet = false
+    @Published var addAmount = 1.0
+    
     @Published var showNewSavingGoalSheet = false
     
     @Published var savingGoalName = ""
@@ -30,6 +35,8 @@ class WalletViewModel: ObservableObject {
     @Published var savingGoalDeadline = Date.now
     @Published var savingGoalTargetAmount = ""
     @Published var savingGoalAmountSaved = ""
+    
+    @Published var selectedSavingGoal: SavingGoal?
     
     let uid: String?
     
@@ -72,11 +79,35 @@ class WalletViewModel: ObservableObject {
         }
     }
     
+    func addMoney() {
+        
+        if let selectedSavingGoal = selectedSavingGoal {
+            
+            let newAmount = selectedSavingGoal.savedAmount + addAmount
+            
+            Task{
+                do{
+                    try await firestoreClient.updateAmountSaved(uid: uid ?? "", id: selectedSavingGoal.id.uuidString, newAmount: newAmount)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
+    
     func deleteSavingGoal(id: String) {
         firestoreClient.deleteSavingGoal(uid: uid ?? "", id: id)
     }
     
     func toggleNewSavingGoalSheet() {
         showNewSavingGoalSheet.toggle()
+    }
+    
+    func toggleAddMoneySheet() {
+        showAddMoneySheet.toggle()
+    }
+    
+    func setSelectedSavingGoal(savingGoal: SavingGoal){
+        selectedSavingGoal = savingGoal
     }
 }

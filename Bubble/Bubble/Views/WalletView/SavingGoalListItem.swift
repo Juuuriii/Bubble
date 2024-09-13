@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+@MainActor
 struct SavingGoalListItem: View {
     
     @Binding var savingGoal: SavingGoal
+    var action: () -> Void
     
     var body: some View {
             VStack{
@@ -32,7 +34,7 @@ struct SavingGoalListItem: View {
                         ProgressView(value: savingGoal.savedAmount, total: savingGoal.targetAmount)
                         HStack{
                             Spacer()
-                            Text("\(savingGoal.savedAmount, specifier: "%.2f")€ / \(savingGoal.targetAmount, specifier: "%.2f")€")
+                            Text("\(savingGoal.savedAmount, specifier: "%.0f")€ / \(savingGoal.targetAmount, specifier: "%.0f")€")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.white)
                         }
@@ -40,7 +42,7 @@ struct SavingGoalListItem: View {
                     .padding(.horizontal, 8)
                     VStack{
                         Button{
-                            
+                            action()
                         }label: {
                             Image("addButtonSavingGoal")
                         }

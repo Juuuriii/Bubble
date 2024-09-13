@@ -28,6 +28,7 @@
 		3A55DA742C8850C50009D514 /* SavingGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA732C8850C50009D514 /* SavingGoal.swift */; };
 		3A55DA762C9178240009D514 /* NewSavingGoalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */; };
 		3A55DA782C92F2090009D514 /* SavingGoalListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA772C92F2090009D514 /* SavingGoalListItem.swift */; };
+		3A55DA7A2C93F59E0009D514 /* AddMoneySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA792C93F59E0009D514 /* AddMoneySheet.swift */; };
 		3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */; };
 		3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */; };
 		3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */; };
@@ -71,6 +72,7 @@
 		3A55DA732C8850C50009D514 /* SavingGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoal.swift; sourceTree = "<group>"; };
 		3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSavingGoalSheet.swift; sourceTree = "<group>"; };
 		3A55DA772C92F2090009D514 /* SavingGoalListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoalListItem.swift; sourceTree = "<group>"; };
+		3A55DA792C93F59E0009D514 /* AddMoneySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneySheet.swift; sourceTree = "<group>"; };
 		3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonStyle.swift; sourceTree = "<group>"; };
 		3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewTabButton.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				3A55DA712C8849B30009D514 /* WalletViewModel.swift */,
 				3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */,
 				3A55DA772C92F2090009D514 /* SavingGoalListItem.swift */,
+				3A55DA792C93F59E0009D514 /* AddMoneySheet.swift */,
 			);
 			path = WalletView;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */,
 				3A55DA6D2C8842750009D514 /* MainView.swift in Sources */,
 				3A55DA782C92F2090009D514 /* SavingGoalListItem.swift in Sources */,
+				3A55DA7A2C93F59E0009D514 /* AddMoneySheet.swift in Sources */,
 				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,
 				3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */,

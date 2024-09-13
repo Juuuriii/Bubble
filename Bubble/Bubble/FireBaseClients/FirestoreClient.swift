@@ -71,9 +71,15 @@ class FirestoreClient {
         
     }
     
-    func updateSavingGoal(){
+    func updateAmountSaved(uid: String ,id: String, newAmount: Double) async throws {
         
-        
+     try await store.collection("users")
+            .document(uid)
+            .collection("wallet")
+            .document(id)
+            .updateData([
+                "savedAmount" : newAmount
+            ])
         
     }
 }

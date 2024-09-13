@@ -14,7 +14,7 @@ struct WalletView: View {
     var body: some View {
         
         NavigationStack{
-            GeometryReader { proxy in
+            
             ScrollView {
                 VStack() {
                     Text("Savings")
@@ -30,16 +30,19 @@ struct WalletView: View {
                 }
                 .padding()
                 ForEach($viewModel.savingGoals){ savingGoal in
-                       
-                           SavingGoalListItem(savingGoal: savingGoal)
-                            .shadow(radius: 4, y: 4)
-                            .padding(.bottom, 8)
-                        }
+                    
+                    SavingGoalListItem(savingGoal: savingGoal){
+                        viewModel.setSelectedSavingGoal(savingGoal: savingGoal.wrappedValue)
+                        viewModel.toggleAddMoneySheet()
                     }
-            .background(Color(hex: "A4D8F5"))
+                        .shadow(radius: 4, y: 4)
+                        .padding(.bottom, 8)
+                        
+                }
                 
             }
-            
+            .frame(maxWidth: .infinity)
+            .background(Color(hex: "A4D8F5"))
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     Button{
@@ -56,6 +59,15 @@ struct WalletView: View {
             }
             .sheet(isPresented: $viewModel.showNewSavingGoalSheet){
                 NewSavingGoalSheet(viewModel: viewModel)
+                    .presentationDetents([.height(550), .large])
+            }
+            .sheet(isPresented: $viewModel.showAddMoneySheet){
+                
+                if let selectedSavingGoal = viewModel.selectedSavingGoal {
+                    
+                    AddMoneySheet(viewModel: viewModel, savingGoal: selectedSavingGoal )
+                        .presentationDetents([.height(200)])
+                }
             }
         }
     }
