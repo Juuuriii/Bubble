@@ -29,6 +29,9 @@
 		3A55DA762C9178240009D514 /* NewSavingGoalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */; };
 		3A55DA782C92F2090009D514 /* SavingGoalListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA772C92F2090009D514 /* SavingGoalListItem.swift */; };
 		3A55DA7A2C93F59E0009D514 /* AddMoneySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA792C93F59E0009D514 /* AddMoneySheet.swift */; };
+		3A55DA7D2C9406B60009D514 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA7C2C9406B60009D514 /* ApiClient.swift */; };
+		3A55DA7F2C9407A10009D514 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA7E2C9407A10009D514 /* Quote.swift */; };
+		3A55DA812C940B450009D514 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA802C940B450009D514 /* ApiKey.swift */; };
 		3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */; };
 		3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */; };
 		3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */; };
@@ -73,6 +76,9 @@
 		3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSavingGoalSheet.swift; sourceTree = "<group>"; };
 		3A55DA772C92F2090009D514 /* SavingGoalListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoalListItem.swift; sourceTree = "<group>"; };
 		3A55DA792C93F59E0009D514 /* AddMoneySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneySheet.swift; sourceTree = "<group>"; };
+		3A55DA7C2C9406B60009D514 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		3A55DA7E2C9407A10009D514 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		3A55DA802C940B450009D514 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonStyle.swift; sourceTree = "<group>"; };
 		3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewTabButton.swift; sourceTree = "<group>"; };
@@ -134,10 +140,12 @@
 				3A4606DA2C7613610019EFA2 /* Views */,
 				3A4606D72C7610710019EFA2 /* Models */,
 				3A4606D12C760DBC0019EFA2 /* FireBaseClients */,
+				3A55DA7B2C9406810009D514 /* ApiClient */,
 				3A4606C62C760C7D0019EFA2 /* GoogleService-Info.plist */,
 				3A46069A2C733C950019EFA2 /* BubbleApp.swift */,
 				3A46069E2C733C960019EFA2 /* Assets.xcassets */,
 				3A4606A02C733C960019EFA2 /* Preview Content */,
+				3A55DA802C940B450009D514 /* ApiKey.swift */,
 			);
 			path = Bubble;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 			children = (
 				3A4606D82C7610890019EFA2 /* BubbleUser.swift */,
 				3A55DA732C8850C50009D514 /* SavingGoal.swift */,
+				3A55DA7E2C9407A10009D514 /* Quote.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +224,14 @@
 				3A55DA792C93F59E0009D514 /* AddMoneySheet.swift */,
 			);
 			path = WalletView;
+			sourceTree = "<group>";
+		};
+		3A55DA7B2C9406810009D514 /* ApiClient */ = {
+			isa = PBXGroup;
+			children = (
+				3A55DA7C2C9406B60009D514 /* ApiClient.swift */,
+			);
+			path = ApiClient;
 			sourceTree = "<group>";
 		};
 		3AF1138F2C7F14A8000A9E9F /* Components */ = {
@@ -376,7 +393,10 @@
 				3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */,
 				3A55DA6D2C8842750009D514 /* MainView.swift in Sources */,
 				3A55DA782C92F2090009D514 /* SavingGoalListItem.swift in Sources */,
+				3A55DA812C940B450009D514 /* ApiKey.swift in Sources */,
 				3A55DA7A2C93F59E0009D514 /* AddMoneySheet.swift in Sources */,
+				3A55DA7F2C9407A10009D514 /* Quote.swift in Sources */,
+				3A55DA7D2C9406B60009D514 /* ApiClient.swift in Sources */,
 				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,
 				3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */,

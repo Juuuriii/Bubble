@@ -89,3 +89,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 Bubble/Bubble/GoogleService-Info.plist
+Bubble/Bubble/ApiKey.swift
