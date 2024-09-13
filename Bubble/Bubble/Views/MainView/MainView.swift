@@ -11,10 +11,11 @@ struct MainView: View {
     
     @ObservedObject var authViewModel: AuthViewModel
     
+    
     var body: some View {
         TabView {
             
-                Text("Home")
+                HomeView()
                     .tabItem { Label("Home", systemImage: "house") }
                 
                 WalletView(viewModel: WalletViewModel(uid: authViewModel.user?.uid))
@@ -33,6 +34,7 @@ struct MainView: View {
         }
         .tint(Color(hex: "#4E28E9"))
         .onAppear{
+            
             UITabBar.appearance().unselectedItemTintColor = UIColor(Color(hex: "#14135B"))
             UITabBar.appearance().barTintColor = UIColor(Color(hex: "#49B0EA"))
         }

@@ -56,6 +56,7 @@ struct WalletView: View {
             .toolbarBackground(Color(hex: "#49B0EA"), for: .navigationBar)
             .onAppear{
                 viewModel.getSavingGoals()
+               
             }
             .sheet(isPresented: $viewModel.showNewSavingGoalSheet){
                 NewSavingGoalSheet(viewModel: viewModel)

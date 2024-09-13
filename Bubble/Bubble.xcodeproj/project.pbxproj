@@ -32,6 +32,8 @@
 		3A55DA7D2C9406B60009D514 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA7C2C9406B60009D514 /* ApiClient.swift */; };
 		3A55DA7F2C9407A10009D514 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA7E2C9407A10009D514 /* Quote.swift */; };
 		3A55DA812C940B450009D514 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA802C940B450009D514 /* ApiKey.swift */; };
+		3A55DA842C94114A0009D514 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA832C94114A0009D514 /* HomeView.swift */; };
+		3A55DA862C9411610009D514 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA852C9411610009D514 /* HomeViewModel.swift */; };
 		3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */; };
 		3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */; };
 		3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */; };
@@ -79,6 +81,8 @@
 		3A55DA7C2C9406B60009D514 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		3A55DA7E2C9407A10009D514 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		3A55DA802C940B450009D514 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		3A55DA832C94114A0009D514 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3A55DA852C9411610009D514 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonStyle.swift; sourceTree = "<group>"; };
 		3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewTabButton.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 		3A4606DA2C7613610019EFA2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A55DA822C9411330009D514 /* HomeView */,
 				3A55DA6E2C8849910009D514 /* WalletView */,
 				3A55DA6B2C88425E0009D514 /* MainView */,
 				3A4606DB2C7613690019EFA2 /* AuthView */,
@@ -232,6 +237,15 @@
 				3A55DA7C2C9406B60009D514 /* ApiClient.swift */,
 			);
 			path = ApiClient;
+			sourceTree = "<group>";
+		};
+		3A55DA822C9411330009D514 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				3A55DA832C94114A0009D514 /* HomeView.swift */,
+				3A55DA852C9411610009D514 /* HomeViewModel.swift */,
+			);
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		3AF1138F2C7F14A8000A9E9F /* Components */ = {
@@ -384,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A55DA742C8850C50009D514 /* SavingGoal.swift in Sources */,
+				3A55DA862C9411610009D514 /* HomeViewModel.swift in Sources */,
 				3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */,
 				3A55DA762C9178240009D514 /* NewSavingGoalSheet.swift in Sources */,
 				3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */,
@@ -398,6 +413,7 @@
 				3A55DA7F2C9407A10009D514 /* Quote.swift in Sources */,
 				3A55DA7D2C9406B60009D514 /* ApiClient.swift in Sources */,
 				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
+				3A55DA842C94114A0009D514 /* HomeView.swift in Sources */,
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,
 				3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */,
 				3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */,

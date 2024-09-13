@@ -110,4 +110,6 @@ class WalletViewModel: ObservableObject {
     func setSelectedSavingGoal(savingGoal: SavingGoal){
         selectedSavingGoal = savingGoal
     }
+    
+    
 }

@@ -13,23 +13,28 @@ class ApiClient {
     
     private init(){}
     
-    func fetchQuote() async throws -> Quote {
+    func fetchQuote() async throws -> [Quote] {
         
-        var urlComponents = URLComponents()
-        
-        urlComponents.scheme = "https"
-        urlComponents.host = "api.api-ninjas.com"
-        urlComponents.path = "/v1/quotes"
-
-        urlComponents.queryItems = [
-            URLQueryItem(name: "category", value: "money")
-        ]
-        
-        guard let url = urlComponents.url else {
+        guard let url = URL(string: "https://api.api-ninjas.com/v1/quotes?category=money") else {
             fatalError("invalid url")
+        }
+
+        let header = [
+            "x-api-key": ApiKey.key
+        ]
+
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = header
+        request.httpMethod = "GET"
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print(jsonString)
         }
         
         
+        return try JSONDecoder().decode([Quote].self, from: data)
     }
     
 }
