@@ -21,6 +21,7 @@ struct WalletVIew: View {
     
     @ObservedObject var viewModel: WalletViewModel
     
+    
     var body: some View {
         NavigationStack {
             VStack{
@@ -100,7 +101,7 @@ struct WalletVIew: View {
                     SavingGoalsView(viewModel: viewModel)
                         .tag(ScreenWallet.saving)
                     
-                    Text("History")
+                    HistoryView(viewModel: HistoryViewModel(uid: "TPLxOOZc41a7AKZJFOiCDWiEyDf1"))
                         .tag(ScreenWallet.history)
                     
                 }

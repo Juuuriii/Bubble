@@ -32,7 +32,7 @@ struct SavingGoalsView: View {
                     } delete: {
                         viewModel.deleteSavingGoal(id: savingGoal.id.uuidString)
                     }
-                    .shadow(radius: 4, y: 4)
+                    
                     .padding(.bottom, 8)
                     
                 }

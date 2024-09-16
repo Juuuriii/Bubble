@@ -94,17 +94,6 @@ class FirestoreClient {
             .setData(from: balanceChange)
     }
     
-    func getBalanceChanges(uid: String) async throws -> [BalanceChange]{
-        
-        let filters: [Filter] = [Filter.whereField("uid", isEqualTo: uid)]
-        
-        let query = store.collectionGroup("history").whereFilter(Filter.andFilter(filters))
-        
-        let result = try await query.getDocuments().documents.map {try $0.data(as: BalanceChange.self)}
-        
-        return result
-    }
-    
     func deleteBalanceChange(uid: String, id: String) {
         
         store.collection("users")

@@ -11,7 +11,7 @@ enum BalanceChangeType: String {
     case income, expense
 }
 
-struct BalanceChange: Codable{
+struct BalanceChange: Codable, Identifiable {
     
     var id: String = UUID().uuidString
     let uid: String

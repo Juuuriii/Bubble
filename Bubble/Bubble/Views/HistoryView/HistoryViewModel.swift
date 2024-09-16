@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HistoryViewModel: ObservableObject {
     
@@ -14,7 +15,7 @@ class HistoryViewModel: ObservableObject {
     
     @Published var history = [BalanceChange]()
     
-    @Published var balanceChangeName = ""
+    @Published var balanceChangeName = "Bob"
     @Published var balanceChangeAmount = 1.0
     @Published var balanceChangeType: BalanceChangeType = .expense
     @Published var balanceChangeCurrentBalance = 0.0
@@ -24,16 +25,48 @@ class HistoryViewModel: ObservableObject {
     
     init(uid: String?) {
         self.uid = uid
+        
+        addBalanceChangeSnapshotlistener()
     }
     
-    func getBalanceChages(){
-        Task{
-            do {
-               history = try await firestoreClient.getBalanceChanges(uid: uid ?? "")
-            } catch {
-                print(error)
+    
+    func addBalanceChangeSnapshotlistener() {
+        
+        firestoreClient.store.collection("users")
+            .document(uid ?? "")
+            .collection("history")
+            .addSnapshotListener{ querySnapshot, error in
+                
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                querySnapshot?.documentChanges.forEach{ change in
+                    
+                    switch change.type {
+                    case .added:
+                        if let data = try? change.document.data(as: BalanceChange.self) {
+                            
+                            withAnimation{
+                                self.history.append(data)
+                            }
+                        }
+                    case .modified:
+                        print("How?")
+                        
+                    case .removed:
+                        if let data = try? change.document.data(as: BalanceChange.self) {
+                            
+                            withAnimation{
+                                self.history.removeAll{ $0.id == data.id }
+                            }
+                        }
+                    }
+                    
+                }
             }
-        }
+        
     }
     
     func addBalanceChange(){

@@ -91,12 +91,11 @@ struct SavingGoalListItem: View {
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundStyle(Color(hex: "14135B"))
-                        .overlay{
-                            Image("SavingGoalBackground")
-                                .resizable()
-                                
-                        }
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .shadow(radius: 4, y: 4)
+                        
+                    Image("SavingGoalBackground")
+                        .resizable()
+                  //      .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
             }
             .padding(.horizontal, 8)
