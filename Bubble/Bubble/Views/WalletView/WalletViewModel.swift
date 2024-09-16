@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum PaymentType: String, CaseIterable {
     case yearly
@@ -38,13 +39,41 @@ class WalletViewModel: ObservableObject {
     
     @Published var selectedSavingGoal: SavingGoal?
     
+    @Published var fixAddingAmount = 10.0
+    
+    @Published var bubbleUser: BubbleUser?
+    
     let uid: String?
     
     init(uid: String?) {
         self.uid = uid
+        
+        getBubbleUser()
+        savingGoalsSnapshotListener()
     }
     
     @Published var savingGoals = [SavingGoal]()
+    
+    
+    func getBubbleUser() {
+        
+        firestoreClient.store.collection("users")
+            .document(uid ?? "")
+            .addSnapshotListener{ querySnapshot, error in
+               
+                guard let document = querySnapshot else {
+                      print("Error fetching document: \(error!)")
+                      return
+                    }
+                guard document.data() != nil else {
+                      print("Document data was empty.")
+                      return
+                    }
+                
+                self.bubbleUser = try? document.data(as: BubbleUser.self)
+                
+            }
+    }
     
     func getSavingGoals() {
         Task {
@@ -55,6 +84,52 @@ class WalletViewModel: ObservableObject {
             }
         }
     }
+    
+    func savingGoalsSnapshotListener() {
+        firestoreClient.store.collection("users")
+            .document(uid ?? "")
+            .collection("wallet")
+            .addSnapshotListener{ querySnapshot, error in
+                
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                querySnapshot?.documentChanges.forEach { change in
+                    if change.type == .added {
+                        
+                    }
+                    
+                    switch change.type {
+                    case .added:
+                        if let data = try? change.document.data(as: SavingGoal.self) {
+                            
+                            self.savingGoals.append(data)
+                            
+                        }
+                    case .modified:
+                        if let data = try? change.document.data(as: SavingGoal.self) {
+                            
+                            if let index = self.savingGoals.firstIndex(where: { $0.id == data.id }){
+                                
+                                withAnimation{
+                                    self.savingGoals[index].savedAmount = data.savedAmount
+                                }
+                            }
+                        }
+                        
+                    case .removed:
+                        if let data = try? change.document.data(as: SavingGoal.self) {
+                            
+                            self.savingGoals.removeAll{ $0.id == data.id }
+                            
+                        }
+                    }
+                }
+            }
+    }
+    
     
     func createSavingGoal() {
         do {
@@ -111,5 +186,16 @@ class WalletViewModel: ObservableObject {
         selectedSavingGoal = savingGoal
     }
     
-    
+    /**
+    func addMoneyWithButton(amount: Double, id: UUID) {
+        
+        guard let index = savingGoals.firstIndex(where: {id == $0.id}) else {
+            return
+        }
+        
+        withAnimation{
+            savingGoals[index].savedAmount += amount
+        }
+    }
+    */
 }

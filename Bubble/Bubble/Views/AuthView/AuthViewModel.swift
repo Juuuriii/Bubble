@@ -72,4 +72,10 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    func addUserSnapshotListener() {
+        
+        
+        
+    }
+    
 }

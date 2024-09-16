@@ -17,7 +17,7 @@ struct SavingGoal: Codable, Identifiable {
     let targetDate: Date
     let repeats: String
     let targetAmount: Double
-    let savedAmount: Double
+    var savedAmount: Double
     let finished: Bool
     let uid: String
     

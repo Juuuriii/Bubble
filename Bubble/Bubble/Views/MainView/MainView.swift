@@ -19,8 +19,11 @@ struct MainView: View {
                     .tabItem { Label("Home", systemImage: "house") }
                 
                 WalletView(viewModel: WalletViewModel(uid: authViewModel.user?.uid))
-                .tabItem { Label("Wallet", image: "walletIcon") }
-                
+                .tabItem { Label("Saving", image: "piggybank") }
+            
+                Text("History")
+                .tabItem { Label("History", systemImage: "clock") }
+            
                 Text("Dungeon")
                     .tabItem { Label("Dungeon", image: "bubbleIcon") }
                 VStack{

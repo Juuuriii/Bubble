@@ -12,5 +12,6 @@ struct BubbleUser: Codable {
     let id: String
     let email: String
     let username: String
+    var balance: Double = 0.0
     
 }

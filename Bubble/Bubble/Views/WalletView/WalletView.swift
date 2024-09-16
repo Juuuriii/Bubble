@@ -17,10 +17,11 @@ struct WalletView: View {
             
             ScrollView {
                 VStack() {
-                    Text("Savings")
+                    Text("Saving Goals")
                         .font(.title)
                     Text("Budget & Track Future Expenses")
                         .font(.footnote)
+                    Text(viewModel.bubbleUser?.email ?? "")
                 }
                 .padding(.horizontal, 24)
                 .padding(.vertical, 8)
@@ -34,6 +35,8 @@ struct WalletView: View {
                     SavingGoalListItem(savingGoal: savingGoal){
                         viewModel.setSelectedSavingGoal(savingGoal: savingGoal.wrappedValue)
                         viewModel.toggleAddMoneySheet()
+                    } delete: {
+                        viewModel.deleteSavingGoal(id: savingGoal.id.uuidString)
                     }
                         .shadow(radius: 4, y: 4)
                         .padding(.bottom, 8)
@@ -55,7 +58,7 @@ struct WalletView: View {
             }
             .toolbarBackground(Color(hex: "#49B0EA"), for: .navigationBar)
             .onAppear{
-                viewModel.getSavingGoals()
+             //   viewModel.getSavingGoals()
                
             }
             .sheet(isPresented: $viewModel.showNewSavingGoalSheet){

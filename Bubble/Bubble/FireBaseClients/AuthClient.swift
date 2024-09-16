@@ -17,6 +17,8 @@ class AuthClient {
         return auth.currentUser
     }
     
+    
+    
     func register(email: String, password: String) async throws -> FirebaseAuth.User {
         
         let result = try await auth.createUser(withEmail: email, password: password)

@@ -12,12 +12,14 @@ struct SavingGoalListItem: View {
     
     @Binding var savingGoal: SavingGoal
     var action: () -> Void
+    var delete: () -> Void
     
     var body: some View {
             VStack{
                 HStack{
                     VStack{
                         Button{
+                            delete()
                         }label: {
                             Image("editIconSavingGoal")
                         }

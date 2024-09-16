@@ -11,7 +11,7 @@ import FirebaseFirestore
 class FirestoreClient {
     
     static let shared = FirestoreClient()
-    private let store = Firestore.firestore()
+    let store = Firestore.firestore()
     
     func createUser(uid: String, email: String, username: String) throws {
         let user = BubbleUser(id: uid, email: email, username: username)
@@ -82,4 +82,38 @@ class FirestoreClient {
             ])
         
     }
+    
+    func addBalanceChange(uid: String, name: String, amount: Double, type: String, currentBalance: Double, date: Date) throws  {
+        
+        let balanceChange = BalanceChange(uid: uid, name: name, amount: amount, type: type, currentBalance: currentBalance, date: date)
+        
+        try  store.collection("users")
+            .document(uid)
+            .collection("history")
+            .document(balanceChange.id)
+            .setData(from: balanceChange)
+    }
+    
+    func getBalanceChanges(uid: String) async throws -> [BalanceChange]{
+        
+        let filters: [Filter] = [Filter.whereField("uid", isEqualTo: uid)]
+        
+        let query = store.collectionGroup("history").whereFilter(Filter.andFilter(filters))
+        
+        let result = try await query.getDocuments().documents.map {try $0.data(as: BalanceChange.self)}
+        
+        return result
+    }
+    
+    func deleteBalanceChange(uid: String, id: String) {
+        
+        store.collection("users")
+            .document(uid)
+            .collection("history")
+            .document(id)
+            .delete()
+    }
+    
+    
+    
 }
