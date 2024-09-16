@@ -45,9 +45,6 @@ struct AddMoneySheet: View {
                     }
                 }
             }
-            .onDisappear{
-           //     viewModel.getSavingGoals()
-            }
         }
     }
 }

@@ -86,7 +86,6 @@ struct NewSavingGoalSheet: View {
                 Button{
                     viewModel.createSavingGoal()
                     viewModel.toggleNewSavingGoalSheet()
-              //      viewModel.getSavingGoals()
                 } label: {
                     Text("Save")
                 }

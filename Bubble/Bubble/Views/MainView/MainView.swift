@@ -18,11 +18,10 @@ struct MainView: View {
                 HomeView()
                     .tabItem { Label("Home", systemImage: "house") }
                 
-                WalletView(viewModel: WalletViewModel(uid: authViewModel.user?.uid))
-                .tabItem { Label("Saving", image: "piggybank") }
+                WalletVIew(viewModel: WalletViewModel(uid: authViewModel.user?.uid))
+                .tabItem { Label("Wallet", image: "walletIcon") }
             
-                Text("History")
-                .tabItem { Label("History", systemImage: "clock") }
+                
             
                 Text("Dungeon")
                     .tabItem { Label("Dungeon", image: "bubbleIcon") }

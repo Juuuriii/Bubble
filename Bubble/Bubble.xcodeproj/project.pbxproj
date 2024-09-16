@@ -23,7 +23,7 @@
 		3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */; };
 		3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606E32C7873F90019EFA2 /* AuthView.swift */; };
 		3A55DA6D2C8842750009D514 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA6C2C8842750009D514 /* MainView.swift */; };
-		3A55DA702C8849A50009D514 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA6F2C8849A50009D514 /* WalletView.swift */; };
+		3A55DA702C8849A50009D514 /* SavingGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA6F2C8849A50009D514 /* SavingGoalsView.swift */; };
 		3A55DA722C8849B30009D514 /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA712C8849B30009D514 /* WalletViewModel.swift */; };
 		3A55DA742C8850C50009D514 /* SavingGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA732C8850C50009D514 /* SavingGoal.swift */; };
 		3A55DA762C9178240009D514 /* NewSavingGoalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */; };
@@ -37,6 +37,7 @@
 		3A55DA892C9808A80009D514 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA882C9808A80009D514 /* HistoryView.swift */; };
 		3A55DA8B2C9808C00009D514 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA8A2C9808C00009D514 /* HistoryViewModel.swift */; };
 		3A55DA8D2C9808DC0009D514 /* BalanceChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA8C2C9808DC0009D514 /* BalanceChange.swift */; };
+		3A55DA8F2C984A1D0009D514 /* WalletVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA8E2C984A1D0009D514 /* WalletVIew.swift */; };
 		3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */; };
 		3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */; };
 		3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */; };
@@ -75,7 +76,7 @@
 		3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexExtention.swift; sourceTree = "<group>"; };
 		3A4606E32C7873F90019EFA2 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3A55DA6C2C8842750009D514 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		3A55DA6F2C8849A50009D514 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
+		3A55DA6F2C8849A50009D514 /* SavingGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoalsView.swift; sourceTree = "<group>"; };
 		3A55DA712C8849B30009D514 /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		3A55DA732C8850C50009D514 /* SavingGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoal.swift; sourceTree = "<group>"; };
 		3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSavingGoalSheet.swift; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		3A55DA882C9808A80009D514 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		3A55DA8A2C9808C00009D514 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		3A55DA8C2C9808DC0009D514 /* BalanceChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceChange.swift; sourceTree = "<group>"; };
+		3A55DA8E2C984A1D0009D514 /* WalletVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVIew.swift; sourceTree = "<group>"; };
 		3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonStyle.swift; sourceTree = "<group>"; };
 		3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewTabButton.swift; sourceTree = "<group>"; };
@@ -230,11 +232,12 @@
 		3A55DA6E2C8849910009D514 /* WalletView */ = {
 			isa = PBXGroup;
 			children = (
-				3A55DA6F2C8849A50009D514 /* WalletView.swift */,
+				3A55DA6F2C8849A50009D514 /* SavingGoalsView.swift */,
 				3A55DA712C8849B30009D514 /* WalletViewModel.swift */,
 				3A55DA752C9178240009D514 /* NewSavingGoalSheet.swift */,
 				3A55DA772C92F2090009D514 /* SavingGoalListItem.swift */,
 				3A55DA792C93F59E0009D514 /* AddMoneySheet.swift */,
+				3A55DA8E2C984A1D0009D514 /* WalletVIew.swift */,
 			);
 			path = WalletView;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				3A55DA6D2C8842750009D514 /* MainView.swift in Sources */,
 				3A55DA782C92F2090009D514 /* SavingGoalListItem.swift in Sources */,
 				3A55DA812C940B450009D514 /* ApiKey.swift in Sources */,
+				3A55DA8F2C984A1D0009D514 /* WalletVIew.swift in Sources */,
 				3A55DA7A2C93F59E0009D514 /* AddMoneySheet.swift in Sources */,
 				3A55DA7F2C9407A10009D514 /* Quote.swift in Sources */,
 				3A55DA7D2C9406B60009D514 /* ApiClient.swift in Sources */,
@@ -438,7 +442,7 @@
 				3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */,
 				3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */,
 				3A4606D92C7610890019EFA2 /* BubbleUser.swift in Sources */,
-				3A55DA702C8849A50009D514 /* WalletView.swift in Sources */,
+				3A55DA702C8849A50009D514 /* SavingGoalsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

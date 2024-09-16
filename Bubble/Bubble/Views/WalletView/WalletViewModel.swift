@@ -75,15 +75,7 @@ class WalletViewModel: ObservableObject {
             }
     }
     
-    func getSavingGoals() {
-        Task {
-            do {
-             savingGoals = try await firestoreClient.getSavingGoals(uid: uid ?? "")
-            } catch {
-                print(error)
-            }
-        }
-    }
+    
     
     func savingGoalsSnapshotListener() {
         firestoreClient.store.collection("users")
@@ -97,16 +89,14 @@ class WalletViewModel: ObservableObject {
                 }
                 
                 querySnapshot?.documentChanges.forEach { change in
-                    if change.type == .added {
-                        
-                    }
                     
                     switch change.type {
                     case .added:
                         if let data = try? change.document.data(as: SavingGoal.self) {
                             
-                            self.savingGoals.append(data)
-                            
+                            withAnimation{
+                                self.savingGoals.append(data)
+                            }
                         }
                     case .modified:
                         if let data = try? change.document.data(as: SavingGoal.self) {
@@ -122,8 +112,9 @@ class WalletViewModel: ObservableObject {
                     case .removed:
                         if let data = try? change.document.data(as: SavingGoal.self) {
                             
-                            self.savingGoals.removeAll{ $0.id == data.id }
-                            
+                            withAnimation{
+                                self.savingGoals.removeAll{ $0.id == data.id }
+                            }
                         }
                     }
                 }
@@ -185,17 +176,4 @@ class WalletViewModel: ObservableObject {
     func setSelectedSavingGoal(savingGoal: SavingGoal){
         selectedSavingGoal = savingGoal
     }
-    
-    /**
-    func addMoneyWithButton(amount: Double, id: UUID) {
-        
-        guard let index = savingGoals.firstIndex(where: {id == $0.id}) else {
-            return
-        }
-        
-        withAnimation{
-            savingGoals[index].savedAmount += amount
-        }
-    }
-    */
 }
