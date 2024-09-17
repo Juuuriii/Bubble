@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SavingGoalsView: View {
     
-    @StateObject var viewModel = SavingGoalsViewModel()
+    @ObservedObject var viewModel: WalletViewModel
     
     var body: some View {
         VStack{
@@ -49,11 +49,15 @@ struct SavingGoalsView: View {
                 }
             }
         }
+        .onAppear{
+            viewModel.addSavingGoalsListener()
+        }
+        .onDisappear{
+            viewModel.removeSavinGoalListener()
+        }
     }
 }
 
 
 
-#Preview {
-    SavingGoalsView()
-}
+

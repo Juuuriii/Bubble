@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddBalanceChangeSheet: View {
     
-    @ObservedObject var viewModel: HistoryViewModel
+    @ObservedObject var viewModel: WalletViewModel
     
     var body: some View {
         NavigationStack{
@@ -37,7 +37,7 @@ struct AddBalanceChangeSheet: View {
                 .pickerStyle(.segmented)
                 
                 VStack(alignment: .leading){
-                    DatePicker("Date", selection: $viewModel.balanceChangeDate, in: Date.now..., displayedComponents: .date)
+                    DatePicker("Date", selection: $viewModel.balanceChangeDate, in: ...Date.now, displayedComponents: .date)
                 }
                 .padding()
                 

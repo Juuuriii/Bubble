@@ -7,7 +7,12 @@
 
 import Foundation
 
-
+enum PaymentType: String, CaseIterable {
+    case yearly
+    case monthly
+    case weekly
+    case oneTime = "One-Time"
+}
 
 struct SavingGoal: Codable, Identifiable {
     

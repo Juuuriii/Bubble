@@ -12,7 +12,7 @@ import SwiftUI
 struct NewSavingGoalSheet: View {
     
     
-    @ObservedObject var viewModel: SavingGoalsViewModel
+    @ObservedObject var viewModel: WalletViewModel
     
     var body: some View {
         NavigationStack{
@@ -107,5 +107,5 @@ struct NewSavingGoalSheet: View {
 }
 
 #Preview {
-    NewSavingGoalSheet(viewModel: SavingGoalsViewModel())
+    NewSavingGoalSheet(viewModel: WalletViewModel())
 }

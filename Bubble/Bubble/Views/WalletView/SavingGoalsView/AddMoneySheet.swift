@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddMoneySheet: View {
     
-    @ObservedObject var viewModel: SavingGoalsViewModel
+    @ObservedObject var viewModel: WalletViewModel
     var savingGoal: SavingGoal
     
     var body: some View {

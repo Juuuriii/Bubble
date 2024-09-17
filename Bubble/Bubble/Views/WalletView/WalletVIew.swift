@@ -33,10 +33,10 @@ struct WalletVIew: View {
            
                 TabView(selection: $viewModel.screen) {
                     
-                    SavingGoalsView()
+                    SavingGoalsView(viewModel: viewModel)
                         .tag(ScreenWallet.saving)
                     
-                    HistoryView(viewModel: HistoryViewModel())
+                    HistoryView(viewModel: viewModel)
                         .tag(ScreenWallet.history)
                     
                 }
@@ -45,8 +45,13 @@ struct WalletVIew: View {
             }
             .tint(Color(hex: "4E28E9"))
             .background(Color(hex: "A4D8F5"))
+            .onAppear{
+                viewModel.addBubbleUserSnapshotListener()
+                viewModel.addBalanceChangeSnapshotlistener()
+            }
             .onDisappear{
                 viewModel.removeBubbleUserListener()
+                viewModel.removeBalanceChangeListener()
             }
         }
     }

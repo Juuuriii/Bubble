@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
     
-    @ObservedObject var viewModel: HistoryViewModel
+    @ObservedObject var viewModel: WalletViewModel
     
     var body: some View {
         VStack{
@@ -30,13 +30,9 @@ struct HistoryView: View {
                                     .foregroundStyle(Color(hex: "14135B"))
                                 Text("\(balanceChange.amount, specifier: "%.2f")€")
                                     .foregroundStyle(Color(hex: "14135B"))
-                                
                             }
-                            
-                            
                             HStack{
                                 Text(balanceChange.date, format: .dateTime.day().month().year())
-                                    
                                     .foregroundStyle(Color(hex: "14135B"))
                                     .padding(.horizontal, 8)
                                     .padding(.vertical, 2)
@@ -59,11 +55,9 @@ struct HistoryView: View {
                                 RoundedRectangle(cornerRadius: 20)
                                     .foregroundStyle(Color(hex: "CFE0EA"))
                                     .shadow(radius: 4, y: 4)
-                                
                                 Image("balanceChangeBackground")
                                     .resizable()
                             }
-                            
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal)
@@ -71,8 +65,6 @@ struct HistoryView: View {
                     }
                 }
             }
-            
-            
         }
         .sheet(isPresented: $viewModel.showAddBalanceChangeSheet, content: {
             AddBalanceChangeSheet(viewModel: viewModel)
@@ -86,7 +78,6 @@ struct HistoryView: View {
                 }
             }
         }
-     
     }
 }
 

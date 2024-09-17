@@ -8,8 +8,9 @@
 import Foundation
 
 enum BalanceChangeType: String, CaseIterable {
-    case income = "+"
     case expense = "-"
+    case income = "+"
+    
     
     var name: String {
         switch self {
