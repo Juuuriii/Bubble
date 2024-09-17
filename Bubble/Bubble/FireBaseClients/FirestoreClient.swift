@@ -83,6 +83,39 @@ class FirestoreClient {
         
     }
     
+    func updateUserBalance(uid: String, oldAmount: Double?, amount: Double, type: BalanceChangeType, delete: Bool = false) async throws {
+        
+        guard let balance = oldAmount else {
+            return
+        }
+        
+        var newAmount = 0.0
+        
+        switch type {
+        case .income:
+            if delete {
+                newAmount = balance - amount
+            } else {
+                newAmount = balance + amount
+            }
+        case .expense:
+            if delete {
+                newAmount = balance + amount
+            } else {
+                newAmount = balance - amount
+            }
+        
+            
+        }
+        
+        try await store.collection("users")
+            .document(uid)
+            .updateData([
+                "balance" : newAmount
+            ])
+        
+    }
+    
     func addBalanceChange(uid: String, name: String, amount: Double, type: String, currentBalance: Double, date: Date) throws  {
         
         let balanceChange = BalanceChange(uid: uid, name: name, amount: amount, type: type, currentBalance: currentBalance, date: date)
@@ -102,6 +135,7 @@ class FirestoreClient {
             .document(id)
             .delete()
     }
+    
     
     
     

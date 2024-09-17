@@ -34,7 +34,10 @@ struct SavingGoalListItem: View {
                             Spacer()
                         }
                         ProgressView(value: savingGoal.savedAmount, total: savingGoal.targetAmount)
-                            .background(Color(hex:"49B0EA"))
+                            .background{
+                                Capsule()
+                                    .foregroundStyle(Color(hex:"49B0EA"))
+                            }
                         HStack{
                             Spacer()
                             Text("\(savingGoal.savedAmount, specifier: "%.0f")€ / \(savingGoal.targetAmount, specifier: "%.0f")€")

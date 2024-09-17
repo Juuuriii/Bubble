@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+
+
 class HistoryViewModel: ObservableObject {
     
     private let authClient = AuthClient.shared
@@ -21,10 +23,13 @@ class HistoryViewModel: ObservableObject {
     @Published var balanceChangeCurrentBalance = 0.0
     @Published var balanceChangeDate = Date.now
     
-    let uid: String?
+    @Published var bubbleUser: BubbleUser?
     
-    init(uid: String?) {
-        self.uid = uid
+    
+    
+    init(bubbleUser: BubbleUser?) {
+        self.bubbleUser = bubbleUser
+        
         
         addBalanceChangeSnapshotlistener()
     }
@@ -33,7 +38,7 @@ class HistoryViewModel: ObservableObject {
     func addBalanceChangeSnapshotlistener() {
         
         firestoreClient.store.collection("users")
-            .document(uid ?? "")
+            .document(bubbleUser?.id ?? "")
             .collection("history")
             .addSnapshotListener{ querySnapshot, error in
                 
@@ -51,6 +56,8 @@ class HistoryViewModel: ObservableObject {
                             withAnimation{
                                 self.history.append(data)
                             }
+                            
+                            
                         }
                     case .modified:
                         print("How?")
@@ -64,26 +71,48 @@ class HistoryViewModel: ObservableObject {
                         }
                     }
                     
+                    self.history = self.history.sorted{$0.date > $1.date }
+                    
                 }
             }
         
     }
     
     func addBalanceChange(){
-        
-        do {
-           try firestoreClient.addBalanceChange(uid: uid ?? "",
-                                             name: balanceChangeName,
-                                             amount: balanceChangeAmount,
-                                             type: balanceChangeType.rawValue,
-                                             currentBalance: balanceChangeCurrentBalance,
-                                             date: balanceChangeDate)
-        } catch {
-            print(error)
+        Task {
+            do {
+                try firestoreClient.addBalanceChange(uid: bubbleUser?.id ?? "",
+                                                     name: balanceChangeName,
+                                                     amount: balanceChangeAmount,
+                                                     type: balanceChangeType.rawValue,
+                                                     currentBalance: balanceChangeCurrentBalance,
+                                                     date: balanceChangeDate)
+                
+                updateUserBalance()
+            } catch {
+                print(error)
+            }
         }
     }
     
-    func deleteBalanceChange(id: String) {
-        firestoreClient.deleteBalanceChange(uid: uid ?? "", id: id)
+   private func updateUserBalance(){
+        Task{
+            do {
+                try await firestoreClient.updateUserBalance(uid: bubbleUser?.id ?? "", oldAmount: bubbleUser?.balance, amount: balanceChangeAmount, type: balanceChangeType)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func deleteBalanceChange(id: String, amount: Double, type: BalanceChangeType) {
+        Task{
+            do {
+                try await firestoreClient.updateUserBalance(uid: bubbleUser?.id ?? "", oldAmount: bubbleUser?.balance, amount: amount, type: type, delete: true)
+            } catch {
+                print(error)
+            }
+        }
+        firestoreClient.deleteBalanceChange(uid: bubbleUser?.id ?? "", id: id)
     }
 }

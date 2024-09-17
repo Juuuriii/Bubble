@@ -25,7 +25,8 @@ struct HistoryView: View {
                                         .foregroundStyle(Color(hex: "14135B"))
                                 }
                                 Spacer()
-                                Text("+")
+                                Text(balanceChange.type)
+                                
                                     .foregroundStyle(Color(hex: "14135B"))
                                 Text("\(balanceChange.amount, specifier: "%.2f")€")
                                     .foregroundStyle(Color(hex: "14135B"))
@@ -45,6 +46,11 @@ struct HistoryView: View {
                                             .foregroundStyle(Color(hex: "14135B"))
                                     }
                                 Spacer()
+                                Button{
+                                    viewModel.deleteBalanceChange(id: balanceChange.id, amount: balanceChange.amount, type: BalanceChangeType(rawValue:balanceChange.type) ?? BalanceChangeType.expense)
+                                } label: {
+                                    Image(systemName: "trash")
+                                }
                             }
                         }
                         .padding()
@@ -68,10 +74,16 @@ struct HistoryView: View {
             
             
         }
+        .toolbar{
+            ToolbarItem(placement: .topBarTrailing) {
+                Button{
+                    viewModel.addBalanceChange()
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
      
     }
 }
 
-#Preview {
-    HistoryView(viewModel: HistoryViewModel(uid: "TPLxOOZc41a7AKZJFOiCDWiEyDf1"))
-}

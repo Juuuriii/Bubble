@@ -8,100 +8,35 @@
 import SwiftUI
 
 struct WalletVIew: View {
-    
-    enum ScreenWallet: String {
-        case saving = "Saving Goals"
-        case history = "History"
-    }
-    
-    @State var screen: ScreenWallet = .saving
-    
-    @State var side = true
-    @State var size = "Saving Goals"
+   
     
     @ObservedObject var viewModel: WalletViewModel
-    
     
     var body: some View {
         NavigationStack {
             VStack{
-                
-                ZStack {
-                    HStack{
-                        if !side {
-                            Spacer()
-                        }
-                        
-                        Text(size)
-                            .foregroundStyle(.white.opacity(0.0))
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-                            .overlay{
-                                
-                                Capsule()
-                                    .foregroundStyle(Color(hex: "14135B"))
-                                
-                            }
-                        
-                        
-                        if side {
-                            Spacer()
-                        }
-                    }
-                    
-                    
-                    HStack{
-                        Button{
-                            withAnimation{
-                                screen = .saving
-                            }
-                            
-                        } label: {
-                            
-                            Text("Saving Goals")
-                                .foregroundStyle(side ? Color.white : Color(hex: "14135B"))
-                            
-                        }
-                        .padding(.horizontal)
-                        
-                        Spacer()
-                        Button{
-                            withAnimation{
-                                screen = .history
-                            }
-                        } label: {
-                            Text("History")
-                                .foregroundStyle(side ? Color(hex: "14135B") : Color.white)
-                        }
-                        .padding(.horizontal)
-                    }
-                    
+                VStack{
+                    Text("Your Budget")
+                        .foregroundStyle(.white)
+                    Text("\(viewModel.bubbleUser?.balance ?? 0.0, specifier: "%.2f")€")
+                        .font(.system(size: 38))
+                        .foregroundStyle(.white)
                 }
-                .padding(.horizontal, 64)
-                .padding(.vertical)
-                .onChange(of: screen) {
-                    switch screen {
-                    case .saving:
-                        withAnimation{
-                            side = true
-                            size = ScreenWallet.saving.rawValue
-                        }
-                    case .history:
-                        withAnimation{
-                            side = false
-                            size = ScreenWallet.history.rawValue
-                        }
-                    }
+                .padding(.horizontal, 32)
+                .padding(.vertical, 8)
+                .background{
+                    Capsule()
+                        .foregroundStyle(Color(hex: "14135B"))
                 }
                 
-               
-                
-                TabView(selection: $screen) {
+                WalletViewTabs(side: $viewModel.side, size: $viewModel.size, screen: $viewModel.screen)
+           
+                TabView(selection: $viewModel.screen) {
                     
-                    SavingGoalsView(viewModel: viewModel)
+                    SavingGoalsView(viewModel: SavingGoalsViewModel(uid: viewModel.uid))
                         .tag(ScreenWallet.saving)
                     
-                    HistoryView(viewModel: HistoryViewModel(uid: "TPLxOOZc41a7AKZJFOiCDWiEyDf1"))
+                    HistoryView(viewModel: HistoryViewModel(bubbleUser: viewModel.bubbleUser))
                         .tag(ScreenWallet.history)
                     
                 }
@@ -110,29 +45,7 @@ struct WalletVIew: View {
             }
             .tint(Color(hex: "4E28E9"))
             .background(Color(hex: "A4D8F5"))
-            .toolbar{
-                ToolbarItem(placement: .topBarTrailing){
-                    Button{
-                        viewModel.toggleNewSavingGoalSheet()
-                    } label: {
-                        Image(systemName: "plus")
-                        Text("Saving Goal")
-                    }
-                }
-            }
-            .toolbarBackground(Color(hex: "#49B0EA"), for: .navigationBar)
-            .sheet(isPresented: $viewModel.showNewSavingGoalSheet){
-                NewSavingGoalSheet(viewModel: viewModel)
-                    .presentationDetents([.height(550), .large])
-            }
-            .sheet(isPresented: $viewModel.showAddMoneySheet){
-                
-                if let selectedSavingGoal = viewModel.selectedSavingGoal {
-                    
-                    AddMoneySheet(viewModel: viewModel, savingGoal: selectedSavingGoal )
-                        .presentationDetents([.height(200)])
-                }
-            }
+            
         }
     }
 }

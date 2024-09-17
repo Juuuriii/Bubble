@@ -18,7 +18,7 @@ struct MainView: View {
                 HomeView()
                     .tabItem { Label("Home", systemImage: "house") }
                 
-                WalletVIew(viewModel: WalletViewModel(uid: authViewModel.user?.uid))
+            WalletVIew(viewModel: WalletViewModel(uid: authViewModel.user?.uid ?? ""))
                 .tabItem { Label("Wallet", image: "walletIcon") }
             
                 

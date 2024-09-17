@@ -7,8 +7,18 @@
 
 import Foundation
 
-enum BalanceChangeType: String {
-    case income, expense
+enum BalanceChangeType: String, CaseIterable {
+    case income = "+"
+    case expense = "-"
+    
+    var name: String {
+        switch self {
+        case .income:
+            "Income"
+        case .expense:
+            "Expense"
+        }
+    }
 }
 
 struct BalanceChange: Codable, Identifiable {
