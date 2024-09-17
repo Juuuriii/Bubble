@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SavingGoalsView: View {
     
-    @ObservedObject var viewModel: SavingGoalsViewModel
+    @StateObject var viewModel = SavingGoalsViewModel()
+    
     var body: some View {
         VStack{
             ScrollView {
@@ -54,5 +55,5 @@ struct SavingGoalsView: View {
 
 
 #Preview {
-    SavingGoalsView(viewModel: SavingGoalsViewModel(uid: "TPLxOOZc41a7AKZJFOiCDWiEyDf1"))
+    SavingGoalsView()
 }

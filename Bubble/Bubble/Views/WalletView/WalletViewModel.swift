@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 enum ScreenWallet: String {
     case saving = "Saving Goals"
@@ -25,34 +26,47 @@ class WalletViewModel: ObservableObject {
     @Published var size = "Saving Goals"
     
     @Published var bubbleUser: BubbleUser?
-    let uid: String?
-
-    init(uid: String?) {
-        self.uid = uid
+    
+    private var bubbleUserListener: ListenerRegistration?
+    
+    var uid: String?
+    
+    init() {
+        self.uid = authClient.checkAuth()?.uid
         
-        addBubbleUserSnapshotListener()
+       addBubbleUserSnapshotListener()
     }
     
     func addBubbleUserSnapshotListener() {
-        
-        firestoreClient.store.collection("users")
+        bubbleUserListener?.remove()
+        bubbleUserListener = firestoreClient.store.collection("users")
             .document(uid ?? "")
             .addSnapshotListener{ querySnapshot, error in
-               
-                guard let document = querySnapshot else {
-                      print("Error fetching document: \(error!)")
-                      return
-                    }
-                guard document.data() != nil else {
-                      print("Document data was empty.")
-                      return
-                    }
                 
+                guard let document = querySnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard document.data() != nil else {
+                    print("Document data was empty.")
+                    return
+                }
+            
                 self.bubbleUser = try? document.data(as: BubbleUser.self)
                 
             }
+        
     }
     
-    
+    func removeBubbleUserListener() {
+        guard (bubbleUserListener != nil) else {
+            return
+        }
+        
+        bubbleUserListener?.remove()
+        
+        
+        print("BubbleUser listener removed")
+    }
     
 }

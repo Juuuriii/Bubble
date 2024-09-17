@@ -13,6 +13,8 @@ class AuthClient {
     static let shared = AuthClient()
     private let auth = Auth.auth()
     
+    
+    
     func checkAuth() -> FirebaseAuth.User? {
         return auth.currentUser
     }

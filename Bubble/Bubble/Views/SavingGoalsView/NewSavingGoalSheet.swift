@@ -107,5 +107,5 @@ struct NewSavingGoalSheet: View {
 }
 
 #Preview {
-    NewSavingGoalSheet(viewModel: SavingGoalsViewModel(uid: ""))
+    NewSavingGoalSheet(viewModel: SavingGoalsViewModel())
 }

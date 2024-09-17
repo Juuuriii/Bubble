@@ -43,10 +43,10 @@ class SavingGoalsViewModel: ObservableObject {
     
     
     
-    let uid: String?
+     var uid: String?
     
-    init(uid: String?) {
-        self.uid = uid
+    init() {
+        self.uid = authClient.checkAuth()?.uid
         
         savingGoalsSnapshotListener()
     }

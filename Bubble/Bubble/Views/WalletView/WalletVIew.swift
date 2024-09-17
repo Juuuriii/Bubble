@@ -10,7 +10,7 @@ import SwiftUI
 struct WalletVIew: View {
    
     
-    @ObservedObject var viewModel: WalletViewModel
+    @StateObject var viewModel = WalletViewModel()
     
     var body: some View {
         NavigationStack {
@@ -33,10 +33,10 @@ struct WalletVIew: View {
            
                 TabView(selection: $viewModel.screen) {
                     
-                    SavingGoalsView(viewModel: SavingGoalsViewModel(uid: viewModel.uid))
+                    SavingGoalsView()
                         .tag(ScreenWallet.saving)
                     
-                    HistoryView(viewModel: HistoryViewModel(bubbleUser: viewModel.bubbleUser))
+                    HistoryView(viewModel: HistoryViewModel())
                         .tag(ScreenWallet.history)
                     
                 }
@@ -45,12 +45,14 @@ struct WalletVIew: View {
             }
             .tint(Color(hex: "4E28E9"))
             .background(Color(hex: "A4D8F5"))
-            
+            .onDisappear{
+                viewModel.removeBubbleUserListener()
+            }
         }
     }
 }
 
 
 #Preview {
-    WalletVIew(viewModel: WalletViewModel(uid: "TPLxOOZc41a7AKZJFOiCDWiEyDf1"))
+    WalletVIew()
 }

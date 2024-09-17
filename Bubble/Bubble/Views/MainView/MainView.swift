@@ -15,24 +15,24 @@ struct MainView: View {
     var body: some View {
         TabView {
             
-                HomeView()
-                    .tabItem { Label("Home", systemImage: "house") }
-                
-            WalletVIew(viewModel: WalletViewModel(uid: authViewModel.user?.uid ?? ""))
+            HomeView()
+                .tabItem { Label("Home", systemImage: "house") }
+            
+            WalletVIew()
                 .tabItem { Label("Wallet", image: "walletIcon") }
             
-                
             
-                Text("Dungeon")
-                    .tabItem { Label("Dungeon", image: "bubbleIcon") }
-                VStack{
-                    Text("Settings")
-                    Button("Logout"){
-                        authViewModel.logout()
-                    }
+            
+            Text("Dungeon")
+                .tabItem { Label("Dungeon", image: "bubbleIcon") }
+            VStack{
+                Text("Settings")
+                Button("Logout"){
+                    authViewModel.logout()
                 }
-                .tabItem { Label("Settings", systemImage: "gear") }
-           
+            }
+            .tabItem { Label("Settings", systemImage: "gear") }
+            
         }
         .tint(Color(hex: "#4E28E9"))
         .onAppear{

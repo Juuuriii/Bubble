@@ -23,20 +23,21 @@ struct AddBalanceChangeSheet: View {
                     
                    
                         
-                    TextField("Name of your Income/Expense", text: .constant(""))
+                    TextField("Name of your Income/Expense", text: $viewModel.balanceChangeName)
                         .textFieldStyle(.roundedBorder)
                 }
                 .padding()
                 
-                Picker("Type", selection: .constant(BalanceChangeType.expense)){
+                Picker("Type", selection: $viewModel.balanceChangeType){
                     ForEach(BalanceChangeType.allCases, id: \.rawValue){ type in
                         Text(type.name)
+                            .tag(type)
                     }
                 }
                 .pickerStyle(.segmented)
                 
                 VStack(alignment: .leading){
-                            DatePicker("Date", selection: .constant(Date.now), in: Date.now..., displayedComponents: .date)
+                    DatePicker("Date", selection: $viewModel.balanceChangeDate, in: Date.now..., displayedComponents: .date)
                 }
                 .padding()
                 
@@ -45,7 +46,7 @@ struct AddBalanceChangeSheet: View {
                         VStack(alignment: .center){
                             Text("Amount in €")
                             
-                            TextField("e.g. 1000€", text: .constant(""))
+                            TextField("e.g. 1000€", text: $viewModel.balanceChangeAmount)
                                 .frame(width: 200)
                                 .textFieldStyle(.roundedBorder)
                                 .multilineTextAlignment(.center)
@@ -56,7 +57,8 @@ struct AddBalanceChangeSheet: View {
                 .padding()
                 
                 Button{
-                    
+                    viewModel.addBalanceChange()
+                    viewModel.toggleShowAddBalanceChangeSheet()
                 } label: {
                     Text("Save")
                 }
@@ -67,7 +69,7 @@ struct AddBalanceChangeSheet: View {
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing){
                     Button{
-                        
+                        viewModel.toggleShowAddBalanceChangeSheet()
                     } label: {
                         Image(systemName: "xmark")
                     }

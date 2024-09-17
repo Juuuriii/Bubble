@@ -18,21 +18,16 @@ class HistoryViewModel: ObservableObject {
     @Published var history = [BalanceChange]()
     
     @Published var balanceChangeName = "Bob"
-    @Published var balanceChangeAmount = 1.0
+    @Published var balanceChangeAmount = ""
     @Published var balanceChangeType: BalanceChangeType = .expense
     @Published var balanceChangeCurrentBalance = 0.0
     @Published var balanceChangeDate = Date.now
     
     @Published var bubbleUser: BubbleUser?
     
+    @Published var showAddBalanceChangeSheet = false
     
     
-    init(bubbleUser: BubbleUser?) {
-        self.bubbleUser = bubbleUser
-        
-        
-        addBalanceChangeSnapshotlistener()
-    }
     
     
     func addBalanceChangeSnapshotlistener() {
@@ -56,8 +51,6 @@ class HistoryViewModel: ObservableObject {
                             withAnimation{
                                 self.history.append(data)
                             }
-                            
-                            
                         }
                     case .modified:
                         print("How?")
@@ -79,11 +72,16 @@ class HistoryViewModel: ObservableObject {
     }
     
     func addBalanceChange(){
+        
+        guard let amount = Double(balanceChangeAmount) else {
+            return
+        }
+        
         Task {
             do {
                 try firestoreClient.addBalanceChange(uid: bubbleUser?.id ?? "",
                                                      name: balanceChangeName,
-                                                     amount: balanceChangeAmount,
+                                                     amount: amount,
                                                      type: balanceChangeType.rawValue,
                                                      currentBalance: balanceChangeCurrentBalance,
                                                      date: balanceChangeDate)
@@ -96,9 +94,14 @@ class HistoryViewModel: ObservableObject {
     }
     
    private func updateUserBalance(){
+       
+       guard let amount = Double(balanceChangeAmount) else {
+           return
+       }
+       
         Task{
             do {
-                try await firestoreClient.updateUserBalance(uid: bubbleUser?.id ?? "", oldAmount: bubbleUser?.balance, amount: balanceChangeAmount, type: balanceChangeType)
+                try await firestoreClient.updateUserBalance(uid: bubbleUser?.id ?? "", oldAmount: bubbleUser?.balance, amount: amount, type: balanceChangeType)
             } catch {
                 print(error)
             }
@@ -114,5 +117,9 @@ class HistoryViewModel: ObservableObject {
             }
         }
         firestoreClient.deleteBalanceChange(uid: bubbleUser?.id ?? "", id: id)
+    }
+    
+    func toggleShowAddBalanceChangeSheet() {
+        showAddBalanceChangeSheet.toggle()
     }
 }
