@@ -21,17 +21,11 @@ struct MainView: View {
             WalletVIew()
                 .tabItem { Label("Wallet", image: "walletIcon") }
             
-            
-            
             Text("Dungeon")
                 .tabItem { Label("Dungeon", image: "bubbleIcon") }
-            VStack{
-                Text("Settings")
-                Button("Logout"){
-                    authViewModel.logout()
-                }
-            }
-            .tabItem { Label("Settings", systemImage: "gear") }
+            
+            SettingsVIew(authViewModel: authViewModel)
+                .tabItem { Label("Settings", systemImage: "gear") }
             
         }
         .tint(Color(hex: "#4E28E9"))

@@ -25,16 +25,14 @@ struct BubbleApp: App {
         FirebaseApp.configure()
         print("Firebase wurde konfiguriert")
     }
-    @StateObject var authViewModel = AuthViewModel()
+    
 
     var body: some Scene {
         WindowGroup {
             
-            if authViewModel.user != nil {
-                MainView(authViewModel: authViewModel)
-            } else {
-                AuthView(viewModel: authViewModel)
-            }
+           
+                AuthView()
+            
             
            
         }

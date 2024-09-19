@@ -20,10 +20,11 @@ class AuthViewModel: ObservableObject {
     
     @Published var user: FirebaseAuth.User? = nil
     
-    
+    @Published var showMainView = false
     
     init() {
         user = authClient.checkAuth()
+        showMainView = user != nil
     }
     
     func register() {
@@ -46,7 +47,7 @@ class AuthViewModel: ObservableObject {
                 if await firestoreClient.getUser(uid: user.uid) == nil {
                     try firestoreClient.createUser(uid: user.uid, email: email, username: username)
                 }
-                
+                showMainView = true
             } catch {
                 print(error)
             }
@@ -57,6 +58,7 @@ class AuthViewModel: ObservableObject {
         do {
             try authClient.logout()
             user = authClient.checkAuth()
+            showMainView = false
         } catch {
             print(error)
         }

@@ -69,15 +69,6 @@ struct HistoryView: View {
         .sheet(isPresented: $viewModel.showAddBalanceChangeSheet, content: {
             AddBalanceChangeSheet(viewModel: viewModel)
         })
-        .toolbar{
-            ToolbarItem(placement: .topBarTrailing) {
-                Button{
-                    viewModel.toggleShowAddBalanceChangeSheet()
-                } label: {
-                    Image(systemName: "plus")
-                }
-            }
-        }
     }
 }
 

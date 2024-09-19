@@ -45,13 +45,32 @@ struct WalletVIew: View {
             }
             .tint(Color(hex: "4E28E9"))
             .background(Color(hex: "A4D8F5"))
+            .toolbar{
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button{
+                        
+                        switch viewModel.screen {
+                        case .saving:
+                            viewModel.toggleNewSavingGoalSheet()
+                        case .history:
+                            viewModel.toggleShowAddBalanceChangeSheet()
+                        }
+                        
+                        
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
             .onAppear{
                 viewModel.addBubbleUserSnapshotListener()
                 viewModel.addBalanceChangeSnapshotlistener()
+                viewModel.addSavingGoalsListener()
             }
             .onDisappear{
                 viewModel.removeBubbleUserListener()
                 viewModel.removeBalanceChangeListener()
+                viewModel.removeSavinGoalListener()
             }
         }
     }

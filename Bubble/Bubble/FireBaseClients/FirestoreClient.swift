@@ -14,7 +14,7 @@ class FirestoreClient {
     let store = Firestore.firestore()
     
     func createUser(uid: String, email: String, username: String) throws {
-        let user = BubbleUser(id: uid, email: email, username: username)
+        let user = BubbleUser(id: uid, email: email, username: username, currency: Locale.current.currencySymbol ?? "€")
         
         try store.collection("users")
             .document(uid)
@@ -52,6 +52,7 @@ class FirestoreClient {
     func getSavingGoals(uid: String) async throws -> [SavingGoal] {
         
         let filters: [Filter] = [Filter.whereField("uid", isEqualTo: uid)]
+        
         
         let query = store.collectionGroup("wallet").whereFilter(Filter.andFilter(filters))
         
@@ -104,8 +105,6 @@ class FirestoreClient {
             } else {
                 newAmount = balance - amount
             }
-        
-            
         }
         
         try await store.collection("users")

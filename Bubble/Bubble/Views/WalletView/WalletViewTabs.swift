@@ -13,6 +13,8 @@ struct WalletViewTabs: View {
     @Binding var size: String
     @Binding var screen: ScreenWallet
     
+    
+    
     var body: some View {
         ZStack {
             HStack{

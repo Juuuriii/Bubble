@@ -40,21 +40,6 @@ struct SavingGoalsView: View {
                     .presentationDetents([.height(200)])
             }
         }
-        .toolbar{
-            ToolbarItem(placement: .topBarTrailing) {
-                Button{
-                    viewModel.toggleNewSavingGoalSheet()
-                } label: {
-                    Image(systemName: "plus")
-                }
-            }
-        }
-        .onAppear{
-            viewModel.addSavingGoalsListener()
-        }
-        .onDisappear{
-            viewModel.removeSavinGoalListener()
-        }
     }
 }
 

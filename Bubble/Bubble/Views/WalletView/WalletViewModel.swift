@@ -61,6 +61,9 @@ class WalletViewModel: ObservableObject {
     }
     
     func addBubbleUserSnapshotListener() {
+        
+        
+        
         bubbleUserListener = firestoreClient.store.collection("users")
             .document(uid ?? "")
             .addSnapshotListener{ querySnapshot, error in
@@ -99,9 +102,8 @@ class WalletViewModel: ObservableObject {
                     switch change.type {
                     case .added:
                         if let data = try? change.document.data(as: BalanceChange.self) {
-                        
-                                    self.history.append(data)
-                                
+
+                                    self.history.insert(data, at: 0)
                         }
                     case .modified:
                         print("How?")
@@ -135,7 +137,6 @@ class WalletViewModel: ObservableObject {
                                                      type: balanceChangeType.rawValue,
                                                      currentBalance: balanceChangeCurrentBalance,
                                                      date: balanceChangeDate)
-                
                 updateUserBalance()
             } catch {
                 print(error)
@@ -144,21 +145,6 @@ class WalletViewModel: ObservableObject {
         history.forEach{
             print("\($0.date)")
             print($0.name)
-        }
-    }
-    
-   private func updateUserBalance(){
-       
-       guard let amount = Double(balanceChangeAmount) else {
-           return
-       }
-       
-        Task{
-            do {
-                try await firestoreClient.updateUserBalance(uid: uid ?? "", oldAmount: bubbleUser?.balance, amount: amount, type: balanceChangeType)
-            } catch {
-                print(error)
-            }
         }
     }
     
@@ -171,10 +157,6 @@ class WalletViewModel: ObservableObject {
             }
         }
         firestoreClient.deleteBalanceChange(uid: uid ?? "", id: id)
-    }
-    
-    func toggleShowAddBalanceChangeSheet() {
-        showAddBalanceChangeSheet.toggle()
     }
     
     func addSavingGoalsListener() {
@@ -233,9 +215,20 @@ class WalletViewModel: ObservableObject {
                                                  repeats: savingGoalPaymentType.rawValue,
                                                  targetAmount: savingGoalTargetAmount,
                                                  savedAmount: savingGoalAmountSaved)
+            
+            try firestoreClient.addBalanceChange(uid: uid ?? "",
+                                                 name: "Saving Goal \(savingGoalName)",
+                                                 amount: savingGoalAmountSaved,
+                                                 type: BalanceChangeType.expense.rawValue,
+                                                 currentBalance: balanceChangeCurrentBalance,
+                                                 date: Date.now)
         } catch {
             print(error)
         }
+    }
+    
+    func setSelectedSavingGoal(savingGoal: SavingGoal){
+        selectedSavingGoal = savingGoal
     }
     
     func addMoney() {
@@ -255,6 +248,24 @@ class WalletViewModel: ObservableObject {
         firestoreClient.deleteSavingGoal(uid: uid ?? "", id: id)
     }
     
+    private func updateUserBalance(){
+        
+        guard let amount = Double(balanceChangeAmount) else {
+            return
+        }
+        
+         Task{
+             do {
+                 try await firestoreClient.updateUserBalance(uid: uid ?? "", oldAmount: bubbleUser?.balance, amount: amount, type: balanceChangeType)
+             } catch {
+                 print(error)
+             }
+         }
+     }
+     
+     
+    
+    
     func toggleNewSavingGoalSheet() {
         showNewSavingGoalSheet.toggle()
     }
@@ -263,7 +274,9 @@ class WalletViewModel: ObservableObject {
         showAddMoneySheet.toggle()
     }
     
-    func setSelectedSavingGoal(savingGoal: SavingGoal){
-        selectedSavingGoal = savingGoal
+    func toggleShowAddBalanceChangeSheet() {
+        showAddBalanceChangeSheet.toggle()
     }
+    
+    
 }

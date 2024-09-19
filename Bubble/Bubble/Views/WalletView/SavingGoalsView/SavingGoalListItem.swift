@@ -19,7 +19,9 @@ struct SavingGoalListItem: View {
                 HStack{
                     VStack{
                         Button{
-                            delete()
+                           
+                                delete()
+                            
                         }label: {
                             Image("editIconSavingGoal")
                         }

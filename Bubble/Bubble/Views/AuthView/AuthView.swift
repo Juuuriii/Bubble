@@ -10,7 +10,7 @@ import SwiftUI
 
 struct AuthView: View {
     
-    @ObservedObject var viewModel: AuthViewModel
+    @StateObject var viewModel = AuthViewModel()
    
     @State var scrollPosition = 0
     let colors: [Color] = [.red, .green, .blue]
@@ -102,10 +102,13 @@ struct AuthView: View {
             }
         }
         .background(.blue.opacity(0.2))
+        .fullScreenCover(isPresented: $viewModel.showMainView, content: {
+            MainView(authViewModel: viewModel)
+        })
     }
 }
 
 
 #Preview {
-    AuthView(viewModel: AuthViewModel())
+    AuthView()
 }
