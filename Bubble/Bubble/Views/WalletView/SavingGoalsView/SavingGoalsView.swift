@@ -21,7 +21,7 @@ struct SavingGoalsView: View {
                         viewModel.setSelectedSavingGoal(savingGoal: savingGoal.wrappedValue)
                         viewModel.toggleAddMoneySheet()
                     } delete: {
-                        viewModel.deleteSavingGoal(id: savingGoal.id.uuidString)
+                        viewModel._deleteSavingGoal(savingGoal: savingGoal.wrappedValue)
                     }
                     .padding(.bottom, 8)
                 }

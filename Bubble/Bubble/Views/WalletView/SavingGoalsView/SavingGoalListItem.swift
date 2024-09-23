@@ -20,7 +20,7 @@ struct SavingGoalListItem: View {
                     VStack{
                         Button{
                            
-                                delete()
+                            delete()
                             
                         }label: {
                             Image("editIconSavingGoal")
@@ -53,6 +53,7 @@ struct SavingGoalListItem: View {
                             action()
                         }label: {
                             Image("addButtonSavingGoal")
+                            
                         }
                         .offset(y: 6)
                     }

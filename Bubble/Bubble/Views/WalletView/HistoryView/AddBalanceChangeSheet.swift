@@ -57,7 +57,8 @@ struct AddBalanceChangeSheet: View {
                 .padding()
                 
                 Button{
-                    viewModel.addBalanceChange()
+                    viewModel.aaddBalanceChange()
+                    
                     viewModel.toggleShowAddBalanceChangeSheet()
                 } label: {
                     Text("Save")

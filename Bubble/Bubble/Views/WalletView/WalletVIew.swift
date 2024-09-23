@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct WalletVIew: View {
-   
     
     @StateObject var viewModel = WalletViewModel()
     
@@ -29,8 +28,10 @@ struct WalletVIew: View {
                         .foregroundStyle(Color(hex: "14135B"))
                 }
                 
-                WalletViewTabs(side: $viewModel.side, size: $viewModel.size, screen: $viewModel.screen)
-           
+                WalletViewTabs(viewModel: viewModel)
+                
+                
+                
                 TabView(selection: $viewModel.screen) {
                     
                     SavingGoalsView(viewModel: viewModel)
@@ -64,7 +65,7 @@ struct WalletVIew: View {
             }
             .onAppear{
                 viewModel.addBubbleUserSnapshotListener()
-                viewModel.addBalanceChangeSnapshotlistener()
+                viewModel.addBalanceCHangeListener()
                 viewModel.addSavingGoalsListener()
             }
             .onDisappear{

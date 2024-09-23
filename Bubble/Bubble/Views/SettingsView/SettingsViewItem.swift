@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SettingsViewItem: View {
     
+    @ObservedObject var viewModel: SettingsViewModel
+    
     @State private var size: CGSize = .zero
     
     var body: some View {
@@ -44,7 +46,8 @@ struct SettingsViewItem: View {
                             
                             VStack(spacing: 16) {
                                 Button{
-                                    
+                                    viewModel.sendResetPasswordEmail()
+                                    viewModel.showResetPasswordAlert = true
                                 } label: {
                                     Text("Reset Password")
                                     
@@ -58,9 +61,9 @@ struct SettingsViewItem: View {
                                     
                                 }
                                 Button{
-                                    
+                                    viewModel.showChangeEmailSheet = true
                                 } label: {
-                                    Text("Reset Email Adress")
+                                    Text("Change Email Adress")
                                     
                                         .foregroundStyle(.white)
                                         .padding()
@@ -87,5 +90,5 @@ struct SettingsViewItem: View {
 }
 
 #Preview {
-    SettingsViewItem()
+    SettingsViewItem(viewModel: SettingsViewModel())
 }

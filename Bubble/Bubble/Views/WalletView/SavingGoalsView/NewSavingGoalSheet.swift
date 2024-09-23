@@ -84,7 +84,8 @@ struct NewSavingGoalSheet: View {
                 .padding()
                 
                 Button{
-                    viewModel.createSavingGoal()
+                  //  viewModel.createSavingGoal()
+                    viewModel.addSavingGoal()
                     viewModel.toggleNewSavingGoalSheet()
                 } label: {
                     Text("Save")

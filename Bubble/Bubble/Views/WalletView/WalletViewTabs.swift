@@ -9,72 +9,70 @@ import SwiftUI
 
 struct WalletViewTabs: View {
     
-    @Binding var side: Bool
-    @Binding var size: String
-    @Binding var screen: ScreenWallet
+    @ObservedObject var viewModel: WalletViewModel
     
+    @State private var side = true
     
+    @Namespace var key
     
     var body: some View {
-        ZStack {
-            HStack{
-                if !side {
-                    Spacer()
+        HStack{
+            Button {
+                withAnimation{
+                    viewModel.screen = .saving
                 }
-                Text(size)
-                    .foregroundStyle(.white.opacity(0.0))
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .overlay{
-                        Capsule()
-                            .foregroundStyle(Color(hex: "14135B"))
-                    }
-                if side {
-                    Spacer()
-                }
-            }
-            HStack{
-                Button{
-                    withAnimation{
-                        screen = .saving
-                    }
-                    
-                } label: {
-                    
-                    Text("Saving Goals")
-                        .foregroundStyle(side ? Color.white : Color(hex: "14135B"))
-                }
-                .padding(.horizontal)
+            } label: {
+                Text("Saving Goals")
                 
-                Spacer()
-                Button{
-                    withAnimation{
-                        screen = .history
-                    }
-                } label: {
-                    Text("History")
-                        .foregroundStyle(side ? Color(hex: "14135B") : Color.white)
-                }
-                .padding(.horizontal)
             }
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            .background{
+                if side {
+                    Capsule()
+                        .matchedGeometryEffect(id: "tab", in: key)
+                        .foregroundStyle(Color(hex: "14135B"))
+                }
+            }
+            
+            Spacer()
+            
+            Button {
+                withAnimation{
+                    viewModel.screen = .history
+                }
+            } label: {
+                Text("History")
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            .background{
+                if !side {
+                    Capsule()
+                        .matchedGeometryEffect(id: "tab", in: key)
+                        .foregroundStyle(Color(hex: "14135B"))
+                }
+            }
+            
         }
-        .padding(.horizontal, 64)
         .padding(.vertical)
-        .onChange(of: screen) {
-            switch screen {
-            case .saving:
-                withAnimation{
-                    side = true
-                    size = ScreenWallet.saving.rawValue
-                }
-            case .history:
-                withAnimation{
-                    side = false
-                    size = ScreenWallet.history.rawValue
+        .padding(.horizontal, 64)
+        .onChange(of: viewModel.screen){
+            
+                switch viewModel.screen {
+                case .saving:
+                    withAnimation{
+                        side = true
+                    }
+                case .history:
+                    withAnimation{
+                        side = false
+                    }
                 }
             }
+        
         }
     }
-}
+
 
 

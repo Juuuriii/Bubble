@@ -43,4 +43,39 @@ class AuthClient {
             try await user.delete()
         }
     }
+    
+    func sendResetPasswordMail(){
+        
+        if let user = auth.currentUser {
+            
+            auth.sendPasswordReset(withEmail: user.email!)
+            
+        }
+    }
+    
+    func changeEmail(password: String, newEmail: String) {
+        
+        guard let user = auth.currentUser else {
+            return
+        }
+        
+        guard let email = auth.currentUser?.email else {
+            return
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+        user.reauthenticate(with: credential) { authResult, error in
+            
+            if let error = error {
+                print(error.localizedDescription as Any)
+            } else {
+                authResult?.user.sendEmailVerification(beforeUpdatingEmail: newEmail)
+            }
+        }
+    }
+    
+    
+    
+    
 }

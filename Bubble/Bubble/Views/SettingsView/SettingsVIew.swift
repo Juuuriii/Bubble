@@ -11,7 +11,7 @@ struct SettingsVIew: View {
     
     @StateObject var viewModel = SettingsViewModel()
     @ObservedObject var authViewModel: AuthViewModel
-    @State var size: CGSize = .zero
+   
     
     var body: some View {
         ScrollView {
@@ -20,7 +20,7 @@ struct SettingsVIew: View {
             }
             .frame(height: 32)
             
-            SettingsViewItem()
+            SettingsViewItem(viewModel: viewModel)
                 .padding(.bottom, 48)
             
             SettingsViewItem2()
@@ -32,6 +32,22 @@ struct SettingsVIew: View {
                 .padding(.bottom, 48)
         }
         .background(Color(hex: "A4D8F5"))
+        .alert(isPresented: $viewModel.showResetPasswordAlert){
+            Alert(title: Text("Reset Password"), message: Text("We send you an Email to reset your Password."), dismissButton: .default(Text("Ok")))
+        }
+        .sheet(isPresented: $viewModel.showChangeEmailSheet, content: {
+            List{
+                TextField("New Email", text: $viewModel.newEmail)
+                SecureField("Password", text: $viewModel.password)
+                Button{
+                    viewModel.changeEmail()
+                    viewModel.showChangeEmailSheet = false
+                } label: {
+                    Text("Change Email")
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        })
     }
 }
 

@@ -32,6 +32,7 @@ class FirestoreClient {
     }
     
     func createSavingGoal(
+        id: String,
         uid: String,
         name: String,
         type: String,
@@ -40,31 +41,20 @@ class FirestoreClient {
         targetAmount: Double,
         savedAmount: Double) throws {
             
-            let savingGoal = SavingGoal(name: name, type: type, targetDate: targetDate, repeats: repeats, targetAmount: targetAmount, savedAmount: savedAmount, finished: false, uid: uid)
+            let savingGoal = SavingGoal(id: id, name: name, type: type, targetDate: targetDate, repeats: repeats, targetAmount: targetAmount, savedAmount: savedAmount, finished: false, uid: uid)
             
             try store.collection("users")
                 .document(uid)
                 .collection("wallet")
-                .document(savingGoal.id.uuidString)
+                .document(savingGoal.id)
                 .setData(from: savingGoal)
         }
     
-    func getSavingGoals(uid: String) async throws -> [SavingGoal] {
-        
-        let filters: [Filter] = [Filter.whereField("uid", isEqualTo: uid)]
-        
-        
-        let query = store.collectionGroup("wallet").whereFilter(Filter.andFilter(filters))
-        
-        let result = try await query.getDocuments().documents.map {try $0.data(as: SavingGoal.self)}
-        
-        return result
-        
-    }
+    
     
     func deleteSavingGoal(uid: String ,id: String)  {
         
-            store.collection("users")
+        store.collection("users")
             .document(uid)
             .collection("wallet")
             .document(id)
@@ -74,7 +64,7 @@ class FirestoreClient {
     
     func updateAmountSaved(uid: String ,id: String, newAmount: Double) async throws {
         
-     try await store.collection("users")
+        try await store.collection("users")
             .document(uid)
             .collection("wallet")
             .document(id)
@@ -115,16 +105,19 @@ class FirestoreClient {
         
     }
     
-    func addBalanceChange(uid: String, name: String, amount: Double, type: String, currentBalance: Double, date: Date) throws  {
+    func updateBalance(uid: String, newAmount: Double) async throws {
         
-        let balanceChange = BalanceChange(uid: uid, name: name, amount: amount, type: type, currentBalance: currentBalance, date: date)
-        
-        try  store.collection("users")
+        try await store.collection("users")
             .document(uid)
-            .collection("history")
-            .document(balanceChange.id)
-            .setData(from: balanceChange)
+            .updateData([
+                "balance" : newAmount
+            ])
+        
     }
+    
+    
+    
+    
     
     func deleteBalanceChange(uid: String, id: String) {
         
@@ -136,6 +129,44 @@ class FirestoreClient {
     }
     
     
+    func _addBalanceChange(balanceChange: BalanceChange) throws  {
+        
+        try  store.collection("users")
+            .document(balanceChange.uid)
+            .collection("history")
+            .document(balanceChange.id)
+            .setData(from: balanceChange)
+    }
     
+    func _addBalanceChange(balanceChange: BalanceChange, from savingGoalID: String) throws {
+        
+        try store.collection("users")
+            .document(balanceChange.uid)
+            .collection("wallet")
+            .document(savingGoalID)
+            .collection("history")
+            .document(balanceChange.id)
+            .setData(from: balanceChange)
+        
+    }
+    
+    func addSavingGoal(savingGoal: SavingGoal) throws {
+      try store.collection("users")
+            .document(savingGoal.uid)
+            .collection("wallet")
+            .document(savingGoal.id)
+            .setData(from: savingGoal)
+    }
+    
+    func deleteBalanceChange(uid: String, sgID: String, bcID: String) {
+        
+        store.collection("users")
+            .document(uid)
+            .collection("wallet")
+            .document(sgID)
+            .collection("history")
+            .document(bcID)
+            .delete()
+    }
     
 }

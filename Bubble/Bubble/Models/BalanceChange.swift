@@ -29,8 +29,8 @@ struct BalanceChange: Codable, Identifiable {
     let name: String
     let amount: Double
     let type: String
-    let currentBalance: Double
     let date: Date
+    var sgID: String = ""
     
     
 }

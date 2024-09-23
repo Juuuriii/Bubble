@@ -25,8 +25,7 @@ struct AddMoneySheet: View {
                 Text("\(viewModel.addAmount, specifier: "%.0f")€")
                 
                 Button {
-                    viewModel.addMoney()
-                    viewModel.addAmount = 1.0
+                    viewModel.addMoneyToSavingGoal()
                     viewModel.toggleAddMoneySheet()
                 } label: {
                     Text("Add Money")
@@ -38,12 +37,15 @@ struct AddMoneySheet: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing){
                     Button {
-                        viewModel.addAmount = 1.0
+                        
                         viewModel.toggleAddMoneySheet()
                     } label: {
                         Image(systemName: "xmark")
                     }
                 }
+            }
+            .onAppear{
+                viewModel.addAmount = 1.0
             }
         }
     }

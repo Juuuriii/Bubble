@@ -16,7 +16,7 @@ enum PaymentType: String, CaseIterable {
 
 struct SavingGoal: Codable, Identifiable {
     
-    var id: UUID = UUID()
+    var id: String
     let name: String
     let type: String
     let targetDate: Date
