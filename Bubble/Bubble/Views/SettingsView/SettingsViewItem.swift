@@ -23,9 +23,11 @@ struct SettingsViewItem: View {
                             HStack{
                                 VStack{
                                     Text("ACCOUNT SETTINGS")
+                                        .foregroundStyle(Color(hex: "14135B"))
                                         .font(.title2)
                                         .frame(minWidth: 220)
                                     Text("Your Personal Details")
+                                        .foregroundStyle(Color(hex: "14135B"))
                                         .font(.footnote)
                                 }
                                 .padding(.horizontal)

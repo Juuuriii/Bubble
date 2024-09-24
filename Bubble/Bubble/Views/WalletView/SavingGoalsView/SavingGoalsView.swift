@@ -17,12 +17,7 @@ struct SavingGoalsView: View {
                 
                 ForEach($viewModel.savingGoals){ savingGoal in
                     
-                    SavingGoalListItem(savingGoal: savingGoal){
-                        viewModel.setSelectedSavingGoal(savingGoal: savingGoal.wrappedValue)
-                        viewModel.toggleAddMoneySheet()
-                    } delete: {
-                        viewModel._deleteSavingGoal(savingGoal: savingGoal.wrappedValue)
-                    }
+                    SavingGoalListItem(savingGoal: savingGoal, viewModel: viewModel)
                     .padding(.bottom, 8)
                 }
             }

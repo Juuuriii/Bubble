@@ -14,7 +14,7 @@ class FirestoreClient {
     let store = Firestore.firestore()
     
     func createUser(uid: String, email: String, username: String) throws {
-        let user = BubbleUser(id: uid, email: email, username: username, currency: Locale.current.currencySymbol ?? "€")
+        let user = BubbleUser(id: uid, email: email, username: username, currency: Locale.current.currencySymbol ?? "€", quickAddAmount: QuickAddAmount.ten.rawValue)
         
         try store.collection("users")
             .document(uid)
@@ -74,36 +74,7 @@ class FirestoreClient {
         
     }
     
-    func updateUserBalance(uid: String, oldAmount: Double?, amount: Double, type: BalanceChangeType, delete: Bool = false) async throws {
-        
-        guard let balance = oldAmount else {
-            return
-        }
-        
-        var newAmount = 0.0
-        
-        switch type {
-        case .income:
-            if delete {
-                newAmount = balance - amount
-            } else {
-                newAmount = balance + amount
-            }
-        case .expense:
-            if delete {
-                newAmount = balance + amount
-            } else {
-                newAmount = balance - amount
-            }
-        }
-        
-        try await store.collection("users")
-            .document(uid)
-            .updateData([
-                "balance" : newAmount
-            ])
-        
-    }
+   
     
     func updateBalance(uid: String, newAmount: Double) async throws {
         
@@ -167,6 +138,33 @@ class FirestoreClient {
             .collection("history")
             .document(bcID)
             .delete()
+    }
+    
+    func updateCurrency(uid: String, currency: String) async throws {
+        
+        try await store.collection("users")
+            .document(uid)
+            .updateData([
+                "currency" : currency
+            ])
+        
+        
+    }
+    
+    func updateQuickAddAmount(uid: String, amount: Double) async throws {
+        try await store.collection("users")
+            .document(uid)
+            .updateData([
+                "quickAddAmount" : amount
+            ])
+    }
+    
+    func updateEmail(uid: String, newEmail: String) async throws {
+        try await store.collection("users")
+            .document(uid)
+            .updateData([
+                "email" : newEmail
+            ])
     }
     
 }

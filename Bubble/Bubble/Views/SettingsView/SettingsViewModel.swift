@@ -6,7 +6,34 @@
 //
 
 import Foundation
+import FirebaseAuth
 
+enum QuickAddAmount: Double, CaseIterable {
+    case one = 1.0
+    case ten = 10.0
+    case hundret = 100.0
+    case thousend = 1000.0
+    
+    var display: String {
+        switch self {
+        case .one:
+            "1"
+        case .ten:
+            "10"
+        case .hundret:
+            "100"
+        case .thousend:
+            "1000"
+        }
+    }
+}
+
+enum AppCurrency: String, CaseIterable {
+    case euro = "€"
+    case dollar = "$"
+}
+
+@MainActor
 class SettingsViewModel: ObservableObject {
     
     private let authClient = AuthClient.shared
@@ -14,17 +41,79 @@ class SettingsViewModel: ObservableObject {
     
     @Published var showResetPasswordAlert = false
     
+    @Published var showLogoutAlert = false
+    @Published var showDeleteUserAlert = false
+    
     @Published var password = ""
     @Published var newEmail = ""
     @Published var showChangeEmailSheet = false
+    
+    @Published var quickAddAmount: QuickAddAmount = .ten
+    @Published var currency: AppCurrency = .euro
+    
+    @Published var bubbleUser: BubbleUser?
+    
+    
+    init(){
+       
+        getBubbleUser()
+    }
     
     func sendResetPasswordEmail() {
         authClient.sendResetPasswordMail()
     }
     
+    
     func changeEmail(){
         
         authClient.changeEmail(password: password, newEmail: newEmail)
         
+    }
+    
+    
+    
+    func getBubbleUser(){
+        
+        guard let uid = authClient.checkAuth()?.uid else {
+            return
+        }
+        
+        Task {
+           await bubbleUser = firestoreClient.getUser(uid: uid)
+            
+            guard let user = bubbleUser else {
+                return
+            }
+            
+            if let userCurrency = AppCurrency(rawValue: user.currency) {
+                currency = userCurrency
+            }
+            
+            if let userQuickAddAmount = QuickAddAmount(rawValue: user.quickAddAmount) {
+                quickAddAmount = userQuickAddAmount
+            }
+            
+            
+        }
+    }
+    
+    func updateCurrency() {
+        Task{
+            do{
+               try await firestoreClient.updateCurrency(uid: authClient.checkAuth()?.uid ?? "", currency: currency.rawValue)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func updateQuickAddAmount() {
+        Task{
+            do{
+               try await firestoreClient.updateQuickAddAmount(uid: authClient.checkAuth()?.uid ?? "", amount: quickAddAmount.rawValue)
+            } catch {
+                print(error)
+            }
+        }
     }
 }

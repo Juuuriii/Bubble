@@ -50,11 +50,15 @@ class WalletViewModel: ObservableObject {
     
     
     @Published var bubbleUser: BubbleUser?
+    @Published var currency: String?
+    @Published var quickAddAmount: Double?
     private var bubbleUserListener: ListenerRegistration?
     private var balanceChagesListener: ListenerRegistration?
     private var savingGoalsListener: ListenerRegistration?
     
     var uid: String?
+    
+    
     
     init() {
         self.uid = authClient.checkAuth()?.uid
@@ -82,7 +86,31 @@ class WalletViewModel: ObservableObject {
                     return
                 }
                 self.bubbleUser = try? document.data(as: BubbleUser.self)
+                self.fetchCurrency()
+                self.fetchQuickAddAmount()
             }
+    }
+    
+    private func fetchCurrency() {
+        guard let user = bubbleUser else {
+            return
+        }
+        currency = user.currency
+    }
+    
+    func getCurrency() -> String {
+        guard let currency = currency else {
+            return "€"
+        }
+        return currency
+    }
+    
+    private func fetchQuickAddAmount() {
+        guard let user = bubbleUser else {
+            return
+        }
+        quickAddAmount = user.quickAddAmount
+        print("Quick Add Amount = \(quickAddAmount ?? -1.0)")
     }
     
     func removeBubbleUserListener() {
@@ -113,9 +141,10 @@ class WalletViewModel: ObservableObject {
                     case .added:
                         if let data = try? change.document.data(as: BalanceChange.self) {
                             
-                            self.history.insert(data, at: 0)
-                            print("balance change added!")
-                            
+                            if !self.history.contains(where: {$0.id == data.id}) {
+                                self.history.insert(data, at: 0)
+                                print("balance change added!")
+                            }
                         }
                     case .modified:
                         print("How?")
@@ -223,7 +252,7 @@ class WalletViewModel: ObservableObject {
         }
         
         if savedAmount > 0 {
-            addBalanceChange(from: savingGoal, isNewGoal: true, isDelete: false)
+            addBalanceChange(create: savingGoal)
         }
     }
     
@@ -247,14 +276,45 @@ class WalletViewModel: ObservableObject {
             }
         }
         
-        addBalanceChange(from: selectedSavingGoal, isNewGoal: false, isDelete: false)
+        addBalanceChange(from: selectedSavingGoal)
     }
+    
+    func addMoneyToSavingGoalQT() {
+        
+        guard let user = bubbleUser else {
+            return
+        }
+        
+        guard let selectedSavingGoal = selectedSavingGoal else {
+            return
+        }
+        
+        guard var quickAddAmount = quickAddAmount else {
+            return
+        }
+        
+        if selectedSavingGoal.savedAmount + quickAddAmount > selectedSavingGoal.targetAmount {
+            quickAddAmount = selectedSavingGoal.targetAmount - selectedSavingGoal.savedAmount
+        }
+        
+        let newAmount = selectedSavingGoal.savedAmount + quickAddAmount
+        
+        Task {
+            do {
+                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount)
+            } catch {
+                print(error)
+            }
+        }
+        addBalanceChange(quickAdd: selectedSavingGoal)
+    }
+    
     
     func _deleteSavingGoal(savingGoal: SavingGoal) {
         
         firestoreClient.deleteSavingGoal(uid: savingGoal.uid, id: savingGoal.id)
         
-        addBalanceChange(from: savingGoal, isNewGoal: false, isDelete: true)
+        addBalanceChange(delete: savingGoal)
     }
     
     func toggleNewSavingGoalSheet() {
@@ -316,43 +376,94 @@ class WalletViewModel: ObservableObject {
         updateBalance(amount: amount, isIncome: isIncome)
     }
     
-    private func addBalanceChange(from savingGoal: SavingGoal, isNewGoal: Bool, isDelete: Bool){
+    private func addBalanceChange(delete savingGoal: SavingGoal){
         
         guard let user = bubbleUser else {
             return
         }
         
-        var amount = 0.0
-        var name = ""
-        var type = BalanceChangeType.expense.rawValue
+        let amount = savingGoal.savedAmount
+        let name = "Deleted \(savingGoal.name)"
+        let type = BalanceChangeType.income.rawValue
         
-        if isNewGoal {
-            amount = savingGoal.savedAmount
-            name = savingGoalName
-            
-        } else {
-            amount = addAmount
-            name = savingGoal.name
-        }
-        
-        if isDelete {
-            type = BalanceChangeType.income.rawValue
-            name = "Deleted \(savingGoal.name)"
-            amount = savingGoal.savedAmount
-        }
         
         let balanceChange = BalanceChange(uid: user.id, name: name, amount: amount, type: type , date: Date.now, sgID: savingGoal.id)
         
         do {
-            if isDelete {
-                try firestoreClient._addBalanceChange(balanceChange: balanceChange)
-            } else {
-                try firestoreClient._addBalanceChange(balanceChange: balanceChange, from: savingGoal.id)
-            }
+            try firestoreClient._addBalanceChange(balanceChange: balanceChange)
         } catch {
             print(error)
         }
-        updateBalance(amount: amount, isIncome: isDelete ? true : false)
+        updateBalance(amount: amount, isIncome: true)
+    }
+    
+    private func addBalanceChange(create savingGoal: SavingGoal){
+        
+        guard let user = bubbleUser else {
+            return
+        }
+        
+        let amount = savingGoal.savedAmount
+        let name = savingGoalName
+        let type = BalanceChangeType.expense.rawValue
+        
+        let balanceChange = BalanceChange(uid: user.id, name: name, amount: amount, type: type , date: Date.now, sgID: savingGoal.id)
+        
+        do {
+            try firestoreClient._addBalanceChange(balanceChange: balanceChange, from: savingGoal.id)
+        } catch {
+            print(error)
+        }
+        updateBalance(amount: amount, isIncome: false)
+    }
+    
+    private func addBalanceChange(quickAdd savingGoal: SavingGoal){
+        
+        guard let user = bubbleUser else {
+            return
+        }
+        
+        guard let quickAddAmount = quickAddAmount else {
+            return
+        }
+        
+        let amount = quickAddAmount
+        let name = savingGoal.name
+        let type = BalanceChangeType.expense.rawValue
+        
+        
+        
+        let balanceChange = BalanceChange(uid: user.id, name: name, amount: amount, type: type , date: Date.now, sgID: savingGoal.id)
+        
+        do {
+            try firestoreClient._addBalanceChange(balanceChange: balanceChange, from: savingGoal.id)
+        } catch {
+            print(error)
+        }
+        updateBalance(amount: amount, isIncome: false)
+    }
+    
+    private func addBalanceChange(from savingGoal: SavingGoal){
+        
+        guard let user = bubbleUser else {
+            return
+        }
+        
+        let amount = addAmount
+        let name = savingGoal.name
+        let type = BalanceChangeType.expense.rawValue
+        
+        
+        
+        let balanceChange = BalanceChange(uid: user.id, name: name, amount: amount, type: type , date: Date.now, sgID: savingGoal.id)
+        
+        do {
+            try firestoreClient._addBalanceChange(balanceChange: balanceChange, from: savingGoal.id)
+            
+        } catch {
+            print(error)
+        }
+        updateBalance(amount: amount, isIncome: false)
     }
     
     

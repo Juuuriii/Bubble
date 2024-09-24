@@ -14,7 +14,7 @@ struct HistoryView: View {
     var body: some View {
         VStack{
             ScrollView {
-                LazyVStack{
+                
                     ForEach(viewModel.history) { balanceChange in
                         
                         var isFromSavingGoal: Bool {
@@ -33,7 +33,7 @@ struct HistoryView: View {
                                 Text(balanceChange.type)
                                 
                                     .foregroundStyle(isFromSavingGoal ? .white : Color(hex: "14135B"))
-                                Text("\(balanceChange.amount, specifier: "%.2f")€")
+                                Text("\(balanceChange.amount, specifier: "%.2f")\(viewModel.currency ?? "E")")
                                     .foregroundStyle(isFromSavingGoal ? .white : Color(hex: "14135B"))
                             }
                             HStack{
@@ -71,7 +71,7 @@ struct HistoryView: View {
                         .padding(.horizontal)
                         .padding(.vertical, 4)
                     }
-                }
+                
             }
         }
         .sheet(isPresented: $viewModel.showAddBalanceChangeSheet, content: {

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SettingsViewItem3: View {
     @State private var size: CGSize = .zero
-    var logout: () -> Void
-    
+    @ObservedObject var viewModel: SettingsViewModel
+    @ObservedObject var authViewModel: AuthViewModel
     var body: some View {
         VStack{
                 Image("settingsRect2")
@@ -43,11 +43,11 @@ struct SettingsViewItem3: View {
                             
                             VStack(spacing: 16) {
                                 Button{
-                                    
+                                    viewModel.showDeleteUserAlert = true
                                 } label: {
                                     Text("Delete Account")
                                         .foregroundStyle(.white)
-                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                        .frame(maxWidth: .infinity)
                                         .padding()
                                         .background{
                                             Capsule()
@@ -56,7 +56,7 @@ struct SettingsViewItem3: View {
                                     
                                 }
                                 Button{
-                                    logout()
+                                    viewModel.showLogoutAlert = true
                                 } label: {
                                     Text("Log out")
                                         .foregroundStyle(.white)
@@ -74,15 +74,23 @@ struct SettingsViewItem3: View {
                             Spacer()
                         }
                     }
-               
-                
-            
-            
         }
         .padding(.horizontal)
+        .alert("You are about to Log out", isPresented: $viewModel.showLogoutAlert) {
+            Button("Log Out", role: .destructive) {
+                authViewModel.logout()
+            }
+            Button("Cancel", role: .cancel) {
+                
+            }
+        }
+        .sheet(isPresented: $viewModel.showDeleteUserAlert , content: {
+            DeleteUserSheet(authViewModel: authViewModel)
+                .presentationDetents([.height(200)])
+        })
     }
 }
 
 #Preview {
-    SettingsViewItem3(logout: {})
+    SettingsViewItem3(viewModel: SettingsViewModel(), authViewModel: AuthViewModel())
 }

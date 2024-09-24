@@ -44,9 +44,9 @@ struct AddBalanceChangeSheet: View {
                 VStack{
                     HStack{
                         VStack(alignment: .center){
-                            Text("Amount in €")
+                            Text("Amount in \(viewModel.getCurrency())")
                             
-                            TextField("e.g. 1000€", text: $viewModel.balanceChangeAmount)
+                            TextField("e.g. 1000\(viewModel.getCurrency())", text: $viewModel.balanceChangeAmount)
                                 .frame(width: 200)
                                 .textFieldStyle(.roundedBorder)
                                 .multilineTextAlignment(.center)

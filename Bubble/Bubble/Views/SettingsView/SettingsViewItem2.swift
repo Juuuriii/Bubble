@@ -7,9 +7,14 @@
 
 import SwiftUI
 
+
+
 struct SettingsViewItem2: View {
     
+    @ObservedObject var viewModel: SettingsViewModel
+    
     @State private var size: CGSize = .zero
+    
     
     var body: some View {
         VStack{
@@ -20,10 +25,12 @@ struct SettingsViewItem2: View {
                         VStack{
                             HStack{
                                 VStack{
-                                    Text("Preferences")
+                                    Text("PREFERENCES")
+                                        .foregroundStyle(Color(hex: "14135B"))
                                         .font(.title2)
                                         .frame(minWidth: 220)
                                     Text("Streamline how to use Bubble")
+                                        .foregroundStyle(Color(hex: "14135B"))
                                         .font(.footnote)
                                 }
                                 .padding(.horizontal)
@@ -42,23 +49,67 @@ struct SettingsViewItem2: View {
                             .offset(y: -size.height*0.5)
                             
                             VStack(spacing: 16) {
-                                Button{
-                                    
-                                } label: {
+                                HStack {
                                     Text("Quick Add Amount")
+                                        .frame(minWidth: 150)
                                         .foregroundStyle(.white)
-                                        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                                        .padding()
-                                        .background{
-                                            Capsule()
-                                                .foregroundStyle(Color(hex: "84C6EB"))
+                                    Spacer()
+                                        .frame(width: 40)
+                                    Picker("Quick Add Amount", selection: $viewModel.quickAddAmount){
+                                        ForEach(QuickAddAmount.allCases, id: \.self){ amount in
+                                            Text(amount.display)
+                                                .tag(amount)
                                         }
+                                    }
+                                    .tint(Color(hex: "14135B"))
+                                    .frame(minWidth: 100)
+                                    .background{
+                                        Capsule()
+                                            .foregroundStyle(.white)
+                                    }
+                                    .onChange(of: viewModel.quickAddAmount){
+                                        viewModel.updateQuickAddAmount()
+                                    }
+                                }
+                                .padding(.horizontal)
+                                .padding(.vertical, 11)
+                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                .background{
+                                    Capsule()
+                                        .foregroundStyle(Color(hex: "84C6EB"))
+                                }
+                                
+                                
+                                
+                                HStack {
+                                    Text("Currency")
+                                        .frame(minWidth: 150)
+                                        .foregroundStyle(.white)
+                                    Spacer()
+                                        .frame(width: 40)
+                                    Picker("Currency", selection: $viewModel.currency){
+                                        ForEach(AppCurrency.allCases, id: \.self){ currency in
+                                            Text(currency.rawValue)
+                                                .tag(currency)
+                                        }
+                                    }
+                                    .tint(Color(hex: "14135B"))
+                                    .frame(minWidth: 100)
+                                    .background{
+                                        Capsule()
+                                            .foregroundStyle(.white)
+                                    }
+                                    .onChange(of: viewModel.currency) {
+                                        viewModel.updateCurrency()
+                                    }
                                     
                                 }
-                                HStack{
-                                    Text("Currency")
-                                    
-                                    
+                                .padding(.horizontal)
+                                .padding(.vertical, 11)
+                                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                                .background{
+                                    Capsule()
+                                        .foregroundStyle(Color(hex: "84C6EB"))
                                 }
                             }
                             .offset(y: -size.height*0.2)
@@ -66,15 +117,11 @@ struct SettingsViewItem2: View {
                             Spacer()
                         }
                     }
-               
-                
-            
-            
         }
         .padding(.horizontal)
     }
 }
 
 #Preview {
-    SettingsViewItem2()
+    SettingsViewItem2(viewModel: SettingsViewModel())
 }

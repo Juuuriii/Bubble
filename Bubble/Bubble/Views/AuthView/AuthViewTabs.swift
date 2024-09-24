@@ -1,15 +1,17 @@
 //
-//  WalletViewTabs.swift
+//  AuthViewTabs.swift
 //  Bubble
 //
-//  Created by Juri Huhn on 17.09.24.
+//  Created by Juri Huhn on 24.09.24.
 //
 
 import SwiftUI
 
-struct WalletViewTabs: View {
+
+
+struct AuthViewTabs: View {
     
-    @ObservedObject var viewModel: WalletViewModel
+    @ObservedObject var viewModel: AuthViewModel
     
     @State private var side = true
     @State private var colorSaving = Color.white
@@ -22,15 +24,15 @@ struct WalletViewTabs: View {
         HStack{
             Button {
                 withAnimation{
-                    viewModel.screen = .saving
+                    viewModel.screen = .login
                 }
             } label: {
-                Text("Saving Goals")
+                Text("Log in")
                     .foregroundStyle(colorSaving)
                 
             }
-            .padding(.horizontal)
-            .padding(.vertical, 8)
+            .padding(.horizontal, 24)
+            .padding(.vertical)
             .background{
                 if side {
                     Capsule()
@@ -40,17 +42,17 @@ struct WalletViewTabs: View {
             }
             
             Spacer()
-            
+                .frame(width: 48)
             Button {
                 withAnimation{
-                    viewModel.screen = .history
+                    viewModel.screen = .signup
                 }
             } label: {
-                Text("History")
+                Text("Sign up")
                     .foregroundStyle(colorHistory)
             }
-            .padding(.horizontal)
-            .padding(.vertical, 8)
+            .padding(.horizontal, 24)
+            .padding(.vertical)
             .background{
                 if !side {
                     Capsule()
@@ -65,13 +67,13 @@ struct WalletViewTabs: View {
         .onChange(of: viewModel.screen){
             
                 switch viewModel.screen {
-                case .saving:
+                case .login:
                     withAnimation{
                         side = true
                         colorSaving = .white
                         colorHistory = Color(hex: "14135B")
                     }
-                case .history:
+                case .signup:
                     withAnimation{
                         side = false
                         colorSaving = Color(hex: "14135B")
@@ -82,7 +84,8 @@ struct WalletViewTabs: View {
             }
         
         }
-    }
+}
 
-
-
+#Preview {
+    AuthViewTabs(viewModel: AuthViewModel())
+}

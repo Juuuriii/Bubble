@@ -10,6 +10,8 @@
 		3A21B8122C9C69FD00EA4081 /* SettingsViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21B8112C9C69FD00EA4081 /* SettingsViewItem.swift */; };
 		3A21B8142C9C6FE400EA4081 /* SettingsViewItem2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21B8132C9C6FE400EA4081 /* SettingsViewItem2.swift */; };
 		3A21B8162C9C732700EA4081 /* SettingsViewItem3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21B8152C9C732700EA4081 /* SettingsViewItem3.swift */; };
+		3A21B8182CA2DFAC00EA4081 /* DeleteUserSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21B8172CA2DFAC00EA4081 /* DeleteUserSheet.swift */; };
+		3A21B81A2CA2F46A00EA4081 /* AuthViewTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21B8192CA2F46A00EA4081 /* AuthViewTabs.swift */; };
 		3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46069A2C733C950019EFA2 /* BubbleApp.swift */; };
 		3A46069F2C733C960019EFA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46069E2C733C960019EFA2 /* Assets.xcassets */; };
 		3A4606A22C733C960019EFA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A4606A12C733C960019EFA2 /* Preview Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		3A21B8112C9C69FD00EA4081 /* SettingsViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewItem.swift; sourceTree = "<group>"; };
 		3A21B8132C9C6FE400EA4081 /* SettingsViewItem2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewItem2.swift; sourceTree = "<group>"; };
 		3A21B8152C9C732700EA4081 /* SettingsViewItem3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewItem3.swift; sourceTree = "<group>"; };
+		3A21B8172CA2DFAC00EA4081 /* DeleteUserSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserSheet.swift; sourceTree = "<group>"; };
+		3A21B8192CA2F46A00EA4081 /* AuthViewTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewTabs.swift; sourceTree = "<group>"; };
 		3A4606972C733C950019EFA2 /* Bubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bubble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A46069A2C733C950019EFA2 /* BubbleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleApp.swift; sourceTree = "<group>"; };
 		3A46069E2C733C960019EFA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 			children = (
 				3A4606DE2C7613990019EFA2 /* AuthViewModel.swift */,
 				3A4606E32C7873F90019EFA2 /* AuthView.swift */,
+				3A21B8192CA2F46A00EA4081 /* AuthViewTabs.swift */,
 			);
 			path = AuthView;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				3A21B8112C9C69FD00EA4081 /* SettingsViewItem.swift */,
 				3A21B8132C9C6FE400EA4081 /* SettingsViewItem2.swift */,
 				3A21B8152C9C732700EA4081 /* SettingsViewItem3.swift */,
+				3A21B8172CA2DFAC00EA4081 /* DeleteUserSheet.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -465,6 +471,7 @@
 				3A55DA742C8850C50009D514 /* SavingGoal.swift in Sources */,
 				3A55DA862C9411610009D514 /* HomeViewModel.swift in Sources */,
 				3A4606D42C760DE50019EFA2 /* AuthClient.swift in Sources */,
+				3A21B8182CA2DFAC00EA4081 /* DeleteUserSheet.swift in Sources */,
 				3A55DA762C9178240009D514 /* NewSavingGoalSheet.swift in Sources */,
 				3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */,
 				3AE765A62C9C03FC008141F5 /* SettingsViewModel.swift in Sources */,
@@ -483,6 +490,7 @@
 				3AE765A12C9AF67D008141F5 /* Test.swift in Sources */,
 				3A55DA7F2C9407A10009D514 /* Quote.swift in Sources */,
 				3A55DA962C99BF9C0009D514 /* AddBalanceChangeSheet.swift in Sources */,
+				3A21B81A2CA2F46A00EA4081 /* AuthViewTabs.swift in Sources */,
 				3A55DA7D2C9406B60009D514 /* ApiClient.swift in Sources */,
 				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
 				3AE765A42C9C03EA008141F5 /* SettingsVIew.swift in Sources */,

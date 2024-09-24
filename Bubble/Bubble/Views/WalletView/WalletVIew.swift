@@ -17,7 +17,7 @@ struct WalletVIew: View {
                 VStack{
                     Text("Your Budget")
                         .foregroundStyle(.white)
-                    Text("\(viewModel.bubbleUser?.balance ?? 0.0, specifier: "%.2f")€")
+                    Text("\(viewModel.bubbleUser?.balance ?? 0.0, specifier: "%.2f")\(viewModel.getCurrency())")
                         .font(.system(size: 38))
                         .foregroundStyle(.white)
                 }

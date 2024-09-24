@@ -66,16 +66,16 @@ struct NewSavingGoalSheet: View {
                 VStack(alignment: .leading){
                     HStack{
                         VStack(alignment: .leading){
-                            Text("Target Amount in €")
+                            Text("Target Amount in \(viewModel.getCurrency())")
                             
-                            TextField("e.g. 1000€", text: $viewModel.savingGoalTargetAmount)
+                            TextField("e.g. 1000\(viewModel.getCurrency())", text: $viewModel.savingGoalTargetAmount)
                                 .textFieldStyle(.roundedBorder)
                                 .keyboardType(.numbersAndPunctuation)
                         }
                         VStack(alignment: .leading){
-                            Text("Amount Saved in €")
+                            Text("Amount Saved in \(viewModel.getCurrency())")
                             
-                            TextField("e.g. 10€", text: $viewModel.savingGoalAmountSaved)
+                            TextField("e.g. 10\(viewModel.getCurrency())", text: $viewModel.savingGoalAmountSaved)
                                 .textFieldStyle(.roundedBorder)
                                 .keyboardType(.numbersAndPunctuation)
                         }

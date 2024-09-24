@@ -12,99 +12,88 @@ struct AuthView: View {
     
     @StateObject var viewModel = AuthViewModel()
    
-    @State var scrollPosition = 0
-    let colors: [Color] = [.red, .green, .blue]
+    @Namespace var key
+    
+    
     
     var body: some View {
         
-        
-            
+            GeometryReader { proxy in
                 
-        GeometryReader { proxy in
-            VStack{
-                Image("logo")
-            }
-            VStack{
-                Spacer()
-                HStack{
-                    Button("Sign in"){
-                        
-                        scrollPosition = 0
-                        
-                    }
-                    .padding(.vertical)
+                
+                VStack{
+                    
                     Spacer()
-                        .frame(width: 120)
-                    Button("Sign up"){
-                        
-                        scrollPosition = 1
-                        
-                    }
-                    .padding(.vertical)
-                }
-                ScrollViewReader { value in
+                    
+                    Image("logo")
+                        .padding(.bottom, 40)
                     
                     
-                    ScrollView(.horizontal){
+                    VStack(spacing: -16) {
+                        AuthViewTabs(viewModel: viewModel)
                         
-                        LazyHStack{
-                            VStack(spacing: 24){
-                                TextField("Email", text: $viewModel.email)
-                                    .bubbleTextFieldStyle()
-                                
-                                SecureField("Password", text: $viewModel.password)
-                                    .bubbleTextFieldStyle()
-                                
-                                Button("Sign in") {
-                                    viewModel.login()
+                        VStack{
+                            TabView(selection: $viewModel.screen) {
+                                VStack(){
+                                    Spacer()
+                                    VStack{
+                                        TextField("Email", text: $viewModel.email)
+                                            .bubbleTextFieldStyle()
+                                        
+                                        SecureField("Password", text: $viewModel.password)
+                                            .bubbleTextFieldStyle()
+                                    }
+                                    Spacer()
+                                    Button("Login"){
+                                        viewModel.login()
+                                    }
+                                    .authButtonStyle()
+                                    
+                                    .padding(.bottom, 40)
                                 }
-                                .authButtonStyle()
-                            }
-                            .id(0)
-                            .frame(width: proxy.size.width)
-                            
-                            
-                            VStack(spacing: 24){
-                                TextField("Username", text: $viewModel.username)
-                                    .bubbleTextFieldStyle()
+                                .tag(AuthScreen.login)
                                 
-                                TextField("Email", text: $viewModel.email)
-                                    .bubbleTextFieldStyle()
-                                
-                                SecureField("Password", text: $viewModel.password)
-                                    .bubbleTextFieldStyle()
-                                
-                                Button("Sign up") {
-                                    viewModel.register()
+                                VStack(){
+                                    Spacer()
+                                    VStack {
+                                        TextField("Username", text: $viewModel.username)
+                                            .bubbleTextFieldStyle()
+                                        TextField("Email", text: $viewModel.email)
+                                            .bubbleTextFieldStyle()
+                                        SecureField("Password", text: $viewModel.password)
+                                            .bubbleTextFieldStyle()
+                                        
+                                    }
+                                    Spacer()
+                                    Button("Sign up"){
+                                        viewModel.register()
+                                    }
+                                    .authButtonStyle()
+                                    
+                                    .padding(.bottom, 40)
                                 }
-                                .authButtonStyle()
+                                .tag(AuthScreen.signup)
+                                
                             }
-                            .id(1)
-                            .frame(width: proxy.size.width)
                             
-                        }
-                        .scrollTargetLayout()
-                        
-                    }
-                    .background(.orange)
-                    .scrollTargetBehavior(.viewAligned)
-                    .onChange(of: scrollPosition) {
-                        withAnimation{
-                            value.scrollTo(scrollPosition, anchor: .center)
+                            .tabViewStyle(.page(indexDisplayMode: .never))
+                            .padding()
+                            .frame(height: proxy.size.height*0.45)
                         }
                     }
-                    .scrollDisabled(true)
+                    .padding(.top)
+                    .background{
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundStyle(.white)
+                            .padding()
+                    }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color(hex: "A4D8F5"))
+                .fullScreenCover(isPresented: $viewModel.showMainView, content: {
+                            MainView(authViewModel: viewModel)
+                        })
             }
-            .background{
-                RoundedRectangle(cornerRadius: 25)
-                    .foregroundStyle(.white)
-            }
-        }
-        .background(.blue.opacity(0.2))
-        .fullScreenCover(isPresented: $viewModel.showMainView, content: {
-            MainView(authViewModel: viewModel)
-        })
     }
 }
 

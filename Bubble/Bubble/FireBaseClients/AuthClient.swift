@@ -38,9 +38,22 @@ class AuthClient {
         try auth.signOut()
     }
     
-    func deleteUser() async throws {
-        if let user = auth.currentUser {
-            try await user.delete()
+    func deleteUser(password: String) async throws {
+        guard let user = auth.currentUser else {
+            return
+        }
+        guard let email = user.email else {
+            return
+        }
+        
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+        user.reauthenticate(with: credential) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                result?.user.delete()
+            }
         }
     }
     
@@ -68,14 +81,12 @@ class AuthClient {
         user.reauthenticate(with: credential) { authResult, error in
             
             if let error = error {
-                print(error.localizedDescription as Any)
+                print(error as Any)
             } else {
                 authResult?.user.sendEmailVerification(beforeUpdatingEmail: newEmail)
+                
             }
         }
+        
     }
-    
-    
-    
-    
 }

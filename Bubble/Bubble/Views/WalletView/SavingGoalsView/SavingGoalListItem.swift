@@ -11,8 +11,7 @@ import SwiftUI
 struct SavingGoalListItem: View {
     
     @Binding var savingGoal: SavingGoal
-    var action: () -> Void
-    var delete: () -> Void
+    @ObservedObject var viewModel: WalletViewModel
     
     var body: some View {
             VStack{
@@ -20,7 +19,7 @@ struct SavingGoalListItem: View {
                     VStack{
                         Button{
                            
-                            delete()
+                            viewModel._deleteSavingGoal(savingGoal: savingGoal)
                             
                         }label: {
                             Image("editIconSavingGoal")
@@ -42,7 +41,7 @@ struct SavingGoalListItem: View {
                             }
                         HStack{
                             Spacer()
-                            Text("\(savingGoal.savedAmount, specifier: "%.0f")€ / \(savingGoal.targetAmount, specifier: "%.0f")€")
+                            Text("\(savingGoal.savedAmount, specifier: "%.0f")\(viewModel.getCurrency()) / \(savingGoal.targetAmount, specifier: "%.0f")\(viewModel.getCurrency())")
                                 .font(.system(size: 12))
                                 .foregroundStyle(.white)
                         }
@@ -50,11 +49,18 @@ struct SavingGoalListItem: View {
                     .padding(.horizontal, 8)
                     VStack{
                         Button{
-                            action()
+                            
                         }label: {
                             Image("addButtonSavingGoal")
-                            
                         }
+                        .simultaneousGesture(LongPressGesture().onEnded{ _ in
+                            viewModel.setSelectedSavingGoal(savingGoal: savingGoal)
+                            viewModel.toggleAddMoneySheet()
+                        })
+                        .simultaneousGesture(TapGesture().onEnded {
+                            viewModel.setSelectedSavingGoal(savingGoal: savingGoal)
+                            viewModel.addMoneyToSavingGoalQT()
+                        })
                         .offset(y: 6)
                     }
                 }

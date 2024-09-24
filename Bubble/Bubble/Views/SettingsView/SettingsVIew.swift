@@ -23,12 +23,10 @@ struct SettingsVIew: View {
             SettingsViewItem(viewModel: viewModel)
                 .padding(.bottom, 48)
             
-            SettingsViewItem2()
+            SettingsViewItem2(viewModel: viewModel)
                 .padding(.bottom, 48)
             
-            SettingsViewItem3(){
-                authViewModel.logout()
-            }
+            SettingsViewItem3(viewModel: viewModel, authViewModel: authViewModel)
                 .padding(.bottom, 48)
         }
         .background(Color(hex: "A4D8F5"))
@@ -40,8 +38,11 @@ struct SettingsVIew: View {
                 TextField("New Email", text: $viewModel.newEmail)
                 SecureField("Password", text: $viewModel.password)
                 Button{
+                    
                     viewModel.changeEmail()
+                    
                     viewModel.showChangeEmailSheet = false
+                    
                 } label: {
                     Text("Change Email")
                 }

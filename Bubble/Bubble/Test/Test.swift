@@ -9,8 +9,10 @@ import SwiftUI
 
 struct Test: View {
     
-    @Namespace var key
+    
     @State var visibily = true
+    
+    @Namespace var key
     
     var body: some View {
         HStack{

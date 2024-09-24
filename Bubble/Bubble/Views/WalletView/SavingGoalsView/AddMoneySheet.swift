@@ -18,11 +18,11 @@ struct AddMoneySheet: View {
                 Slider(value: $viewModel.addAmount, in: 1...(savingGoal.targetAmount - savingGoal.savedAmount), step: 1) {
                     Text("Add Money")
                 } minimumValueLabel: {
-                    Text("1€")
+                    Text("1\(viewModel.getCurrency())")
                 } maximumValueLabel: {
-                    Text("\(savingGoal.targetAmount - savingGoal.savedAmount, specifier: "%.0f")€")
+                    Text("\(savingGoal.targetAmount - savingGoal.savedAmount, specifier: "%.0f")\(viewModel.getCurrency())")
                 }
-                Text("\(viewModel.addAmount, specifier: "%.0f")€")
+                Text("\(viewModel.addAmount, specifier: "%.0f")\(viewModel.getCurrency())")
                 
                 Button {
                     viewModel.addMoneyToSavingGoal()

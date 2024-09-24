@@ -8,6 +8,10 @@
 import Foundation
 import FirebaseAuth
 
+enum AuthScreen {
+    case login, signup
+}
+
 @MainActor
 class AuthViewModel: ObservableObject {
     
@@ -18,13 +22,16 @@ class AuthViewModel: ObservableObject {
     @Published var password = ""
     @Published var username = ""
     
+    @Published var deletePassword = ""
     @Published var user: FirebaseAuth.User? = nil
     
     @Published var showMainView = false
     
+    @Published var screen: AuthScreen = .login
+    
     init() {
         user = authClient.checkAuth()
-        showMainView = user != nil
+        showMainView =  user != nil
     }
     
     func register() {
@@ -47,6 +54,13 @@ class AuthViewModel: ObservableObject {
                 if await firestoreClient.getUser(uid: user.uid) == nil {
                     try firestoreClient.createUser(uid: user.uid, email: email, username: username)
                 }
+                if await firestoreClient.getUser(uid: user.uid)?.email != authClient.checkAuth()?.email {
+                    
+                    if let newEmail = authClient.checkAuth()?.email {
+                        
+                      try await firestoreClient.updateEmail(uid: user.uid, newEmail: newEmail)
+                    }
+                }
                 showMainView = true
             } catch {
                 print(error)
@@ -67,7 +81,7 @@ class AuthViewModel: ObservableObject {
     func deleteUser() {
         Task {
             do{
-                try await authClient.deleteUser()
+                try await authClient.deleteUser(password: deletePassword)
             } catch {
                 print(error)
             }
