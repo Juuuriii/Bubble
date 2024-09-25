@@ -67,17 +67,11 @@ struct AddBalanceChangeSheet: View {
                 
                 Spacer()
             }
-            .toolbar{
-                ToolbarItem(placement: .topBarTrailing){
-                    Button{
-                        viewModel.toggleShowAddBalanceChangeSheet()
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-                }
-            }
+            
         }
     }
 }
 
-
+#Preview {
+    AddBalanceChangeSheet(viewModel: WalletViewModel())
+}

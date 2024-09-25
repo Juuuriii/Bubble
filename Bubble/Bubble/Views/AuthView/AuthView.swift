@@ -84,7 +84,7 @@ struct AuthView: View {
                 .padding(.top)
                 .background{
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(BubbleColors.white)
                         .padding()
                 }
             }
