@@ -25,7 +25,7 @@ class FirestoreClient {
             .document(uid)
             .addSnapshotListener { snapShot, error in
                 if let error = error {
-                    print("Listener Error")
+                    print(error)
                           return
                 }
                 
