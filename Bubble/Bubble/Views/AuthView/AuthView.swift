@@ -11,89 +11,96 @@ import SwiftUI
 struct AuthView: View {
     
     @StateObject var viewModel = AuthViewModel()
-   
+    
     @Namespace var key
     
     
     
     var body: some View {
         
-            GeometryReader { proxy in
+        GeometryReader { proxy in
+            
+            
+            VStack{
+                
+                Spacer()
+                
+                Image("logo")
+                    .padding(.bottom, 40)
                 
                 
-                VStack{
+                VStack(spacing: -16) {
+                    AuthViewTabs(viewModel: viewModel)
                     
-                    Spacer()
-                    
-                    Image("logo")
-                        .padding(.bottom, 40)
-                    
-                    
-                    VStack(spacing: -16) {
-                        AuthViewTabs(viewModel: viewModel)
-                        
-                        VStack{
-                            TabView(selection: $viewModel.screen) {
-                                VStack(){
-                                    Spacer()
-                                    VStack{
-                                        TextField("Email", text: $viewModel.email)
-                                            .bubbleTextFieldStyle()
-                                        
-                                        SecureField("Password", text: $viewModel.password)
-                                            .bubbleTextFieldStyle()
-                                    }
-                                    Spacer()
-                                    Button("Login"){
-                                        viewModel.login()
-                                    }
-                                    .authButtonStyle()
+                    VStack{
+                        TabView(selection: $viewModel.screen) {
+                            VStack(){
+                                Spacer()
+                                VStack{
+                                    TextField("Email", text: $viewModel.email)
+                                        .bubbleTextFieldStyle()
                                     
-                                    .padding(.bottom, 40)
+                                    SecureField("Password", text: $viewModel.password)
+                                        .bubbleTextFieldStyle()
                                 }
-                                .tag(AuthScreen.login)
-                                
-                                VStack(){
-                                    Spacer()
-                                    VStack {
-                                        TextField("Username", text: $viewModel.username)
-                                            .bubbleTextFieldStyle()
-                                        TextField("Email", text: $viewModel.email)
-                                            .bubbleTextFieldStyle()
-                                        SecureField("Password", text: $viewModel.password)
-                                            .bubbleTextFieldStyle()
-                                        
-                                    }
-                                    Spacer()
-                                    Button("Sign up"){
-                                        viewModel.register()
-                                    }
-                                    .authButtonStyle()
-                                    
-                                    .padding(.bottom, 40)
+                                Spacer()
+                                Button("Login"){
+                                    viewModel.login()
                                 }
-                                .tag(AuthScreen.signup)
+                                .authButtonStyle()
                                 
+                                .padding(.bottom, 40)
                             }
+                            .tag(AuthScreen.login)
                             
-                            .tabViewStyle(.page(indexDisplayMode: .never))
-                            .padding()
-                            .frame(height: proxy.size.height*0.45)
+                            VStack(){
+                                Spacer()
+                                VStack {
+                                    TextField("Username", text: $viewModel.username)
+                                        .bubbleTextFieldStyle()
+                                    TextField("Email", text: $viewModel.email)
+                                        .bubbleTextFieldStyle()
+                                    SecureField("Password", text: $viewModel.password)
+                                        .bubbleTextFieldStyle()
+                                    
+                                }
+                                Spacer()
+                                Button("Sign up"){
+                                    viewModel.register()
+                                }
+                                .authButtonStyle()
+                                
+                                .padding(.bottom, 40)
+                            }
+                            .tag(AuthScreen.signup)
+                            
                         }
-                    }
-                    .padding(.top)
-                    .background{
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(.white)
-                            .padding()
+                        
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                        .padding()
+                        .frame(height: proxy.size.height*0.45)
                     }
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color(hex: "A4D8F5"))
-                .fullScreenCover(isPresented: $viewModel.showMainView, content: {
-                            MainView(authViewModel: viewModel)
-                        })
+                .padding(.top)
+                .background{
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(.white)
+                        .padding()
+                }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(hex: "A4D8F5"))
+            .fullScreenCover(isPresented: $viewModel.showMainView, content: {
+                MainView(authViewModel: viewModel)
+            })
+            .alert(viewModel.errorMessage,
+                   isPresented: $viewModel.showErrorAlert) {
+                Button("Dismiss") {
+                    
+                }
+            }
+            
+        }
     }
 }
 

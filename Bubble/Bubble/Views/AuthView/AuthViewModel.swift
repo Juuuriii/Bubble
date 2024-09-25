@@ -22,12 +22,18 @@ class AuthViewModel: ObservableObject {
     @Published var password = ""
     @Published var username = ""
     
-    @Published var deletePassword = ""
     @Published var user: FirebaseAuth.User? = nil
     
     @Published var showMainView = false
+    @Published var showResetPasswordAlert = false
+    @Published var showChangeEmailSheet = false
+    @Published var showDeleteUserAlert = false
+    @Published var showLogoutAlert = false
     
     @Published var screen: AuthScreen = .login
+    
+    @Published var errorMessage = ""
+    @Published var showErrorAlert = false
     
     init() {
         user = authClient.checkAuth()
@@ -40,8 +46,10 @@ class AuthViewModel: ObservableObject {
                 user = try await authClient.register(email: email, password: password)
                 guard let user else { return }
                 try firestoreClient.createUser(uid: user.uid, email: email, username: username)
+                showMainView  = true
+                resetTextFields()
             } catch {
-                print(error)
+                handleError(error as NSError)
             }
         }
     }
@@ -62,9 +70,9 @@ class AuthViewModel: ObservableObject {
                     }
                 }
                 showMainView = true
+                resetTextFields()
             } catch {
-                print(error)
-            }
+                handleError(error as NSError)            }
         }
     }
     
@@ -74,20 +82,50 @@ class AuthViewModel: ObservableObject {
             user = authClient.checkAuth()
             showMainView = false
         } catch {
-            print(error)
+            handleError(error as NSError)
         }
     }
     
     func deleteUser() {
-        Task {
-            do{
-                try await authClient.deleteUser(password: deletePassword)
-            } catch {
-                print(error)
-            }
-        }
+       showMainView = authClient.deleteUser(password: password)
     }
     
-   
+    func changeEmail() {
+        authClient.changeEmail(password: password, newEmail: email)
+    }
+    
+    func sendResetPasswordEmail() {
+        authClient.sendResetPasswordMail()
+    }
+    
+    func resetTextFields() {
+        email = ""
+        password = ""
+        username = ""
+    }
+    
+    private func handleError(_ error: NSError) {
+        
+        let errorCode = AuthErrorCode(rawValue: error.code)
+        
+        switch errorCode {
+        case .userNotFound:
+            errorMessage = "User not found"
+        case .invalidCredential:
+            errorMessage = "Wrong Password or Email"
+        case .userDisabled:
+            errorMessage = "User was deactivated"
+        case .emailAlreadyInUse, .accountExistsWithDifferentCredential, .credentialAlreadyInUse:
+            errorMessage = "There already is an Account with this Email"
+        case .networkError:
+            errorMessage = "Network Issue"
+        case .weakPassword:
+            errorMessage = "Password too weak"
+        default:
+            errorMessage = "Unkown Error"
+        }
+        
+        showErrorAlert = true
+    }
     
 }

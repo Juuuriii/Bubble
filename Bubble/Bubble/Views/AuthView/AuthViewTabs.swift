@@ -81,6 +81,9 @@ struct AuthViewTabs: View {
                     }
                     
                 }
+            withAnimation{
+                viewModel.resetTextFields()
+            }
             }
         
         }

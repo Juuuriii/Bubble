@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SettingsViewItem3: View {
     @State private var size: CGSize = .zero
-    @ObservedObject var viewModel: SettingsViewModel
-    @ObservedObject var authViewModel: AuthViewModel
+    @ObservedObject var viewModel: AuthViewModel
+
     var body: some View {
         VStack{
                 Image("settingsRect2")
@@ -78,19 +78,19 @@ struct SettingsViewItem3: View {
         .padding(.horizontal)
         .alert("You are about to Log out", isPresented: $viewModel.showLogoutAlert) {
             Button("Log Out", role: .destructive) {
-                authViewModel.logout()
+                viewModel.logout()
             }
             Button("Cancel", role: .cancel) {
                 
             }
         }
         .sheet(isPresented: $viewModel.showDeleteUserAlert , content: {
-            DeleteUserSheet(authViewModel: authViewModel)
+            DeleteUserSheet(authViewModel: viewModel)
                 .presentationDetents([.height(200)])
         })
     }
 }
 
 #Preview {
-    SettingsViewItem3(viewModel: SettingsViewModel(), authViewModel: AuthViewModel())
+    SettingsViewItem3(viewModel: AuthViewModel())
 }

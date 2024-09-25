@@ -20,33 +20,36 @@ struct SettingsVIew: View {
             }
             .frame(height: 32)
             
-            SettingsViewItem(viewModel: viewModel)
+            SettingsViewItem(viewModel: authViewModel)
                 .padding(.bottom, 48)
             
             SettingsViewItem2(viewModel: viewModel)
                 .padding(.bottom, 48)
             
-            SettingsViewItem3(viewModel: viewModel, authViewModel: authViewModel)
+            SettingsViewItem3(viewModel: authViewModel)
                 .padding(.bottom, 48)
         }
         .background(Color(hex: "A4D8F5"))
-        .alert(isPresented: $viewModel.showResetPasswordAlert){
+        .alert(isPresented: $authViewModel.showResetPasswordAlert){
             Alert(title: Text("Reset Password"), message: Text("We send you an Email to reset your Password."), dismissButton: .default(Text("Ok")))
         }
-        .sheet(isPresented: $viewModel.showChangeEmailSheet, content: {
+        .sheet(isPresented: $authViewModel.showChangeEmailSheet, content: {
             List{
-                TextField("New Email", text: $viewModel.newEmail)
-                SecureField("Password", text: $viewModel.password)
+                TextField("New Email", text: $authViewModel.email)
+                SecureField("Password", text: $authViewModel.password)
                 Button{
                     
-                    viewModel.changeEmail()
+                    authViewModel.changeEmail()
                     
-                    viewModel.showChangeEmailSheet = false
+                    authViewModel.showChangeEmailSheet = false
                     
                 } label: {
                     Text("Change Email")
                 }
                 .buttonStyle(.borderedProminent)
+            }
+            .onDisappear{
+                authViewModel.resetTextFields()
             }
         })
     }

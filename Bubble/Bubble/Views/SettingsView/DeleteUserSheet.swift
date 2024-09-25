@@ -18,18 +18,21 @@ struct DeleteUserSheet: View {
                 .padding()
             
             Text("Verify Password before deleting Account")
-            SecureField("Password", text: $authViewModel.deletePassword)
+            SecureField("Password", text: $authViewModel.password)
                 .textFieldStyle(.roundedBorder)
             
             Button("Delete", role: .destructive){
                 authViewModel.deleteUser()
-                authViewModel.logout()
+                authViewModel.showDeleteUserAlert = false
             }
             .buttonStyle(.borderedProminent)
             .padding()
-            .disabled(authViewModel.deletePassword.isEmpty)
+            .disabled(authViewModel.password.isEmpty)
         }
         .padding()
+        .onDisappear{
+            authViewModel.resetTextFields()
+        }
     }
 }
 

@@ -39,14 +39,6 @@ class SettingsViewModel: ObservableObject {
     private let authClient = AuthClient.shared
     private let firestoreClient = FirestoreClient.shared
     
-    @Published var showResetPasswordAlert = false
-    
-    @Published var showLogoutAlert = false
-    @Published var showDeleteUserAlert = false
-    
-    @Published var password = ""
-    @Published var newEmail = ""
-    @Published var showChangeEmailSheet = false
     
     @Published var quickAddAmount: QuickAddAmount = .ten
     @Published var currency: AppCurrency = .euro
@@ -55,19 +47,7 @@ class SettingsViewModel: ObservableObject {
     
     
     init(){
-       
         getBubbleUser()
-    }
-    
-    func sendResetPasswordEmail() {
-        authClient.sendResetPasswordMail()
-    }
-    
-    
-    func changeEmail(){
-        
-        authClient.changeEmail(password: password, newEmail: newEmail)
-        
     }
     
     

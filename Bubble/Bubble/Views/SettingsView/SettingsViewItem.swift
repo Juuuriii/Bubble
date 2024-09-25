@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsViewItem: View {
     
-    @ObservedObject var viewModel: SettingsViewModel
+    @ObservedObject var viewModel: AuthViewModel
     
     @State private var size: CGSize = .zero
     
@@ -43,7 +43,6 @@ struct SettingsViewItem: View {
                                 )
                                 Spacer()
                             }
-                            
                             .offset(y: -size.height*0.5)
                             
                             VStack(spacing: 16) {
@@ -92,5 +91,5 @@ struct SettingsViewItem: View {
 }
 
 #Preview {
-    SettingsViewItem(viewModel: SettingsViewModel())
+    SettingsViewItem(viewModel: AuthViewModel())
 }
