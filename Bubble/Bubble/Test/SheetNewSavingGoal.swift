@@ -10,6 +10,9 @@ import SwiftUI
 
 
 struct SheetNewSavingGoal: View {
+    
+    @State var date = Date.now
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
@@ -72,14 +75,9 @@ struct SheetNewSavingGoal: View {
                             VStack(alignment: .leading){
                                 Text("Deadline")
                                     .foregroundStyle(BubbleColor.white)
-                                DatePicker("", selection: .constant(Date.now), displayedComponents: .date))
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 12)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .foregroundStyle(BubbleColor.white)
-                                            
-                                    }
+                                DatePicker("", selection: $date)
+                                    
+                                    
                             }
                         }
                         Spacer()
