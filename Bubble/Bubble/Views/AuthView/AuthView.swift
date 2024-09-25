@@ -89,7 +89,7 @@ struct AuthView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(hex: "A4D8F5"))
+            .background(BubbleColors.lightBlue)
             .fullScreenCover(isPresented: $viewModel.showMainView, content: {
                 MainView(authViewModel: viewModel)
             })
