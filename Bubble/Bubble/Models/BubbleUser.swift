@@ -15,4 +15,8 @@ struct BubbleUser: Codable {
     var balance: Double = 0.0
     var currency: String
     var quickAddAmount: Double
+    var savingGoalsAmount = 0
+    var finishedSavingGoals = 0
+    var bubbleCoin = 0
+    
 }

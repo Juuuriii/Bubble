@@ -60,8 +60,11 @@ class WalletViewModel: ObservableObject {
     
     
     
-    init() {
+    init(bubbleUser: BubbleUser?) {
+        
+        self.bubbleUser = bubbleUser
         self.uid = authClient.checkAuth()?.uid
+        
     }
     
     
