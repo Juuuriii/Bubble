@@ -44,38 +44,35 @@ class SettingsViewModel: ObservableObject {
     @Published var currency: AppCurrency = .euro
     
     @Published var bubbleUser: BubbleUser?
-    
+    private var uid: String?
     
     init(){
-        getBubbleUser()
-    }
-    
-    
-    
-    func getBubbleUser(){
-        
-        guard let uid = authClient.checkAuth()?.uid else {
-            return
-        }
-        
-        Task {
-           await bubbleUser = firestoreClient.getUser(uid: uid)
-            
-            guard let user = bubbleUser else {
-                return
-            }
-            
-            if let userCurrency = AppCurrency(rawValue: user.currency) {
-                currency = userCurrency
-            }
-            
-            if let userQuickAddAmount = QuickAddAmount(rawValue: user.quickAddAmount) {
-                quickAddAmount = userQuickAddAmount
-            }
-            
-            
+        self.uid = authClient.checkAuth()?.uid
+        firestoreClient.addUserListener(uid: uid) { user in
+            self.bubbleUser = user
+            self.quickAddAmount = self.setQuickAddAmount(quickAddAmount: user.quickAddAmount)
+            self.currency = self.setCurrency(currency: user.currency)
         }
     }
+    
+    
+    private func setQuickAddAmount(quickAddAmount :Double) -> QuickAddAmount {
+        
+        if let quickAddAmount = QuickAddAmount(rawValue: quickAddAmount) {
+            return quickAddAmount
+        } else {
+            return QuickAddAmount.ten
+        }
+    }
+    
+    private func setCurrency(currency: String) -> AppCurrency {
+        if let currency = AppCurrency(rawValue: currency) {
+            return currency
+        } else {
+            return AppCurrency.euro
+        }
+    }
+    
     
     func updateCurrency() {
         Task{

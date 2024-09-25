@@ -103,7 +103,9 @@ struct NewSavingGoalSheet: View {
                     }
                 }
             }
+           
         }
+        
     }
 }
 

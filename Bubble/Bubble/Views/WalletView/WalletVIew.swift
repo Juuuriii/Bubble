@@ -10,7 +10,7 @@ import SwiftUI
 struct WalletVIew: View {
     
     @StateObject var viewModel = WalletViewModel()
-    
+        
     var body: some View {
         NavigationStack {
             VStack{
@@ -64,12 +64,10 @@ struct WalletVIew: View {
                 }
             }
             .onAppear{
-                viewModel.addBubbleUserSnapshotListener()
                 viewModel.addBalanceCHangeListener()
                 viewModel.addSavingGoalsListener()
             }
             .onDisappear{
-                viewModel.removeBubbleUserListener()
                 viewModel.removeBalanceChangeListener()
                 viewModel.removeSavinGoalListener()
             }

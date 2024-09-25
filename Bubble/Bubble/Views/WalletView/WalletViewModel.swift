@@ -48,51 +48,29 @@ class WalletViewModel: ObservableObject {
     @Published var showAddBalanceChangeSheet = false
     
     
-    
-    @Published var bubbleUser: BubbleUser?
     @Published var currency: String?
     @Published var quickAddAmount: Double?
-    private var bubbleUserListener: ListenerRegistration?
+    
     private var balanceChagesListener: ListenerRegistration?
     private var savingGoalsListener: ListenerRegistration?
     
-    var uid: String?
     
+    @Published var bubbleUser: BubbleUser?
+    private var uid: String?
     
-    
-    init(bubbleUser: BubbleUser?) {
-        
-        self.bubbleUser = bubbleUser
+    init() {
         self.uid = authClient.checkAuth()?.uid
-        
+        firestoreClient.addUserListener(uid: uid) { user in
+            self.bubbleUser = user
+            self.currency = user.currency
+            self.quickAddAmount = user.quickAddAmount
+        }
     }
     
     
     //Firestore Snapshot Listner
     
-    func addBubbleUserSnapshotListener() {
-        
-        guard let uid = uid else {
-            return
-        }
-        
-        bubbleUserListener = firestoreClient.store.collection("users")
-            .document(uid)
-            .addSnapshotListener{ querySnapshot, error in
-                
-                guard let document = querySnapshot else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-                guard document.data() != nil else {
-                    print("Document data was empty.")
-                    return
-                }
-                self.bubbleUser = try? document.data(as: BubbleUser.self)
-                self.fetchCurrency()
-                self.fetchQuickAddAmount()
-            }
-    }
+    
     
     private func fetchCurrency() {
         guard let user = bubbleUser else {
@@ -116,12 +94,7 @@ class WalletViewModel: ObservableObject {
         print("Quick Add Amount = \(quickAddAmount ?? -1.0)")
     }
     
-    func removeBubbleUserListener() {
-        guard (bubbleUserListener != nil) else {
-            return
-        }
-        bubbleUserListener?.remove()
-    }
+    
     
     
     
@@ -130,11 +103,11 @@ class WalletViewModel: ObservableObject {
         guard let uid = uid else {
             return
         }
-        
+
         firestoreClient.store.collectionGroup("history")
             .whereField("uid", isEqualTo: uid)
             .addSnapshotListener{ querySnapshot, error in
-                print("-history listener triggert-")
+                
                 if let error = error {
                     print(error)
                     return
@@ -146,7 +119,7 @@ class WalletViewModel: ObservableObject {
                             
                             if !self.history.contains(where: {$0.id == data.id}) {
                                 self.history.insert(data, at: 0)
-                                print("balance change added!")
+                               
                             }
                         }
                     case .modified:
@@ -156,7 +129,6 @@ class WalletViewModel: ObservableObject {
                             withAnimation{
                                 self.history.removeAll{ $0.id == data.id }
                             }
-                            print("balance change removed!")
                         }
                     }
                     self.history = self.history.sorted{$0.date > $1.date }
@@ -175,7 +147,7 @@ class WalletViewModel: ObservableObject {
         guard let uid = uid else {
             return
         }
-        
+       
         savingGoalsListener = firestoreClient.store.collection("users")
             .document(uid)
             .collection("wallet")

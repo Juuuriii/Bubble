@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @ObservedObject var authViewModel: AuthViewModel
-    @StateObject var homeViewModel = HomeViewModel()
+    
     
     var body: some View {
         TabView {

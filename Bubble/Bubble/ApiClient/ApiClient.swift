@@ -29,11 +29,6 @@ class ApiClient {
 
         let (data, _) = try await URLSession.shared.data(for: request)
         
-        if let jsonString = String(data: data, encoding: .utf8) {
-            print(jsonString)
-        }
-        
-        
         return try JSONDecoder().decode([Quote].self, from: data)
     }
     

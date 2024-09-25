@@ -13,6 +13,28 @@ class FirestoreClient {
     static let shared = FirestoreClient()
     let store = Firestore.firestore()
     
+    private var userListener: ListenerRegistration?
+   
+    func addUserListener(uid: String?, update: @escaping (BubbleUser) -> Void) {
+        
+        guard let uid = uid else {
+            return
+        }
+        
+        userListener = store.collection("users")
+            .document(uid)
+            .addSnapshotListener { snapShot, error in
+                if let error = error {
+                    print("Listener Error")
+                          return
+                }
+                
+                if let user = try? snapShot?.data(as: BubbleUser.self) {
+                    update(user)
+                }
+            }
+    }
+    
     func createUser(uid: String, email: String, username: String) throws {
         let user = BubbleUser(id: uid, email: email, username: username, currency: Locale.current.currencySymbol ?? "€", quickAddAmount: QuickAddAmount.ten.rawValue)
         

@@ -20,36 +20,20 @@ class HomeViewModel: ObservableObject {
     @Published var savingGoalsAmount = 0
     @Published var finishedSavingGoals = 0
     
-    @Published var bubbleUser: BubbleUser?
-    private var bubbleUserListener: ListenerRegistration?
+    @Published var user: BubbleUser?
     private var uid: String?
-
+    
     init(){
         fetchQuote()
         self.uid = authClient.checkAuth()?.uid
+        firestoreClient.addUserListener(uid: uid ?? "") { user in
+            self.user = user
+            self.savingGoalsAmount = user.savingGoalsAmount
+            self.finishedSavingGoals = user.finishedSavingGoals
+        }
     }
     
-    func addBubbleUserSnapshotListener() {
-        
-        guard let uid = uid else {
-            return
-        }
-        
-        bubbleUserListener = firestoreClient.store.collection("users")
-            .document(uid)
-            .addSnapshotListener{ querySnapshot, error in
-                
-                guard let document = querySnapshot else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-                guard document.data() != nil else {
-                    print("Document data was empty.")
-                    return
-                }
-                self.bubbleUser = try? document.data(as: BubbleUser.self)
-            }
-    }
+    
     
     func fetchQuote(){
         Task{
@@ -60,5 +44,4 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
-    
 }
