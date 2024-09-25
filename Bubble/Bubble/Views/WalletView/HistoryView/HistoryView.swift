@@ -75,8 +75,10 @@ struct HistoryView: View {
             }
         }
         .sheet(isPresented: $viewModel.showAddBalanceChangeSheet, content: {
-            AddBalanceChangeSheet(viewModel: viewModel)
+            NewCashFlowSheet(viewModel: viewModel)
+                .presentationDetents([.height(600), .large])
+
         })
-    }
+            }
 }
 

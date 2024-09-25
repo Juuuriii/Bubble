@@ -10,6 +10,7 @@
 		3A113E392CA4A08B006066EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A113E382CA4A08B006066EF /* GoogleService-Info.plist */; };
 		3A113E3B2CA4A0AB006066EF /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A113E3A2CA4A0AB006066EF /* ApiKey.swift */; };
 		3A113E3D2CA4A1F1006066EF /* BubbleColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A113E3C2CA4A1F1006066EF /* BubbleColors.swift */; };
+		3A113E3F2CA4A889006066EF /* NewCashFlowSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A113E3E2CA4A889006066EF /* NewCashFlowSheet.swift */; };
 		3A21B8122C9C69FD00EA4081 /* SettingsViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21B8112C9C69FD00EA4081 /* SettingsViewItem.swift */; };
 		3A21B8142C9C6FE400EA4081 /* SettingsViewItem2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21B8132C9C6FE400EA4081 /* SettingsViewItem2.swift */; };
 		3A21B8162C9C732700EA4081 /* SettingsViewItem3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21B8152C9C732700EA4081 /* SettingsViewItem3.swift */; };
@@ -74,6 +75,7 @@
 		3A113E382CA4A08B006066EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3A113E3A2CA4A0AB006066EF /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		3A113E3C2CA4A1F1006066EF /* BubbleColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleColors.swift; sourceTree = "<group>"; };
+		3A113E3E2CA4A889006066EF /* NewCashFlowSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCashFlowSheet.swift; sourceTree = "<group>"; };
 		3A21B8112C9C69FD00EA4081 /* SettingsViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewItem.swift; sourceTree = "<group>"; };
 		3A21B8132C9C6FE400EA4081 /* SettingsViewItem2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewItem2.swift; sourceTree = "<group>"; };
 		3A21B8152C9C732700EA4081 /* SettingsViewItem3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewItem3.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				3A55DA882C9808A80009D514 /* HistoryView.swift */,
 				3A55DA952C99BF9C0009D514 /* AddBalanceChangeSheet.swift */,
+				3A113E3E2CA4A889006066EF /* NewCashFlowSheet.swift */,
 			);
 			path = HistoryView;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				3A55DA6D2C8842750009D514 /* MainView.swift in Sources */,
 				3A55DA782C92F2090009D514 /* SavingGoalListItem.swift in Sources */,
 				3A55DA8F2C984A1D0009D514 /* WalletVIew.swift in Sources */,
+				3A113E3F2CA4A889006066EF /* NewCashFlowSheet.swift in Sources */,
 				3A55DA7A2C93F59E0009D514 /* AddMoneySheet.swift in Sources */,
 				3A55DA7F2C9407A10009D514 /* Quote.swift in Sources */,
 				3A55DA962C99BF9C0009D514 /* AddBalanceChangeSheet.swift in Sources */,
