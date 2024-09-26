@@ -69,7 +69,6 @@ struct SettingsViewItem: View {
                                 Capsule()
                                     .foregroundStyle(BubbleColors.darkBlue)
                             }
-                        
                     }
                 }
                 .offset(y: -size.height*0.2)
@@ -87,9 +86,6 @@ struct SettingsViewItem: View {
                
                 }
             }
-                
-            
-            
         }
         .padding(.horizontal)
     }

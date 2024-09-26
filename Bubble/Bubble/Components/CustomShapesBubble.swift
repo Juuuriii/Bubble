@@ -28,7 +28,6 @@ struct AchievementBackgroundShape: Shape {
             path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
         }
     }
-    
 }
 
 struct SettingsBackground: Shape {

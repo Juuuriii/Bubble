@@ -10,6 +10,7 @@ import SwiftUI
 struct WalletVIew: View {
     
     @StateObject var viewModel = WalletViewModel()
+    @Namespace var key
         
     var body: some View {
         NavigationStack {
