@@ -15,7 +15,7 @@ struct SavingGoalsView: View {
         VStack{
             ScrollView {
                 
-                ForEach($viewModel.savingGoals){ savingGoal in
+                ForEach($viewModel.savingGoals.filter{$0.finished.wrappedValue == false}){ savingGoal in
                     
                     SavingGoalListItem(savingGoal: savingGoal, viewModel: viewModel)
                     .padding(.bottom, 8)

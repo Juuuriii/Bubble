@@ -84,14 +84,15 @@ class FirestoreClient {
         
     }
     
-    func updateAmountSaved(uid: String ,id: String, newAmount: Double) async throws {
+    func updateAmountSaved(uid: String ,id: String, newAmount: Double, isFinished: Bool) async throws {
         
         try await store.collection("users")
             .document(uid)
             .collection("wallet")
             .document(id)
             .updateData([
-                "savedAmount" : newAmount
+                "savedAmount" : newAmount,
+                "finished" : isFinished
             ])
         
     }
@@ -197,11 +198,14 @@ class FirestoreClient {
             ])
     }
     
-    func updateAmountOfFinishedGoals(uid: String, newAmount: Int) async throws {
+   func updateAmountOfFinishedGoals(uid: String, newAmount: Int) async throws {
         try await store.collection("users")
             .document(uid)
             .updateData([
                 "finishedSavingGoals" : newAmount
             ])
     }
+    
+    
+    
 }

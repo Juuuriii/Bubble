@@ -67,13 +67,14 @@ class AuthViewModel: ObservableObject {
                     
                     if let newEmail = authClient.checkAuth()?.email {
                         
-                      try await firestoreClient.updateEmail(uid: user.uid, newEmail: newEmail)
+                        try await firestoreClient.updateEmail(uid: user.uid, newEmail: newEmail)
                     }
                 }
                 showMainView = true
                 resetTextFields()
             } catch {
-                handleError(error as NSError)            }
+                handleError(error as NSError) 
+            }
         }
     }
     
@@ -88,13 +89,20 @@ class AuthViewModel: ObservableObject {
     }
     
     func deleteUser() {
-       showMainView = authClient.deleteUser(password: password)
+        Task {
+            do {
+                try await authClient.deleteUser(password: password)
+                logout()
+            } catch {
+                handleError(error as NSError)
+            }
+        }
     }
     
     func changeEmail() {
         Task {
             do {
-               try await authClient.changeEmail(password: password, newEmail: email)
+                try await authClient.changeEmail(password: password, newEmail: email)
                 logout()
             } catch {
                 handleError(error as NSError)
@@ -113,7 +121,7 @@ class AuthViewModel: ObservableObject {
     }
     
     private func handleError(_ error: NSError) {
-        
+        print(error.localizedDescription)
         let errorCode = AuthErrorCode(rawValue: error.code)
         
         switch errorCode {
@@ -129,6 +137,9 @@ class AuthViewModel: ObservableObject {
             errorMessage = "Network Issue"
         case .weakPassword:
             errorMessage = "Password too weak"
+        case .rejectedCredential:
+            errorMessage = "Invalid Credentials"
+        
         default:
             errorMessage = "Unkown Error"
         }

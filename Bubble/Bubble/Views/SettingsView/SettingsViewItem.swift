@@ -81,7 +81,12 @@ struct SettingsViewItem: View {
                     .foregroundStyle(BubbleColors.midBlue)
                 
             }
+            .alert(viewModel.errorMessage,
+                   isPresented: $viewModel.showErrorAlert) {
+                Button("Dismiss", role: .cancel) {
                
+                }
+            }
                 
             
             

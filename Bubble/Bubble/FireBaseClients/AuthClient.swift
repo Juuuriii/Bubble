@@ -38,27 +38,21 @@ class AuthClient {
         try auth.signOut()
     }
     
-    func deleteUser(password: String) -> Bool {
+    
+    func deleteUser(password: String) async throws {
         
-        var userAlive = true
-        
-        if let user = auth.currentUser {
-            
-            if let email = user.email {
-                
-                let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-                
-                user.reauthenticate(with: credential) { result, error in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        result?.user.delete()
-                        userAlive = false
-                    }
-                }
-            }
+        guard let user = auth.currentUser else {
+            return
         }
-        return userAlive
+        guard let email = auth.currentUser?.email else {
+            return
+        }
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+        let result = try await user.reauthenticate(with: credential)
+        
+        try await result.user.delete()
+        
     }
     
     func sendResetPasswordMail(){
@@ -69,31 +63,7 @@ class AuthClient {
             
         }
     }
-    /*
-    func changeEmail(password: String, newEmail: String) {
-        
-        guard let user = auth.currentUser else {
-            return
-        }
-        
-        guard let email = auth.currentUser?.email else {
-            return
-        }
-        
-        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-        
-       
-        
-        user.reauthenticate(with: credential) { authResult, error in
-            
-            if let error = error {
-                print(error as Any)
-            } else {
-                authResult?.user.sendEmailVerification(beforeUpdatingEmail: newEmail)
-            }
-        }
-    }
-    */
+
     
     func changeEmail(password: String, newEmail: String) async throws {
         

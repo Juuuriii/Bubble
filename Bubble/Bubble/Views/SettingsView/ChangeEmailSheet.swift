@@ -69,6 +69,10 @@ struct ChangeEmailSheet: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(BubbleColors.midBlue)
+        .onDisappear{
+            viewModel.resetTextFields()
+        }
+        
     }
 }
 

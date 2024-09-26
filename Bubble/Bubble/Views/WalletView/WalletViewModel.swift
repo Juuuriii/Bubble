@@ -37,6 +37,7 @@ class WalletViewModel: ObservableObject {
     @Published var savingGoalAmountSaved = "0"
     @Published var selectedSavingGoal: SavingGoal?
     @Published var savingGoals = [SavingGoal]()
+    @Published var finishedGoals = [SavingGoal]()
     
     
     @Published var history = [BalanceChange]()
@@ -46,7 +47,7 @@ class WalletViewModel: ObservableObject {
     @Published var balanceChangeCurrentBalance = 0.0
     @Published var balanceChangeDate = Date.now
     @Published var showAddBalanceChangeSheet = false
-
+    
     
     @Published var currency: String?
     @Published var quickAddAmount: Double?
@@ -103,7 +104,7 @@ class WalletViewModel: ObservableObject {
         guard let uid = uid else {
             return
         }
-
+        
         firestoreClient.store.collectionGroup("history")
             .whereField("uid", isEqualTo: uid)
             .addSnapshotListener{ querySnapshot, error in
@@ -119,7 +120,7 @@ class WalletViewModel: ObservableObject {
                             
                             if !self.history.contains(where: {$0.id == data.id}) {
                                 self.history.insert(data, at: 0)
-                               
+                                
                             }
                         }
                     case .modified:
@@ -147,7 +148,7 @@ class WalletViewModel: ObservableObject {
         guard let uid = uid else {
             return
         }
-       
+        
         savingGoalsListener = firestoreClient.store.collection("users")
             .document(uid)
             .collection("wallet")
@@ -162,7 +163,11 @@ class WalletViewModel: ObservableObject {
                     switch change.type {
                     case .added:
                         if let data = try? change.document.data(as: SavingGoal.self) {
-                            self.savingGoals.append(data)
+                            if data.finished {
+                                self.finishedGoals.append(data)
+                            } else {
+                                self.savingGoals.append(data)
+                            }
                         }
                     case .modified:
                         if let data = try? change.document.data(as: SavingGoal.self) {
@@ -170,6 +175,14 @@ class WalletViewModel: ObservableObject {
                                 withAnimation{
                                     self.savingGoals[index].savedAmount = data.savedAmount
                                 }
+                                
+                                if data.finished {
+                                    withAnimation{
+                                        self.finishedGoals.append(data)
+                                        self.savingGoals.remove(at: index)
+                                    }
+                                }
+                                
                             }
                         }
                     case .removed:
@@ -222,6 +235,7 @@ class WalletViewModel: ObservableObject {
         
         do {
             try firestoreClient.addSavingGoal(savingGoal: savingGoal)
+            adjustSavingGoalCount(adding: true)
         } catch {
             print(error)
         }
@@ -245,7 +259,11 @@ class WalletViewModel: ObservableObject {
         
         Task {
             do {
-                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount)
+                let finished = newAmount == selectedSavingGoal.targetAmount
+                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount, isFinished: finished)
+                if finished {
+                    adjustFinishedGoalsCount()
+                }
             } catch {
                 print(error)
             }
@@ -268,6 +286,8 @@ class WalletViewModel: ObservableObject {
             return
         }
         
+        
+        
         if selectedSavingGoal.savedAmount + quickAddAmount > selectedSavingGoal.targetAmount {
             quickAddAmount = selectedSavingGoal.targetAmount - selectedSavingGoal.savedAmount
         }
@@ -276,7 +296,11 @@ class WalletViewModel: ObservableObject {
         
         Task {
             do {
-                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount)
+                let finished = newAmount == selectedSavingGoal.targetAmount
+                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount, isFinished: finished)
+                if finished {
+                    adjustFinishedGoalsCount()
+                }
             } catch {
                 print(error)
             }
@@ -288,7 +312,7 @@ class WalletViewModel: ObservableObject {
     func _deleteSavingGoal(savingGoal: SavingGoal) {
         
         firestoreClient.deleteSavingGoal(uid: savingGoal.uid, id: savingGoal.id)
-        
+        adjustSavingGoalCount(adding: false)
         addBalanceChange(delete: savingGoal)
     }
     
@@ -301,13 +325,48 @@ class WalletViewModel: ObservableObject {
         showAddMoneySheet.toggle()
     }
     
-   private func resetSavingGoalTextFields() {
+    private func resetSavingGoalTextFields() {
         savingGoalName = ""
         savingGoalType = ""
         savingGoalDeadline = Date.now
         savingGoalAmountSaved = "0"
         savingGoalTargetAmount = ""
     }
+    
+    func adjustSavingGoalCount(adding: Bool) {
+        
+        guard let uid = uid else {
+            return
+        }
+        
+        let newAmount = adding ? (savingGoals.count + 1) : (savingGoals.count - 1)
+        
+        Task{
+            do {
+                try await firestoreClient.updateAmountOfGoals(uid: uid, newAmount: newAmount)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func adjustFinishedGoalsCount() {
+        
+        guard let uid = uid else {
+            return
+        }
+        
+        let newAmount = savingGoals.filter { $0.finished == true }.count + 1
+        
+        Task{
+            do {
+                try await firestoreClient.updateAmountOfFinishedGoals(uid: uid, newAmount: newAmount)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     // Balance Change Functions
     
     
@@ -472,9 +531,11 @@ class WalletViewModel: ObservableObject {
         
     }
     
-   private func resetBalanceChangeTextFields() {
+    private func resetBalanceChangeTextFields() {
         balanceChangeName = ""
         balanceChangeAmount = ""
         balanceChangeDate = Date.now
     }
+    
+    
 }

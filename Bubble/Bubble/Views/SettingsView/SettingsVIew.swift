@@ -33,20 +33,15 @@ struct SettingsVIew: View {
         .alert(isPresented: $authViewModel.showResetPasswordAlert){
             Alert(title: Text("Reset Password"), message: Text("We send you an Email to reset your Password."), dismissButton: .default(Text("Ok")))
         }
+        
         .sheet(isPresented: $authViewModel.showChangeEmailSheet, content: {
            ChangeEmailSheet(viewModel: authViewModel)
                 .presentationDetents([.medium, .large])
         })
-        .alert(authViewModel.errorMessage,
-               isPresented: $authViewModel.showErrorAlert) {
-            Button("Dismiss") {
-                
-            }
-        }
-
     }
 }
 
 #Preview {
     SettingsVIew(authViewModel: AuthViewModel())
 }
+
