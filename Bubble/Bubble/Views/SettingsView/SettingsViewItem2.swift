@@ -18,30 +18,7 @@ struct SettingsViewItem2: View {
     var body: some View {
         VStack{
             VStack{
-                HStack{
-                    VStack{
-                        Text("PREFERENCES")
-                            .foregroundStyle(BubbleColors.darkBlue)
-                            .font(.title2)
-                            .frame(minWidth: 220)
-                        Text("Streamline how to use Bubble")
-                            .foregroundStyle(BubbleColors.darkBlue)
-                            .font(.footnote)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background(
-                        GeometryReader{proxy in
-                            Capsule()
-                                .foregroundStyle(BubbleColors.lightBlue)
-                                .onAppear{
-                                    size = proxy.size
-                                }
-                        }
-                    )
-                    Spacer()
-                }
-                .offset(y: -size.height*0.5)
+                CapsuleHeader(title: "Preferences", description: "Streamline how you use Bubble", offsetPercent: 0.5)
                 
                 VStack(spacing: 16) {
                     HStack {
@@ -73,9 +50,6 @@ struct SettingsViewItem2: View {
                         Capsule()
                             .foregroundStyle(BubbleColors.lightBlue)
                     }
-                    
-                    
-                    
                     HStack {
                         Text("Currency")
                             .frame(minWidth: 150)
@@ -107,7 +81,7 @@ struct SettingsViewItem2: View {
                             .foregroundStyle(BubbleColors.lightBlue)
                     }
                 }
-                .offset(y: -size.height*0.2)
+                .offset(y: -12)
                 .padding(.horizontal)
                 .padding(.bottom, 32)
             }

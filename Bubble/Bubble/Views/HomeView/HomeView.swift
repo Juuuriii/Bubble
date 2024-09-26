@@ -23,35 +23,8 @@ struct HomeView: View {
             }
             .padding(.bottom, 40)
             
-            
-            
             VStack() {
-                HStack{
-                    VStack{
-                        Text("ACHIEVEMENTS")
-                            .foregroundStyle(BubbleColors.darkBlue)
-                            .font(.title2)
-                            .frame(minWidth: 220)
-                        Text("Check out your Progress")
-                            .foregroundStyle(BubbleColors.darkBlue)
-                            .font(.footnote)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background{
-                        GeometryReader {proxy in
-                            Capsule()
-                                .foregroundStyle(BubbleColors.lightBlue)
-                                .onAppear{
-                                    sizeHeader = proxy.size
-                                }
-                        }
-                    }
-                    Spacer()
-                }
-                .padding(.top, -sizeHeader.height*0.5)
-                .padding(.bottom)
-                
+                CapsuleHeader(title: "Achievements", description: "Check out your Progress", offsetPercent: 0.0)
                 HStack{
                     ZStack{
                         Image("cupFinished")

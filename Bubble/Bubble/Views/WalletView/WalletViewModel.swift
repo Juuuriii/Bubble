@@ -402,9 +402,7 @@ class WalletViewModel: ObservableObject {
         guard let user = bubbleUser else {
             return
         }
-        guard var quickAddAmount = quickAddAmount else {
-            return
-        }
+        
         let name = savingGoal.name
         let type = BalanceChangeType.expense.rawValue
         let balanceChange = BalanceChange(uid: user.id, name: name, amount: amount, type: type , date: Date.now, sgID: savingGoal.id)

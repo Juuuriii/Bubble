@@ -16,30 +16,7 @@ struct SettingsViewItem: View {
     var body: some View {
         VStack{
             VStack{
-                HStack{
-                    VStack{
-                        Text("ACCOUNT SETTINGS")
-                            .foregroundStyle(BubbleColors.darkBlue)
-                            .font(.title2)
-                            .frame(minWidth: 220)
-                        Text("Your Personal Details")
-                            .foregroundStyle(BubbleColors.darkBlue)
-                            .font(.footnote)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background(
-                        GeometryReader{proxy in
-                            Capsule()
-                                .foregroundStyle(BubbleColors.lightBlue)
-                                .onAppear{
-                                    size = proxy.size
-                                }
-                        }
-                    )
-                    Spacer()
-                }
-                .offset(y: -size.height*0.5)
+                CapsuleHeader(title: "Account settings", description: "Your Personal Details", offsetPercent: 0.5)
                 
                 VStack(spacing: 16) {
                     Button{
@@ -71,7 +48,7 @@ struct SettingsViewItem: View {
                             }
                     }
                 }
-                .offset(y: -size.height*0.2)
+                .offset(y: -12)
                 .padding(.horizontal)
             }
             .padding(.bottom, 32)
@@ -83,7 +60,7 @@ struct SettingsViewItem: View {
             .alert(viewModel.errorMessage,
                    isPresented: $viewModel.showErrorAlert) {
                 Button("Dismiss", role: .cancel) {
-               
+                    
                 }
             }
         }

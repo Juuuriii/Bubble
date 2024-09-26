@@ -14,28 +14,7 @@ struct SettingsViewItem3: View {
     var body: some View {
         VStack{
             VStack{
-                HStack{
-                    VStack{
-                        Text("LOG OUT & DELETE")
-                            .font(.title2)
-                            .frame(minWidth: 220)
-                        Text("I hope I'll see you soon again :)")
-                            .font(.footnote)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background(
-                        GeometryReader{proxy in
-                            Capsule()
-                                .foregroundStyle(BubbleColors.lightBlue)
-                                .onAppear{
-                                    size = proxy.size
-                                }
-                        }
-                    )
-                    Spacer()
-                }
-                .offset(y: -size.height*0.5)
+                CapsuleHeader(title: "Log out", description: "Log out or Delete your Account", offsetPercent: 0.5)
                 
                 VStack(spacing: 16) {
                     Button{
@@ -64,7 +43,7 @@ struct SettingsViewItem3: View {
                             }
                     }
                 }
-                .offset(y: -size.height*0.2)
+                .offset(y: -12)
                 .padding(.horizontal)
                 .padding(.bottom, 32)
             }
