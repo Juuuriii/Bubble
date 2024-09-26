@@ -20,6 +20,8 @@ class HomeViewModel: ObservableObject {
     @Published var savingGoalsAmount = 0
     @Published var finishedSavingGoals = 0
     
+    @Published var showAchievementView = false
+    
     @Published var user: BubbleUser?
     private var uid: String?
     

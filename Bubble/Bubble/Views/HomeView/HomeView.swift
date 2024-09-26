@@ -69,8 +69,14 @@ struct HomeView: View {
                         }
                         .padding(.trailing, sizeAchievements.width*0.14)
                     }
+                    
+                    
+                    
         
                     Button {
+                        withAnimation {
+                            viewModel.showAchievementView = true
+                        }
                         
                     } label: {
                         HStack{
@@ -99,6 +105,12 @@ struct HomeView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(BubbleColors.bgBlue)
+            .overlay {
+                if viewModel.showAchievementView {
+                    AchievementView()
+                        .toolbar(.hidden, for: .tabBar)
+                }
+            }
             
         }
     }
