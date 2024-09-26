@@ -166,15 +166,14 @@ class WalletViewModel: ObservableObject {
                         if let data = try? change.document.data(as: SavingGoal.self) {
                             if let index = self.savingGoals.firstIndex(where: { $0.id == data.id }){
                                 
-                                withAnimation(.linear(duration: 1)){
+                                withAnimation(.linear(duration: 1)) {
                                     self.savingGoals[index].savedAmount = data.savedAmount
                                 } completion: {
                                     if data.finished {
-                                        withAnimation{
-                                            self.finishedGoals.append(data)
-                                            self.savingGoals.remove(at: index)
-                                            self.adjustSavingGoalCount()
-                                        }
+                                        self.finishedGoals.append(data)
+                                        self.savingGoals.remove(at: index)
+                                        self.adjustSavingGoalCount()
+                                        
                                     }
                                 }
                             }
@@ -185,9 +184,9 @@ class WalletViewModel: ObservableObject {
                             if let index = self.savingGoals.firstIndex(where: {$0.id == data.id}) {
                                 withAnimation{
                                     self.savingGoals.remove(at: index)
-                                    self.adjustSavingGoalCount()
                                 }
                             }
+                            self.adjustSavingGoalCount()
                         }
                     }
                 }
@@ -249,7 +248,11 @@ class WalletViewModel: ObservableObject {
         Task {
             do {
                 let finished = newAmount == selectedSavingGoal.targetAmount
-                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount, isFinished: finished)
+                var date = selectedSavingGoal.targetDate
+                if finished {
+                    date = Date.now
+                }
+                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount, isFinished: finished, dateFinished: date)
                 
             } catch {
                 print(error)
@@ -276,7 +279,11 @@ class WalletViewModel: ObservableObject {
         Task {
             do {
                 let finished = newAmount == selectedSavingGoal.targetAmount
-                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount, isFinished: finished)
+                var date = selectedSavingGoal.targetDate
+                if finished {
+                    date = Date.now
+                }
+                try await firestoreClient.updateAmountSaved(uid: user.id, id: selectedSavingGoal.id, newAmount: newAmount, isFinished: finished, dateFinished: date)
             } catch {
                 print(error)
             }
@@ -352,7 +359,7 @@ class WalletViewModel: ObservableObject {
     }
     
     func aaddBalanceChange(){
-
+        
         guard let user = bubbleUser else {
             return
         }

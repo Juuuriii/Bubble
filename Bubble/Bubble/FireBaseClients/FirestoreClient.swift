@@ -88,7 +88,7 @@ class FirestoreClient {
         
     }
     
-    func updateAmountSaved(uid: String ,id: String, newAmount: Double, isFinished: Bool) async throws {
+    func updateAmountSaved(uid: String ,id: String, newAmount: Double, isFinished: Bool, dateFinished: Date) async throws {
         
         try await store.collection("users")
             .document(uid)
@@ -96,7 +96,8 @@ class FirestoreClient {
             .document(id)
             .updateData([
                 "savedAmount" : newAmount,
-                "finished" : isFinished
+                "finished" : isFinished,
+                "targetDate" : dateFinished
             ])
         
     }
