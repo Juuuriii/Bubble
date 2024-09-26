@@ -19,9 +19,11 @@ struct ApiQuoteCard: View {
                 
                 VStack(alignment: .trailing) {
                     Text("\"\(quote)\"")
+                        .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity)
                         .foregroundStyle(BubbleColors.white)
                         .padding(.bottom)
+                        .padding(.horizontal)
                     
                     Text("- " + author)
                         .padding(.trailing, 32)
