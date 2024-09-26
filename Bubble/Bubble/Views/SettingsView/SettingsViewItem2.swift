@@ -15,7 +15,6 @@ struct SettingsViewItem2: View {
     
     @State private var size: CGSize = .zero
     
-    
     var body: some View {
         VStack{
                 Image("settingsRect2")
@@ -26,11 +25,11 @@ struct SettingsViewItem2: View {
                             HStack{
                                 VStack{
                                     Text("PREFERENCES")
-                                        .foregroundStyle(Color(hex: "14135B"))
+                                        .foregroundStyle(BubbleColors.darkBlue)
                                         .font(.title2)
                                         .frame(minWidth: 220)
                                     Text("Streamline how to use Bubble")
-                                        .foregroundStyle(Color(hex: "14135B"))
+                                        .foregroundStyle(BubbleColors.darkBlue)
                                         .font(.footnote)
                                 }
                                 .padding(.horizontal)
@@ -38,7 +37,7 @@ struct SettingsViewItem2: View {
                                 .background(
                                     GeometryReader{proxy in
                                         Capsule()
-                                            .foregroundStyle(Color(hex: "84C6EB"))
+                                            .foregroundStyle(BubbleColors.lightBlue)
                                             .onAppear{
                                                 size = proxy.size
                                             }
@@ -61,7 +60,7 @@ struct SettingsViewItem2: View {
                                                 .tag(amount)
                                         }
                                     }
-                                    .tint(Color(hex: "14135B"))
+                                    .tint(BubbleColors.darkBlue)
                                     .frame(minWidth: 100)
                                     .background{
                                         Capsule()
@@ -76,7 +75,7 @@ struct SettingsViewItem2: View {
                                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                                 .background{
                                     Capsule()
-                                        .foregroundStyle(Color(hex: "84C6EB"))
+                                        .foregroundStyle(BubbleColors.lightBlue)
                                 }
                                 
                                 
@@ -93,7 +92,7 @@ struct SettingsViewItem2: View {
                                                 .tag(currency)
                                         }
                                     }
-                                    .tint(Color(hex: "14135B"))
+                                    .tint(BubbleColors.darkBlue)
                                     .frame(minWidth: 100)
                                     .background{
                                         Capsule()
@@ -109,7 +108,7 @@ struct SettingsViewItem2: View {
                                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                                 .background{
                                     Capsule()
-                                        .foregroundStyle(Color(hex: "84C6EB"))
+                                        .foregroundStyle(BubbleColors.lightBlue)
                                 }
                             }
                             .offset(y: -size.height*0.2)

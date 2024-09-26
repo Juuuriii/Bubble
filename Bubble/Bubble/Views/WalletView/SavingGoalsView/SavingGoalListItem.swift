@@ -37,7 +37,7 @@ struct SavingGoalListItem: View {
                         ProgressView(value: savingGoal.savedAmount, total: savingGoal.targetAmount)
                             .background{
                                 Capsule()
-                                    .foregroundStyle(Color(hex:"49B0EA"))
+                                    .foregroundStyle(BubbleColors.midBlue)
                             }
                         HStack{
                             Spacer()
@@ -84,7 +84,7 @@ struct SavingGoalListItem: View {
                         Spacer()
                         Text(savingGoal.type)
                             .font(.system(size: 12))
-                            .foregroundStyle(Color(hex: "14135B"))
+                            .foregroundStyle(BubbleColors.darkBlue)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 4)
                             
@@ -92,7 +92,7 @@ struct SavingGoalListItem: View {
                     }
                     .background{
                         Capsule()
-                            .foregroundStyle(Color(hex: "49B0EA"))
+                            .foregroundStyle(BubbleColors.midBlue)
                     }
                 }
                 .padding(.horizontal, 8)
@@ -102,12 +102,12 @@ struct SavingGoalListItem: View {
             .background{
                 ZStack{
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundStyle(Color(hex: "14135B"))
+                        .foregroundStyle(BubbleColors.darkBlue)
                         .shadow(radius: 4, y: 4)
                         
                     Image("SavingGoalBackground")
                         .resizable()
-                  //      .clipShape(RoundedRectangle(cornerRadius: 20))
+                  
                 }
             }
             .padding(.horizontal, 8)

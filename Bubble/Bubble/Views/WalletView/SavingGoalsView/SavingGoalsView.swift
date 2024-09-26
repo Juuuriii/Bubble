@@ -21,7 +21,7 @@ struct SavingGoalsView: View {
                     .padding(.bottom, 8)
                 }
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .sheet(isPresented: $viewModel.showNewSavingGoalSheet){
             NewSavingGoalSheet(viewModel: viewModel)

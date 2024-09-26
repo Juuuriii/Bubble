@@ -28,14 +28,12 @@ struct MainView: View {
                 .tabItem { Label("Settings", systemImage: "gear") }
             
         }
-        .tint(Color(hex: "#4E28E9"))
+        .tint(BubbleColors.purple)
         .onAppear{
+            UITabBar.appearance().unselectedItemTintColor = UIColor(BubbleColors.darkBlue)
+            UITabBar.appearance().barTintColor = UIColor(BubbleColors.bgBlue)
             
-            UITabBar.appearance().unselectedItemTintColor = UIColor(Color(hex: "#14135B"))
-            UITabBar.appearance().barTintColor = UIColor(Color(hex: "#49B0EA"))
         }
-        .toolbarBackground(Color(hex: "#49B0EA"), for: .navigationBar)
-        
     }
 }
 

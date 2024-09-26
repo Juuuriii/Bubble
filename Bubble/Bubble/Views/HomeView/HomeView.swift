@@ -29,11 +29,11 @@ struct HomeView: View {
                 HStack{
                     VStack{
                         Text("ACHIEVEMENTS")
-                            .foregroundStyle(Color(hex: "14135B"))
+                            .foregroundStyle(BubbleColors.darkBlue)
                             .font(.title2)
                             .frame(minWidth: 220)
                         Text("Check out your Progress")
-                            .foregroundStyle(Color(hex: "14135B"))
+                            .foregroundStyle(BubbleColors.darkBlue)
                             .font(.footnote)
                     }
                     .padding(.horizontal)
@@ -41,7 +41,7 @@ struct HomeView: View {
                     .background{
                         GeometryReader {proxy in
                             Capsule()
-                                .foregroundStyle(Color(hex: "84C6EB"))
+                                .foregroundStyle(BubbleColors.lightBlue)
                                 .onAppear{
                                     sizeHeader = proxy.size
                                 }
@@ -71,9 +71,9 @@ struct HomeView: View {
                     
                     VStack{
                         Text("FINISHED")
-                            .foregroundStyle(Color(hex: "14135B"))
+                            .foregroundStyle(BubbleColors.darkBlue)
                         Text("Saving Goals")
-                            .foregroundStyle(Color(hex: "14135B"))
+                            .foregroundStyle(BubbleColors.darkBlue)
                     }
                     
                 }
@@ -97,9 +97,9 @@ struct HomeView: View {
                         
                     VStack{
                         Text("ONGOING")
-                            .foregroundStyle(Color(hex: "14135B"))
+                            .foregroundStyle(BubbleColors.darkBlue)
                         Text("Saving Goals")
-                            .foregroundStyle(Color(hex: "14135B"))
+                            .foregroundStyle(BubbleColors.darkBlue)
                     }
                     .padding(.trailing, sizeAchievements.width*0.14)
                 }
@@ -112,7 +112,7 @@ struct HomeView: View {
                         Image(systemName: "chevron.forward")
                     }
                 }
-                .tint(Color(hex: "14135B"))
+                .tint(BubbleColors.darkBlue)
                 .padding()
                 .padding(.bottom)
                 
@@ -134,7 +134,7 @@ struct HomeView: View {
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(hex: "A4D8F5"))
+        .background(BubbleColors.bgBlue)
     }
 }
 

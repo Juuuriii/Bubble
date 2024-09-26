@@ -12,8 +12,8 @@ struct WalletViewTabs: View {
     @ObservedObject var viewModel: WalletViewModel
     
     @State private var side = true
-    @State private var colorSaving = Color.white
-    @State private var colorHistory = Color(hex: "14135B")
+    @State private var colorSaving = BubbleColors.white
+    @State private var colorHistory = BubbleColors.darkBlue
     
     
     @Namespace var key
@@ -35,7 +35,7 @@ struct WalletViewTabs: View {
                 if side {
                     Capsule()
                         .matchedGeometryEffect(id: "tab", in: key)
-                        .foregroundStyle(Color(hex: "14135B"))
+                        .foregroundStyle(BubbleColors.darkBlue)
                 }
             }
             
@@ -55,7 +55,7 @@ struct WalletViewTabs: View {
                 if !side {
                     Capsule()
                         .matchedGeometryEffect(id: "tab", in: key)
-                        .foregroundStyle(Color(hex: "14135B"))
+                        .foregroundStyle(BubbleColors.darkBlue)
                 }
             }
             
@@ -68,14 +68,14 @@ struct WalletViewTabs: View {
                 case .saving:
                     withAnimation{
                         side = true
-                        colorSaving = .white
-                        colorHistory = Color(hex: "14135B")
+                        colorSaving = BubbleColors.white
+                        colorHistory = BubbleColors.darkBlue
                     }
                 case .history:
                     withAnimation{
                         side = false
-                        colorSaving = Color(hex: "14135B")
-                        colorHistory = .white
+                        colorSaving = BubbleColors.darkBlue
+                        colorHistory = BubbleColors.white
                     }
                     
                 }

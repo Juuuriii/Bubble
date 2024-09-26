@@ -23,11 +23,11 @@ struct SettingsViewItem: View {
                             HStack{
                                 VStack{
                                     Text("ACCOUNT SETTINGS")
-                                        .foregroundStyle(Color(hex: "14135B"))
+                                        .foregroundStyle(BubbleColors.darkBlue)
                                         .font(.title2)
                                         .frame(minWidth: 220)
                                     Text("Your Personal Details")
-                                        .foregroundStyle(Color(hex: "14135B"))
+                                        .foregroundStyle(BubbleColors.darkBlue)
                                         .font(.footnote)
                                 }
                                 .padding(.horizontal)
@@ -35,7 +35,7 @@ struct SettingsViewItem: View {
                                 .background(
                                     GeometryReader{proxy in
                                         Capsule()
-                                            .foregroundStyle(Color(hex: "84C6EB"))
+                                            .foregroundStyle(BubbleColors.lightBlue)
                                             .onAppear{
                                                 size = proxy.size
                                             }
@@ -57,7 +57,7 @@ struct SettingsViewItem: View {
                                         .padding()
                                         .background{
                                             Capsule()
-                                                .foregroundStyle(Color(hex: "14135B"))
+                                                .foregroundStyle(BubbleColors.darkBlue)
                                         }
                                     
                                 }
@@ -71,7 +71,7 @@ struct SettingsViewItem: View {
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                                         .background{
                                             Capsule()
-                                                .foregroundStyle(Color(hex: "14135B"))
+                                                .foregroundStyle(BubbleColors.darkBlue)
                                         }
                                     
                                 }

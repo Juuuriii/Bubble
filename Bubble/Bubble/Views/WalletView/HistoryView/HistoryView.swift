@@ -27,24 +27,24 @@ struct HistoryView: View {
                                     Image(isFromSavingGoal ? "3coinsLight" : "3coins")
                                     Text(balanceChange.name)
                                         .font(.system(size: 20))
-                                        .foregroundStyle(isFromSavingGoal ? .white : Color(hex: "14135B"))
+                                        .foregroundStyle(isFromSavingGoal ? BubbleColors.white : BubbleColors.darkBlue)
                                 }
                                 Spacer()
                                 Text(balanceChange.type)
                                 
-                                    .foregroundStyle(isFromSavingGoal ? .white : Color(hex: "14135B"))
+                                    .foregroundStyle(isFromSavingGoal ? BubbleColors.white : BubbleColors.darkBlue)
                                 Text("\(balanceChange.amount, specifier: "%.2f")\(viewModel.currency ?? "E")")
-                                    .foregroundStyle(isFromSavingGoal ? .white : Color(hex: "14135B"))
+                                    .foregroundStyle(isFromSavingGoal ? BubbleColors.white : BubbleColors.darkBlue)
                             }
                             HStack{
                                 Text(balanceChange.date, format: .dateTime.day().month().year())
-                                    .foregroundStyle(isFromSavingGoal ? .white : Color(hex: "14135B"))
+                                    .foregroundStyle(isFromSavingGoal ? BubbleColors.white : BubbleColors.darkBlue)
                                     .padding(.horizontal, 8)
                                     .padding(.vertical, 2)
                                     .background{
                                         Capsule()
                                             .stroke(style: StrokeStyle(lineWidth: 1, dash: [4]))
-                                            .foregroundStyle(isFromSavingGoal ? .white : Color(hex: "14135B"))
+                                            .foregroundStyle(isFromSavingGoal ? BubbleColors.white : BubbleColors.darkBlue)
                                     }
                                 Spacer()
                                 if balanceChange.sgID == "" {
@@ -53,6 +53,7 @@ struct HistoryView: View {
                                         viewModel.ddeleteBalanceChange(balanceChange: balanceChange)
                                     } label: {
                                         Image(systemName: "trash")
+                                            .foregroundStyle(BubbleColors.darkBlue)
                                     }
                                 }
                             }
@@ -61,7 +62,7 @@ struct HistoryView: View {
                         .background{
                             ZStack{
                                 RoundedRectangle(cornerRadius: 20)
-                                    .foregroundStyle(isFromSavingGoal ? Color(hex: "14135B") : Color(hex: "CFE0EA"))
+                                    .foregroundStyle(isFromSavingGoal ? BubbleColors.darkBlue : BubbleColors.bcColor)
                                     .shadow(radius: 4, y: 4)
                                 Image(isFromSavingGoal ? "balanceChangeBackground2" : "balanceChangeBackground")
                                     .resizable()

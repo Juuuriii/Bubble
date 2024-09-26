@@ -31,7 +31,7 @@ struct SettingsViewItem3: View {
                                 .background(
                                     GeometryReader{proxy in
                                         Capsule()
-                                            .foregroundStyle(Color(hex: "84C6EB"))
+                                            .foregroundStyle(BubbleColors.lightBlue)
                                             .onAppear{
                                                 size = proxy.size
                                             }
@@ -51,7 +51,7 @@ struct SettingsViewItem3: View {
                                         .padding()
                                         .background{
                                             Capsule()
-                                                .foregroundStyle(Color(hex: "14135B"))
+                                                .foregroundStyle(BubbleColors.darkBlue)
                                         }
                                     
                                 }
@@ -64,9 +64,8 @@ struct SettingsViewItem3: View {
                                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                                         .background{
                                             Capsule()
-                                                .foregroundStyle(Color(hex: "14135B"))
+                                                .foregroundStyle(BubbleColors.darkBlue)
                                         }
-                                    
                                 }
                             }
                             .offset(y: -size.height*0.2)

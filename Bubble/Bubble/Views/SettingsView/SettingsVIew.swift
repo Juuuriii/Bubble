@@ -29,7 +29,7 @@ struct SettingsVIew: View {
             SettingsViewItem3(viewModel: authViewModel)
                 .padding(.bottom, 48)
         }
-        .background(Color(hex: "A4D8F5"))
+        .background(BubbleColors.bgBlue)
         .alert(isPresented: $authViewModel.showResetPasswordAlert){
             Alert(title: Text("Reset Password"), message: Text("We send you an Email to reset your Password."), dismissButton: .default(Text("Ok")))
         }

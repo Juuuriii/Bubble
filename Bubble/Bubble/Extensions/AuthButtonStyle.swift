@@ -16,8 +16,8 @@ extension Button {
             .controlSize(.large)
             .buttonStyle(.borderedProminent)
             .buttonBorderShape(.capsule)
-            .tint(Color(hex: "#84C6EB"))
-            .foregroundStyle(Color(hex: "#14135B"))
+            .tint(BubbleColors.lightBlue)
+            .foregroundStyle(BubbleColors.darkBlue)
         
     }
     

@@ -14,7 +14,7 @@ extension View {
         
         ZStack{
             Capsule()
-                .foregroundStyle(Color(hex: "#CFE0EA"))
+                .foregroundStyle(BubbleColors.bcColor)
                 .frame(height: 48)
             
             self

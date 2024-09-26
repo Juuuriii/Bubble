@@ -29,7 +29,6 @@
 		3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D52C760F950019EFA2 /* FirestoreClient.swift */; };
 		3A4606D92C7610890019EFA2 /* BubbleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606D82C7610890019EFA2 /* BubbleUser.swift */; };
 		3A4606DF2C7613990019EFA2 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606DE2C7613990019EFA2 /* AuthViewModel.swift */; };
-		3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */; };
 		3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4606E32C7873F90019EFA2 /* AuthView.swift */; };
 		3A55DA6D2C8842750009D514 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA6C2C8842750009D514 /* MainView.swift */; };
 		3A55DA702C8849A50009D514 /* SavingGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA6F2C8849A50009D514 /* SavingGoalsView.swift */; };
@@ -51,7 +50,6 @@
 		3AE765A62C9C03FC008141F5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE765A52C9C03FC008141F5 /* SettingsViewModel.swift */; };
 		3AF1138C2C7F0658000A9E9F /* TextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */; };
 		3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */; };
-		3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +91,6 @@
 		3A4606D52C760F950019EFA2 /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
 		3A4606D82C7610890019EFA2 /* BubbleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleUser.swift; sourceTree = "<group>"; };
 		3A4606DE2C7613990019EFA2 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
-		3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexExtention.swift; sourceTree = "<group>"; };
 		3A4606E32C7873F90019EFA2 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3A55DA6C2C8842750009D514 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3A55DA6F2C8849A50009D514 /* SavingGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingGoalsView.swift; sourceTree = "<group>"; };
@@ -115,7 +112,6 @@
 		3AE765A52C9C03FC008141F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyle.swift; sourceTree = "<group>"; };
 		3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonStyle.swift; sourceTree = "<group>"; };
-		3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewTabButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +233,6 @@
 		3A4606E02C761E550019EFA2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3A4606E12C761EB70019EFA2 /* ColorHexExtention.swift */,
 				3AF1138B2C7F0658000A9E9F /* TextFieldStyle.swift */,
 				3AF1138D2C7F0C3C000A9E9F /* AuthButtonStyle.swift */,
 			);
@@ -318,7 +313,6 @@
 		3AF1138F2C7F14A8000A9E9F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3AF113912C7F14D3000A9E9F /* AuthViewTabButton.swift */,
 				3A21B81D2CA443CF00EA4081 /* CustomShapesBubble.swift */,
 				3A113E3C2CA4A1F1006066EF /* BubbleColors.swift */,
 			);
@@ -479,7 +473,6 @@
 				3A4606DF2C7613990019EFA2 /* AuthViewModel.swift in Sources */,
 				3AF1138E2C7F0C3C000A9E9F /* AuthButtonStyle.swift in Sources */,
 				3A55DA8D2C9808DC0009D514 /* BalanceChange.swift in Sources */,
-				3A4606E22C761EB70019EFA2 /* ColorHexExtention.swift in Sources */,
 				3A55DA6D2C8842750009D514 /* MainView.swift in Sources */,
 				3A55DA782C92F2090009D514 /* SavingGoalListItem.swift in Sources */,
 				3A55DA8F2C984A1D0009D514 /* WalletVIew.swift in Sources */,
@@ -497,7 +490,6 @@
 				3A55DA842C94114A0009D514 /* HomeView.swift in Sources */,
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,
 				3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */,
-				3AF113922C7F14D3000A9E9F /* AuthViewTabButton.swift in Sources */,
 				3A21B8122C9C69FD00EA4081 /* SettingsViewItem.swift in Sources */,
 				3A4606D92C7610890019EFA2 /* BubbleUser.swift in Sources */,
 				3A55DA702C8849A50009D514 /* SavingGoalsView.swift in Sources */,

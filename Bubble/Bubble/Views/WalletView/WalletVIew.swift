@@ -25,42 +25,34 @@ struct WalletVIew: View {
                 .padding(.vertical, 8)
                 .background{
                     Capsule()
-                        .foregroundStyle(Color(hex: "14135B"))
+                        .foregroundStyle(BubbleColors.darkBlue)
                 }
                 
                 WalletViewTabs(viewModel: viewModel)
                 
-                
-                
                 TabView(selection: $viewModel.screen) {
-                    
                     SavingGoalsView(viewModel: viewModel)
                         .tag(ScreenWallet.saving)
-                    
                     HistoryView(viewModel: viewModel)
                         .tag(ScreenWallet.history)
-                    
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
-                
             }
-            .tint(Color(hex: "4E28E9"))
-            .background(Color(hex: "A4D8F5"))
+            .tint(BubbleColors.darkBlue)
+            .background(BubbleColors.bgBlue)
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
-                        
                         switch viewModel.screen {
                         case .saving:
                             viewModel.toggleNewSavingGoalSheet()
                         case .history:
                             viewModel.toggleShowAddBalanceChangeSheet()
                         }
-                        
-                        
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .tint(BubbleColors.darkBlue)
                 }
             }
             .onAppear{
@@ -72,10 +64,8 @@ struct WalletVIew: View {
                 viewModel.removeSavinGoalListener()
             }
         }
-    }
+        }
 }
-
-
 #Preview {
     WalletVIew()
 }
