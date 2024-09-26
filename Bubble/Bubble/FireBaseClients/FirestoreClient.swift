@@ -35,6 +35,10 @@ class FirestoreClient {
             }
     }
     
+    func removeListener() {
+        userListener?.remove()
+    }
+    
     func createUser(uid: String, email: String, username: String) throws {
         let user = BubbleUser(id: uid, email: email, username: username, currency: Locale.current.currencySymbol ?? "€", quickAddAmount: QuickAddAmount.ten.rawValue)
         
@@ -190,22 +194,12 @@ class FirestoreClient {
             ])
     }
     
-    func updateAmountOfGoals(uid: String, newAmount: Int) async throws {
+    func updateAmountOfGoals(uid: String, newAmount: Int, newAmountFinished: Int) async throws {
         try await store.collection("users")
             .document(uid)
             .updateData([
-                "savingGoalsAmount" : newAmount
+                "savingGoalsAmount" : newAmount,
+                "finishedSavingGoals" : newAmountFinished
             ])
     }
-    
-   func updateAmountOfFinishedGoals(uid: String, newAmount: Int) async throws {
-        try await store.collection("users")
-            .document(uid)
-            .updateData([
-                "finishedSavingGoals" : newAmount
-            ])
-    }
-    
-    
-    
 }

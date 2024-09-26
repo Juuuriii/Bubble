@@ -82,6 +82,7 @@ class AuthViewModel: ObservableObject {
         do {
             try authClient.logout()
             user = authClient.checkAuth()
+            firestoreClient.removeListener()
             showMainView = false
         } catch {
             handleError(error as NSError)
