@@ -13,26 +13,47 @@ struct DeleteUserSheet: View {
     
     var body: some View {
         VStack{
-            Text("Delete Account")
-                .font(.title2)
-                .padding()
-            
-            Text("Verify Password before deleting Account")
-            SecureField("Password", text: $authViewModel.password)
-                .textFieldStyle(.roundedBorder)
-            
-            Button("Delete", role: .destructive){
-                authViewModel.deleteUser()
-                authViewModel.showDeleteUserAlert = false
+            VStack{
+                Text("Delete Account")
+                    .foregroundStyle(BubbleColors.darkBlue)
+                    .font(.title2)
+                    .padding()
+                
+                Text("Verify Password before deleting Account")
+                    .foregroundStyle(BubbleColors.darkBlue)
+                
+                SecureField("Password", text: $authViewModel.password)
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 8)
+                    .background{
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundStyle(BubbleColors.white)
+                    }
+                    .padding(.bottom, 24)
+                
+                Button("Delete", role: .destructive){
+                    authViewModel.deleteUser()
+                    authViewModel.showDeleteUserAlert = false
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .disabled(authViewModel.password.isEmpty)
+                
             }
-            .buttonStyle(.borderedProminent)
             .padding()
-            .disabled(authViewModel.password.isEmpty)
+            .padding()
+            .background{
+                RoundedRectangle(cornerRadius: 20)
+                    .foregroundStyle(BubbleColors.lightBlue)
+                    .shadow(radius: 10)
+                    .padding()
+            }
+            .onDisappear{
+                authViewModel.resetTextFields()
+            }
         }
-        .padding()
-        .onDisappear{
-            authViewModel.resetTextFields()
-        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(BubbleColors.midBlue)
     }
 }
 

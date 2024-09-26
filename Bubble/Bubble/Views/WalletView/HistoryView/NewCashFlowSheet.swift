@@ -9,28 +9,21 @@ import SwiftUI
 
 struct NewCashFlowSheet: View {
     
-    @State var date = Date.now
-    @State var isIncome = false
+    
     
     @ObservedObject var viewModel: WalletViewModel
     
     @Namespace var key
     
     var body: some View {
-      
-            
-            
-            
             VStack{
-                
-                
                 Text("Cash Flow")
                     .font(.title)
                     .foregroundStyle(BubbleColors.darkBlue)
                     .padding(.bottom, 24)
                 VStack(alignment: .leading){
                     Text("Name of the Cash Flow")
-                        .foregroundStyle(BubbleColors.white)
+                        .foregroundStyle(BubbleColors.darkBlue)
                     
                     TextField("e.g. Salary, Rent, Gym", text: $viewModel.balanceChangeName)
                         .padding(.vertical, 12)
@@ -41,13 +34,10 @@ struct NewCashFlowSheet: View {
                         }
                 }
                 .padding(.bottom, 24)
-                
                 VStack(alignment: .leading){
                     Text("Type of Cash Flow")
-                        .foregroundStyle(BubbleColors.white)
-                    
+                        .foregroundStyle(BubbleColors.darkBlue)
                     HStack {
-                        
                         Button {
                             withAnimation{
                                 viewModel.balanceChangeType = .income
@@ -63,7 +53,6 @@ struct NewCashFlowSheet: View {
                                         RoundedRectangle(cornerRadius: 8)
                                             .matchedGeometryEffect(id: "cfSheet", in: key)
                                             .foregroundStyle(BubbleColors.darkBlue)
-                                            
                                     }
                                 }
                         }
@@ -84,7 +73,6 @@ struct NewCashFlowSheet: View {
                                         RoundedRectangle(cornerRadius: 8)
                                             .matchedGeometryEffect(id: "cfSheet", in: key)
                                             .foregroundStyle(BubbleColors.darkBlue)
-                                            
                                     }
                                 }
                         }
@@ -97,7 +85,7 @@ struct NewCashFlowSheet: View {
                 HStack {
                     VStack(alignment: .leading){
                         Text("Amount (€)")
-                            .foregroundStyle(BubbleColors.white)
+                            .foregroundStyle(BubbleColors.darkBlue)
                         
                         TextField("e.g. 1000", text: $viewModel.balanceChangeAmount)
                             .keyboardType(.decimalPad)
@@ -112,9 +100,9 @@ struct NewCashFlowSheet: View {
                         .frame(width: 16)
                     VStack(alignment: .leading){
                         Text("Date")
-                            .foregroundStyle(BubbleColors.white)
+                            .foregroundStyle(BubbleColors.darkBlue)
                         
-                        Text(date, format: .dateTime.day().month().year())
+                        Text(viewModel.balanceChangeDate, format: .dateTime.day().month().year())
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 13)
                             .padding(.horizontal,8)
@@ -146,15 +134,11 @@ struct NewCashFlowSheet: View {
             .background{
                 RoundedRectangle(cornerRadius: 20)
                     .padding()
-                    .foregroundStyle(BubbleColors.midBlue)
+                    .foregroundStyle(BubbleColors.lightBlue)
                     .shadow(radius: 10)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(BubbleColors.lightBlue)
-            
-        
-        
-        
+            .background(BubbleColors.midBlue)
     }
 }
 

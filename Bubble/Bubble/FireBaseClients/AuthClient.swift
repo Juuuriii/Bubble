@@ -69,7 +69,7 @@ class AuthClient {
             
         }
     }
-    
+    /*
     func changeEmail(password: String, newEmail: String) {
         
         guard let user = auth.currentUser else {
@@ -92,5 +92,21 @@ class AuthClient {
                 authResult?.user.sendEmailVerification(beforeUpdatingEmail: newEmail)
             }
         }
+    }
+    */
+    
+    func changeEmail(password: String, newEmail: String) async throws {
+        
+        guard let user = auth.currentUser else {
+            return
+        }
+        guard let email = auth.currentUser?.email else {
+            return
+        }
+        let credentials = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+        let result = try await user.reauthenticate(with: credentials)
+        
+        try await result.user.sendEmailVerification(beforeUpdatingEmail: newEmail)
     }
 }

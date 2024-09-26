@@ -24,15 +24,15 @@ struct SavingGoalsView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .sheet(isPresented: $viewModel.showNewSavingGoalSheet){
-            NewSavingGoalSheet(viewModel: viewModel)
-                .presentationDetents([.height(550), .large])
+            NewGoalSheet(viewModel: viewModel)
+                .presentationDetents([.height(700), .large])
         }
         .sheet(isPresented: $viewModel.showAddMoneySheet){
             
             if let selectedSavingGoal = viewModel.selectedSavingGoal {
                 
                 AddMoneySheet(viewModel: viewModel, savingGoal: selectedSavingGoal )
-                    .presentationDetents([.height(200)])
+                    .presentationDetents([.height(200), .medium])
             }
         }
     }

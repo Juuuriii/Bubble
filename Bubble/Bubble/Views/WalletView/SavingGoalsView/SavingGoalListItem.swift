@@ -35,6 +35,7 @@ struct SavingGoalListItem: View {
                             Spacer()
                         }
                         ProgressView(value: savingGoal.savedAmount, total: savingGoal.targetAmount)
+                            .tint(BubbleColors.purple)
                             .background{
                                 Capsule()
                                     .foregroundStyle(BubbleColors.midBlue)

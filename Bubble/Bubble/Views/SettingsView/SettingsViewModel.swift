@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 
+
 enum QuickAddAmount: Double, CaseIterable {
     case one = 1.0
     case ten = 10.0

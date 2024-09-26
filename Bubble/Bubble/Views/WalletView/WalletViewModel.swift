@@ -34,7 +34,7 @@ class WalletViewModel: ObservableObject {
     @Published var savingGoalPaymentType: PaymentType = .oneTime
     @Published var savingGoalDeadline = Date.now
     @Published var savingGoalTargetAmount = ""
-    @Published var savingGoalAmountSaved = ""
+    @Published var savingGoalAmountSaved = "0"
     @Published var selectedSavingGoal: SavingGoal?
     @Published var savingGoals = [SavingGoal]()
     
@@ -46,7 +46,7 @@ class WalletViewModel: ObservableObject {
     @Published var balanceChangeCurrentBalance = 0.0
     @Published var balanceChangeDate = Date.now
     @Published var showAddBalanceChangeSheet = false
-    
+
     
     @Published var currency: String?
     @Published var quickAddAmount: Double?
@@ -293,6 +293,7 @@ class WalletViewModel: ObservableObject {
     }
     
     func toggleNewSavingGoalSheet() {
+        resetSavingGoalTextFields()
         showNewSavingGoalSheet.toggle()
     }
     
@@ -300,11 +301,19 @@ class WalletViewModel: ObservableObject {
         showAddMoneySheet.toggle()
     }
     
+   private func resetSavingGoalTextFields() {
+        savingGoalName = ""
+        savingGoalType = ""
+        savingGoalDeadline = Date.now
+        savingGoalAmountSaved = "0"
+        savingGoalTargetAmount = ""
+    }
     // Balance Change Functions
     
     
     
     func toggleShowAddBalanceChangeSheet() {
+        resetBalanceChangeTextFields()
         showAddBalanceChangeSheet.toggle()
     }
     
@@ -461,5 +470,11 @@ class WalletViewModel: ObservableObject {
         
         updateBalance(amount: balanceChange.amount, isIncome: isIncome)
         
+    }
+    
+   private func resetBalanceChangeTextFields() {
+        balanceChangeName = ""
+        balanceChangeAmount = ""
+        balanceChangeDate = Date.now
     }
 }

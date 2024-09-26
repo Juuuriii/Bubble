@@ -34,24 +34,16 @@ struct SettingsVIew: View {
             Alert(title: Text("Reset Password"), message: Text("We send you an Email to reset your Password."), dismissButton: .default(Text("Ok")))
         }
         .sheet(isPresented: $authViewModel.showChangeEmailSheet, content: {
-            List{
-                TextField("New Email", text: $authViewModel.email)
-                SecureField("Password", text: $authViewModel.password)
-                Button{
-                    
-                    authViewModel.changeEmail()
-                    
-                    authViewModel.showChangeEmailSheet = false
-                    
-                } label: {
-                    Text("Change Email")
-                }
-                .buttonStyle(.borderedProminent)
-            }
-            .onDisappear{
-                authViewModel.resetTextFields()
-            }
+           ChangeEmailSheet(viewModel: authViewModel)
+                .presentationDetents([.medium, .large])
         })
+        .alert(authViewModel.errorMessage,
+               isPresented: $authViewModel.showErrorAlert) {
+            Button("Dismiss") {
+                
+            }
+        }
+
     }
 }
 

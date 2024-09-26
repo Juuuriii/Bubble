@@ -18,6 +18,7 @@ class AuthViewModel: ObservableObject {
     private let authClient = AuthClient.shared
     private let firestoreClient = FirestoreClient.shared
     
+    
     @Published var email = ""
     @Published var password = ""
     @Published var username = ""
@@ -91,7 +92,14 @@ class AuthViewModel: ObservableObject {
     }
     
     func changeEmail() {
-        authClient.changeEmail(password: password, newEmail: email)
+        Task {
+            do {
+               try await authClient.changeEmail(password: password, newEmail: email)
+                logout()
+            } catch {
+                handleError(error as NSError)
+            }
+        }
     }
     
     func sendResetPasswordEmail() {
