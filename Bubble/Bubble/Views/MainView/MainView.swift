@@ -7,25 +7,37 @@
 
 import SwiftUI
 
+enum TabScreen {
+    case home, wallet, achievement, dungeon, settings
+}
+
 struct MainView: View {
     
     @ObservedObject var authViewModel: AuthViewModel
-    
+    @State var screen: TabScreen = .home
     
     var body: some View {
-        TabView {
+        TabView(selection: $screen) {
             
-            HomeView()
+            HomeView(screen: $screen)
                 .tabItem { Label("Home", systemImage: "house") }
+                .tag(TabScreen.home)
             
             WalletVIew()
                 .tabItem { Label("Wallet", image: "walletIcon") }
+                .tag(TabScreen.wallet)
             
-            Text("Dungeon")
+            AchievementView()
+                .tabItem { Label("Achievements", systemImage: "trophy") }
+                .tag(TabScreen.achievement)
+            
+            Text("Coming Soon")
                 .tabItem { Label("Dungeon", image: "bubbleIcon") }
+                .tag(TabScreen.dungeon)
             
             SettingsVIew(authViewModel: authViewModel)
                 .tabItem { Label("Settings", systemImage: "gear") }
+                .tag(TabScreen.settings)
             
         }
         .tint(BubbleColors.purple)

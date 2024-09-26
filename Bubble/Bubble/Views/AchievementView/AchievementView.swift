@@ -9,23 +9,10 @@ import SwiftUI
 
 struct AchievementView: View {
     
-    @ObservedObject var homeViewModel: HomeViewModel
+    
     
     var body: some View {
         VStack{
-            HStack{
-                Button{
-                    withAnimation {
-                        homeViewModel.showAchievementView = false
-                    }
-                } label: {
-                    Image(systemName: "chevron.left")
-                    Text("Back")
-                }
-                .tint(BubbleColors.darkBlue)
-                Spacer()
-            }
-            .padding(.horizontal)
             VStack{
                 VStack{
                     CapsuleHeader(title: "Achievements", description: "Check out your Progress", offsetPercent: 0.5)
@@ -84,5 +71,5 @@ struct AchievementView: View {
 }
 
 #Preview {
-    AchievementView(homeViewModel: HomeViewModel())
+    AchievementView()
 }

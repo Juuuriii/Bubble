@@ -13,6 +13,7 @@ struct HomeView: View {
     
     @State private var sizeHeader: CGSize = .zero
     @State private var sizeAchievements: CGSize = .zero
+    @Binding var screen: TabScreen
 
     var body: some View {
         NavigationStack{
@@ -71,23 +72,18 @@ struct HomeView: View {
                     }
                     
                     
-                    
-        
-                    Button {
+                    Button{
                         withAnimation {
-                            viewModel.showAchievementView = true
+                            screen = .achievement
                         }
-                        
                     } label: {
-                        HStack{
-                            Text("Go to Achievements")
-                            Image(systemName: "chevron.forward")
-                        }
+                        Text("Go to Achievements")
+                        Image(systemName: "chevron.right")
+                       
                     }
                     .tint(BubbleColors.darkBlue)
                     .padding()
                     .padding(.bottom)
-                    
                 }
                 .padding(.horizontal)
                 .padding(.bottom)
@@ -105,17 +101,10 @@ struct HomeView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(BubbleColors.bgBlue)
-            .overlay {
-                if viewModel.showAchievementView {
-                    AchievementView()
-                        .toolbar(.hidden, for: .tabBar)
-                }
-            }
-            
         }
     }
 }
 
 #Preview {
-    HomeView()
+    HomeView(screen: .constant(TabScreen.home))
 }
