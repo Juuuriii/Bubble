@@ -24,6 +24,7 @@ class HomeViewModel: ObservableObject {
     private var uid: String?
     
     init(){
+        /*
         fetchQuote()
         self.uid = authClient.checkAuth()?.uid
         firestoreClient.addUserListener(uid: uid ?? "") { user in
@@ -31,6 +32,7 @@ class HomeViewModel: ObservableObject {
             self.savingGoalsAmount = user.savingGoalsAmount
             self.finishedSavingGoals = user.finishedSavingGoals
         }
+         */
     }
     
     

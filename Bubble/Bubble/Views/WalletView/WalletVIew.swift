@@ -15,18 +15,20 @@ struct WalletVIew: View {
     var body: some View {
         NavigationStack {
             VStack{
-                VStack{
-                    Text("Your Budget")
-                        .foregroundStyle(.white)
-                    Text("\(viewModel.bubbleUser?.balance ?? 0.0, specifier: "%.2f")\(viewModel.getCurrency())")
-                        .font(.system(size: 38))
-                        .foregroundStyle(.white)
-                }
-                .padding(.horizontal, 32)
-                .padding(.vertical, 8)
-                .background{
-                    Capsule()
-                        .foregroundStyle(BubbleColors.darkBlue)
+                HStack(alignment: .bottom) {
+                    VStack{
+                        Text("Your Budget")
+                            .foregroundStyle(.white)
+                        Text("\(viewModel.bubbleUser?.balance ?? 0.0, specifier: "%.2f")\(viewModel.getCurrency())")
+                            .font(.system(size: 38))
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.horizontal, 32)
+                    .padding(.vertical, 8)
+                    .background{
+                        Capsule()
+                            .foregroundStyle(BubbleColors.darkBlue)
+                    }
                 }
                 
                 WalletViewTabs(viewModel: viewModel)
@@ -64,7 +66,15 @@ struct WalletVIew: View {
                 viewModel.removeBalanceChangeListener()
                 viewModel.removeSavinGoalListener()
             }
-            
+            .alert("Delete Saving Goal?", isPresented: $viewModel.deleteSavingGoalAlert) {
+                Button("Cancel", role: .cancel) {
+                    
+                }
+                Button("Delete", role: .destructive) {
+                    viewModel.deleteSavingGoal()
+                }
+                
+            }
         }
         }
 }

@@ -19,7 +19,7 @@ struct SavingGoalListItem: View {
                     VStack{
                         Button{
                            
-                            viewModel._deleteSavingGoal(savingGoal: savingGoal)
+                     //       viewModel._deleteSavingGoal(savingGoal: savingGoal)
                             
                         }label: {
                             Image("editIconSavingGoal")
@@ -95,6 +95,13 @@ struct SavingGoalListItem: View {
                         Capsule()
                             .foregroundStyle(BubbleColors.midBlue)
                     }
+                    Button{
+                        viewModel.setSelectedSavingGoal(savingGoal: savingGoal)
+                        viewModel.deleteSavingGoalAlert = true
+                    } label: {
+                        Image(systemName: "trash")
+                            .foregroundStyle(BubbleColors.midBlue)
+                    }
                 }
                 .padding(.horizontal, 8)
             }
@@ -115,5 +122,7 @@ struct SavingGoalListItem: View {
     }
 }
 
-
+#Preview {
+    SavingGoalListItem(savingGoal: .constant(SavingGoal(id: "", name: "Bob", type: "", targetDate: Date.now, repeats: "", targetAmount: 1000.0, savedAmount: 100.0, finished: false, uid: "")), viewModel: WalletViewModel())
+}
 

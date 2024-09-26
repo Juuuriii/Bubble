@@ -39,7 +39,7 @@ class WalletViewModel: ObservableObject {
     @Published var savingGoals = [SavingGoal]()
     @Published var finishedGoals = [SavingGoal]()
     @Published var finishedGoalOverlay = false
-    
+    @Published var deleteSavingGoalAlert = false
     
     @Published var history = [BalanceChange]()
     @Published var balanceChangeName = ""
@@ -181,9 +181,12 @@ class WalletViewModel: ObservableObject {
                         }
                     case .removed:
                         if let data = try? change.document.data(as: SavingGoal.self) {
-                            withAnimation{
-                                self.savingGoals.removeAll{ $0.id == data.id }
-                                self.adjustSavingGoalCount()
+                            
+                            if let index = self.savingGoals.firstIndex(where: {$0.id == data.id}) {
+                                withAnimation{
+                                    self.savingGoals.remove(at: index)
+                                    self.adjustSavingGoalCount()
+                                }
                             }
                         }
                     }
@@ -281,11 +284,15 @@ class WalletViewModel: ObservableObject {
         addBalanceChange(quickAdd: selectedSavingGoal, amount: quickAddAmount)
     }
     
-    func _deleteSavingGoal(savingGoal: SavingGoal) {
+    func deleteSavingGoal() {
+        
+        guard let savingGoal = selectedSavingGoal else {
+            return
+        }
         
         firestoreClient.deleteSavingGoal(uid: savingGoal.uid, id: savingGoal.id)
-        adjustSavingGoalCount()
         addBalanceChange(delete: savingGoal)
+        
     }
     
     func toggleNewSavingGoalSheet() {
