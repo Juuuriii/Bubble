@@ -45,6 +45,7 @@
 		3A55DA922C999E510009D514 /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA912C999E510009D514 /* WalletViewModel.swift */; };
 		3A55DA942C99A60C0009D514 /* WalletViewTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A55DA932C99A60C0009D514 /* WalletViewTabs.swift */; };
 		3A69FA022CA5C86600E8F4F7 /* CapsuleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69FA012CA5C86600E8F4F7 /* CapsuleHeader.swift */; };
+		3A69FA042CA5CB9B00E8F4F7 /* ApiQuoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69FA032CA5CB9B00E8F4F7 /* ApiQuoteCard.swift */; };
 		3A8D89A32CA5509D008CF102 /* NewGoalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D89A22CA5509D008CF102 /* NewGoalSheet.swift */; };
 		3A8D89A72CA566E4008CF102 /* ChangeEmailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D89A62CA566E4008CF102 /* ChangeEmailSheet.swift */; };
 		3AE765A42C9C03EA008141F5 /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE765A32C9C03EA008141F5 /* SettingsVIew.swift */; };
@@ -108,6 +109,7 @@
 		3A55DA912C999E510009D514 /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		3A55DA932C99A60C0009D514 /* WalletViewTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewTabs.swift; sourceTree = "<group>"; };
 		3A69FA012CA5C86600E8F4F7 /* CapsuleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleHeader.swift; sourceTree = "<group>"; };
+		3A69FA032CA5CB9B00E8F4F7 /* ApiQuoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiQuoteCard.swift; sourceTree = "<group>"; };
 		3A8D89A22CA5509D008CF102 /* NewGoalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalSheet.swift; sourceTree = "<group>"; };
 		3A8D89A62CA566E4008CF102 /* ChangeEmailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailSheet.swift; sourceTree = "<group>"; };
 		3AE765A32C9C03EA008141F5 /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				3A21B81D2CA443CF00EA4081 /* CustomShapesBubble.swift */,
 				3A113E3C2CA4A1F1006066EF /* BubbleColors.swift */,
 				3A69FA012CA5C86600E8F4F7 /* CapsuleHeader.swift */,
+				3A69FA032CA5CB9B00E8F4F7 /* ApiQuoteCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				3A4606D62C760F950019EFA2 /* FirestoreClient.swift in Sources */,
 				3A69FA022CA5C86600E8F4F7 /* CapsuleHeader.swift in Sources */,
 				3AE765A42C9C03EA008141F5 /* SettingsVIew.swift in Sources */,
+				3A69FA042CA5CB9B00E8F4F7 /* ApiQuoteCard.swift in Sources */,
 				3A113E3B2CA4A0AB006066EF /* ApiKey.swift in Sources */,
 				3A55DA842C94114A0009D514 /* HomeView.swift in Sources */,
 				3A8D89A72CA566E4008CF102 /* ChangeEmailSheet.swift in Sources */,

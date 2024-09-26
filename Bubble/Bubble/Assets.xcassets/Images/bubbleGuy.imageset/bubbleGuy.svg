@@ -1,0 +1,36 @@
+<svg width="183" height="159" viewBox="0 0 183 159" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="91.5" cy="128" rx="91.5" ry="31" fill="#0C81D5"/>
+<circle cx="92" cy="65" r="65" fill="#B3D6F0"/>
+<path d="M134.656 60.9377C134.656 62.0595 125.562 73.1251 114.344 73.1251C103.125 73.1251 94.031 66.1219 94.031 65C94.031 63.8782 103.125 69.0626 114.344 69.0626C125.562 69.0626 134.656 59.8158 134.656 60.9377Z" fill="#473D71"/>
+<path d="M54.3859 21.0416L62.8133 26.8832C62.8133 26.8832 57.8788 28.8329 53.5599 33.4841C48.532 38.8989 46.0609 45.7827 46.0609 45.7827L37.4726 44.1339C37.4726 44.1339 39.6516 35.6714 44.1598 29.6817C47.7574 24.9019 54.3859 21.0416 54.3859 21.0416Z" fill="url(#paint0_linear_399_4600)"/>
+<mask id="mask0_399_4600" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="37" y="21" width="26" height="25">
+<path d="M54.3857 21.0416L62.813 26.8832C62.813 26.8832 57.8785 28.8329 53.5597 33.4841C48.5318 38.8989 46.0607 45.7827 46.0607 45.7827L37.4723 44.1339C37.4723 44.1339 39.6514 35.6714 44.1596 29.6817C47.7572 24.9019 54.3857 21.0416 54.3857 21.0416Z" fill="url(#paint1_linear_399_4600)"/>
+</mask>
+<g mask="url(#mask0_399_4600)">
+<path d="M54.3857 21.0416L62.813 26.8832C62.813 26.8832 57.8785 28.8329 53.5597 33.4841C48.5318 38.8989 46.0607 45.7827 46.0607 45.7827L37.4723 44.1339C37.4723 44.1339 39.6514 35.6714 44.1596 29.6817C47.7572 24.9019 54.3857 21.0416 54.3857 21.0416Z" fill="#D4ECFF"/>
+</g>
+<ellipse cx="129.669" cy="37.0451" rx="12.2928" ry="7.97997" transform="rotate(5.9826 129.669 37.0451)" fill="#473D71"/>
+<mask id="mask1_399_4600" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="117" y="29" width="25" height="17">
+<ellipse cx="129.669" cy="37.0451" rx="12.2928" ry="7.97997" transform="rotate(5.9826 129.669 37.0451)" fill="#BC6D6D"/>
+</mask>
+<g mask="url(#mask1_399_4600)">
+<ellipse cx="132.658" cy="39.2347" rx="10.8313" ry="8.17244" transform="rotate(8.08689 132.658 39.2347)" fill="#9FCEEF"/>
+<ellipse cx="135.672" cy="39.6094" rx="7.10937" ry="5.07812" fill="#473D71"/>
+</g>
+<ellipse cx="83.1109" cy="41.4157" rx="12.2928" ry="7.97997" transform="rotate(5.9826 83.1109 41.4157)" fill="#473D71"/>
+<mask id="mask2_399_4600" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="70" y="33" width="26" height="17">
+<ellipse cx="83.1109" cy="41.4157" rx="12.2928" ry="7.97997" transform="rotate(5.9826 83.1109 41.4157)" fill="#BC6D6D"/>
+</mask>
+<g mask="url(#mask2_399_4600)">
+<ellipse cx="86.1" cy="43.6053" rx="10.8313" ry="8.17244" transform="rotate(8.08689 86.1 43.6053)" fill="#9FCEEF"/>
+<ellipse cx="88.9526" cy="43.6718" rx="7.10937" ry="5.07812" fill="#473D71"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_399_4600" x1="56.0686" y1="22.4524" x2="45.7053" y2="48.0725" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F9F9F9"/>
+</linearGradient>
+<linearGradient id="paint1_linear_399_4600" x1="56.0684" y1="22.4524" x2="45.7051" y2="48.0725" gradientUnits="userSpaceOnUse">
+<stop offset="1" stop-color="#F9F9F9"/>
+</linearGradient>
+</defs>
+</svg>

@@ -17,11 +17,8 @@ struct HomeView: View {
     var body: some View {
         
         ScrollView{
-            VStack{
-                Text("\(viewModel.quote.first?.quote ?? "")")
-                    .padding()
-            }
-            .padding(.bottom, 40)
+            ApiQuoteCard(quote: viewModel.quote.first?.quote ?? "", author: viewModel.quote.first?.author ?? "")
+                .padding(.vertical, 40)
             
             VStack() {
                 CapsuleHeader(title: "Achievements", description: "Check out your Progress", offsetPercent: 0.0)
