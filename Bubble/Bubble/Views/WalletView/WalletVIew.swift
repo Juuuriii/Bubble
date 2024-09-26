@@ -64,11 +64,7 @@ struct WalletVIew: View {
                 viewModel.removeBalanceChangeListener()
                 viewModel.removeSavinGoalListener()
             }
-            .overlay{
-                if viewModel.finishedGoalOverlay {
-                    FinishedGoalView(viewModel: viewModel)
-                }
-            }
+            
         }
         }
 }
