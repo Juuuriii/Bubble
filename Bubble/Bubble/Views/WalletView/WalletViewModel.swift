@@ -351,6 +351,16 @@ class WalletViewModel: ObservableObject {
     
     //MARK: Balance Change Functions
     
+    
+    func isSaveBalanceChangeButtonDisabled() -> Bool {
+        
+        guard let amount = Double(balanceChangeAmount) else {
+            return true
+        }
+        
+        return balanceChangeName.isEmpty
+    }
+    
     func toggleShowAddBalanceChangeSheet() {
         resetBalanceChangeTextFields()
         showAddBalanceChangeSheet.toggle()

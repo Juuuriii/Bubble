@@ -127,6 +127,9 @@ struct NewCashFlowSheet: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .padding(.top, 40)
+                .disabled(
+                    viewModel.isSaveBalanceChangeButtonDisabled()
+                )
                
             }
             .padding(.vertical ,40)
