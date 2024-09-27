@@ -175,11 +175,10 @@ class WalletViewModel: ObservableObject {
                                 if data.finished {
                                     withAnimation(.linear(duration: 0.5).delay(1)){
                                         self.finishedGoals.append(data)
-                                        self.savingGoals.remove(at: index)
+                                        _ = self.savingGoals.remove(at: index)
                                         self.adjustSavingGoalCount()
                                     }
                                 }
-                            
                             }
                         }
                     case .removed:

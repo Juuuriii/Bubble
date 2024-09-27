@@ -36,7 +36,7 @@ struct MainView: View {
                 .tag(TabScreen.dungeon)
             
             SettingsVIew(authViewModel: authViewModel)
-                .tabItem { Label("Settings", systemImage: "gear") }
+                .tabItem { Label("Settings", systemImage: "gearshape") }
                 .tag(TabScreen.settings)
             
         }
