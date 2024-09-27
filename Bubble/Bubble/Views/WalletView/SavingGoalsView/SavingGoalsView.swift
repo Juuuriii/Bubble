@@ -16,10 +16,11 @@ struct SavingGoalsView: View {
             ScrollView {
                 
                 ForEach($viewModel.savingGoals.filter{$0.finished.wrappedValue == false}){ savingGoal in
-                    
                     SavingGoalListItem(savingGoal: savingGoal, viewModel: viewModel)
-                    .padding(.bottom, 8)
+                    .padding(.vertical, 4)
+                    
                 }
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }

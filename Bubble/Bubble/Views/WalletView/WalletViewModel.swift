@@ -15,11 +15,8 @@ enum ScreenWallet: String {
 
 class WalletViewModel: ObservableObject {
     
-    
-    
     private let authClient = AuthClient.shared
     private let firestoreClient = FirestoreClient.shared
-    
     
     @Published var screen: ScreenWallet = .saving
     @Published var side = true
@@ -204,6 +201,18 @@ class WalletViewModel: ObservableObject {
     
     //MARK: Saving Goals Functions
     
+    func isSavingGoalButtonDisabled() -> Bool {
+        
+        guard let targetAmount = Double(savingGoalTargetAmount) else {
+            return true
+        }
+        
+        guard let savedAmount = Double(savingGoalAmountSaved) else {
+            return true
+        }
+        
+        return savingGoalName.isEmpty || savingGoalType.isEmpty || targetAmount <= savedAmount
+    }
     
     func setSelectedSavingGoal(savingGoal: SavingGoal){
         selectedSavingGoal = savingGoal

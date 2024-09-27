@@ -71,7 +71,7 @@ struct AchievementView: View {
                         .font(.title)
                     Spacer()
                 }
-                .padding(8)
+                .padding(16)
                 ForEach(viewModel.goals){ goal in
                     AchievementItem(savingGoal: goal)
                         .padding(.vertical, 4)

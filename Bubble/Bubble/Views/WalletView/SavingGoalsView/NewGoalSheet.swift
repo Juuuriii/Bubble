@@ -107,6 +107,9 @@ struct NewGoalSheet: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .padding(.top, 40)
+                .disabled(
+                    viewModel.isSavingGoalButtonDisabled()
+                )
             }
             .padding(.vertical ,40)
             .padding(.horizontal, 32)
