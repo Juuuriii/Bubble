@@ -92,6 +92,12 @@ struct AuthView: View {
             .background(BubbleColors.bgBlue)
             .fullScreenCover(isPresented: $viewModel.showMainView, content: {
                 MainView(authViewModel: viewModel)
+                    .alert(viewModel.errorMessage,
+                           isPresented: $viewModel.showErrorAlert) {
+                        Button("Dismiss") {
+                            
+                        }
+                    }
             })
             .alert(viewModel.errorMessage,
                    isPresented: $viewModel.showErrorAlert) {

@@ -26,10 +26,16 @@ class AuthViewModel: ObservableObject {
     @Published var user: FirebaseAuth.User? = nil
     
     @Published var showMainView = false
+    
+    @Published var showSettingsViewError = false
+    
+    
     @Published var showResetPasswordAlert = false
-    @Published var showChangeEmailSheet = false
-    @Published var showDeleteUserAlert = false
     @Published var showLogoutAlert = false
+    
+    @Published var showChangeEmailSheet = false
+    @Published var showDeleteUserSheet = false
+    
     
     @Published var screen: AuthScreen = .login
     
@@ -50,7 +56,7 @@ class AuthViewModel: ObservableObject {
                 showMainView  = true
                 resetTextFields()
             } catch {
-                handleError(error as NSError)
+                handleError(error as NSError, isAuthView: true)
             }
         }
     }
@@ -73,7 +79,7 @@ class AuthViewModel: ObservableObject {
                 showMainView = true
                 resetTextFields()
             } catch {
-                handleError(error as NSError) 
+                handleError(error as NSError, isAuthView: true)
             }
         }
     }
@@ -85,17 +91,20 @@ class AuthViewModel: ObservableObject {
             firestoreClient.removeListener()
             showMainView = false
         } catch {
-            handleError(error as NSError)
+            handleError(error as NSError, isAuthView: false)
         }
     }
     
     func deleteUser() {
         Task {
             do {
+                showDeleteUserSheet = false
                 try await authClient.deleteUser(password: password)
+               
                 logout()
             } catch {
-                handleError(error as NSError)
+               
+               handleError(error as NSError, isAuthView: false)
             }
         }
     }
@@ -106,7 +115,7 @@ class AuthViewModel: ObservableObject {
                 try await authClient.changeEmail(password: password, newEmail: email)
                 logout()
             } catch {
-                handleError(error as NSError)
+                handleError(error as NSError, isAuthView: false)
             }
         }
     }
@@ -121,7 +130,7 @@ class AuthViewModel: ObservableObject {
         username = ""
     }
     
-    private func handleError(_ error: NSError) {
+    private func handleError(_ error: NSError, isAuthView: Bool) {
         print(error.localizedDescription)
         let errorCode = AuthErrorCode(rawValue: error.code)
         
@@ -140,12 +149,17 @@ class AuthViewModel: ObservableObject {
             errorMessage = "Password too weak"
         case .rejectedCredential:
             errorMessage = "Invalid Credentials"
+        case .tooManyRequests:
+            errorMessage = "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."
         
         default:
             errorMessage = "Unkown Error"
         }
-        
-        showErrorAlert = true
+        if isAuthView {
+            showErrorAlert = true
+        } else {
+            showSettingsViewError = true
+        }
     }
     
 }

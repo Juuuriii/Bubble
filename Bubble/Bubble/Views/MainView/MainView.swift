@@ -28,10 +28,10 @@ struct MainView: View {
                 .tag(TabScreen.wallet)
             
             AchievementView()
-                .tabItem { Label("Achievements", systemImage: "trophy") }
+                .tabItem { Label("Achievements", systemImage: "trophy")}
                 .tag(TabScreen.achievement)
             
-            Text("Coming Soon")
+            GameVIew()
                 .tabItem { Label("Dungeon", image: "bubbleIcon") }
                 .tag(TabScreen.dungeon)
             

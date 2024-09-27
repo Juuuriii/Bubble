@@ -44,7 +44,6 @@ struct AchievementView: View {
                     .background{
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(BubbleColors.darkBlue)
-                            .shadow(radius: 10)
                             .padding(.horizontal)
                     }
                     .padding(.top, -16)
@@ -61,22 +60,22 @@ struct AchievementView: View {
                 
                 
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 8)
             .padding(.top, 48)
             
+            if viewModel.goals.isEmpty {
             
-                HStack{
-                    Text("Finished Saving Goals")
-                        .foregroundStyle(BubbleColors.darkBlue)
-                        .font(.title)
-                    Spacer()
-                }
-                .padding(16)
+                    Text("No finished Goals yet")
+                        .font(.title2)
+                        .foregroundStyle(BubbleColors.darkBlue.opacity(0.5))
+                        .padding(.top, 200)
+                
+            } else {
                 ForEach(viewModel.goals){ goal in
                     AchievementItem(savingGoal: goal)
                         .padding(.vertical, 4)
                 }
-            
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(BubbleColors.bgBlue)

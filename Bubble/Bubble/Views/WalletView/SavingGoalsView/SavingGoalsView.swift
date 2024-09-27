@@ -18,7 +18,7 @@ struct SavingGoalsView: View {
                 ForEach($viewModel.savingGoals.filter{$0.finished.wrappedValue == false}){ savingGoal in
                     SavingGoalListItem(savingGoal: savingGoal, viewModel: viewModel)
                     .padding(.vertical, 4)
-                    
+                 //   .animation(.linear(duration: 1), value: viewModel.savingGoals)
                 }
                 
             }

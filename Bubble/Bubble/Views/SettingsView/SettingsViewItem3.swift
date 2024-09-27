@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsViewItem3: View {
     @State private var size: CGSize = .zero
     @ObservedObject var viewModel: AuthViewModel
-
+    
     var body: some View {
         VStack{
             VStack{
@@ -18,7 +18,7 @@ struct SettingsViewItem3: View {
                 
                 VStack(spacing: 16) {
                     Button{
-                        viewModel.showDeleteUserAlert = true
+                        viewModel.showDeleteUserSheet = true
                     } label: {
                         Text("Delete Account")
                             .foregroundStyle(.white)
@@ -53,18 +53,7 @@ struct SettingsViewItem3: View {
             }
         }
         .padding(.horizontal)
-        .alert("You are about to Log out", isPresented: $viewModel.showLogoutAlert) {
-            Button("Log Out", role: .destructive) {
-                viewModel.logout()
-            }
-            Button("Cancel", role: .cancel) {
-                
-            }
-        }
-        .sheet(isPresented: $viewModel.showDeleteUserAlert , content: {
-            DeleteUserSheet(authViewModel: viewModel)
-                .presentationDetents([.height(340), .medium])
-        })
+        
     }
 }
 

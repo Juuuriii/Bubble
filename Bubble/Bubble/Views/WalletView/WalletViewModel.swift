@@ -165,31 +165,36 @@ class WalletViewModel: ObservableObject {
                         if let data = try? change.document.data(as: SavingGoal.self) {
                             if let index = self.savingGoals.firstIndex(where: { $0.id == data.id }){
                                 
+                            
+                                
                                 withAnimation(.linear(duration: 1)) {
                                     self.savingGoals[index].savedAmount = data.savedAmount
+                                   
                                 }
+                                
                                 if data.finished {
-                                withAnimation(.linear(duration: 0.5).delay(1)){
-                                    
+                                    withAnimation(.linear(duration: 0.5).delay(1)){
                                         self.finishedGoals.append(data)
                                         self.savingGoals.remove(at: index)
                                         self.adjustSavingGoalCount()
                                     }
-                                
                                 }
+                            
                             }
                         }
                     case .removed:
-                        if let data = try? change.document.data(as: SavingGoal.self) {
-                            
-                            if let index = self.savingGoals.firstIndex(where: {$0.id == data.id}) {
-                                withAnimation {
-                                    self.savingGoals.remove(at: index)
+                        
+                            if let data = try? change.document.data(as: SavingGoal.self) {
+                                
+                                if let index = self.savingGoals.firstIndex(where: {$0.id == data.id}) {
+                                    withAnimation{
+                                       _ = self.savingGoals.remove(at: index)
+                                    }
                                 }
+                                self.adjustSavingGoalCount()
                             }
-                            self.adjustSavingGoalCount()
                         }
-                    }
+                    
                 }
             }
     }
@@ -358,7 +363,7 @@ class WalletViewModel: ObservableObject {
             return true
         }
         
-        return balanceChangeName.isEmpty
+        return balanceChangeName.isEmpty || amount <= 0
     }
     
     func toggleShowAddBalanceChangeSheet() {

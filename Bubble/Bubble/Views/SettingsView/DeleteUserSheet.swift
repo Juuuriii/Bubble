@@ -33,7 +33,7 @@ struct DeleteUserSheet: View {
                 
                 Button("Delete", role: .destructive){
                     authViewModel.deleteUser()
-                    authViewModel.showDeleteUserAlert = false
+               //     authViewModel.showDeleteUserAlert = false
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)

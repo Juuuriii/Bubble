@@ -30,14 +30,35 @@ struct SettingsVIew: View {
                 .padding(.bottom, 48)
         }
         .background(BubbleColors.bgBlue)
-        .alert(isPresented: $authViewModel.showResetPasswordAlert){
-            Alert(title: Text("Reset Password"), message: Text("We send you an Email to reset your Password."), dismissButton: .default(Text("Ok")))
+        .alert("Reset Password", isPresented: $authViewModel.showResetPasswordAlert){
+            Button("Ok"){
+                
+            }
+        } message: {
+            Text("We send you an Email to reset your Password.")
         }
-        
+        .alert("You are about to Log out", isPresented: $authViewModel.showLogoutAlert) {
+            Button("Log Out", role: .destructive) {
+                authViewModel.logout()
+            }
+            Button("Cancel", role: .cancel) {
+                
+            }
+        }
+        .alert(authViewModel.errorMessage, isPresented: $authViewModel.showSettingsViewError) {
+            Button("Dismiss") {
+                
+            }
+        }
+        .sheet(isPresented: $authViewModel.showDeleteUserSheet , content: {
+            DeleteUserSheet(authViewModel: authViewModel)
+                .presentationDetents([.height(340), .medium])
+        })
         .sheet(isPresented: $authViewModel.showChangeEmailSheet, content: {
            ChangeEmailSheet(viewModel: authViewModel)
                 .presentationDetents([.medium, .large])
         })
+        
     }
 }
 

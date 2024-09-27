@@ -14,7 +14,7 @@ enum PaymentType: String, CaseIterable {
     case oneTime = "One-Time"
 }
 
-struct SavingGoal: Codable, Identifiable {
+struct SavingGoal: Codable, Identifiable, Equatable {
     
     var id: String
     let name: String
