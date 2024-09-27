@@ -53,6 +53,8 @@ class WalletViewModel: ObservableObject {
     @Published var currency: String?
     @Published var quickAddAmount: Double?
     
+    
+    
     private var balanceChagesListener: ListenerRegistration?
     private var savingGoalsListener: ListenerRegistration?
     
@@ -168,13 +170,15 @@ class WalletViewModel: ObservableObject {
                                 
                                 withAnimation(.linear(duration: 1)) {
                                     self.savingGoals[index].savedAmount = data.savedAmount
-                                } completion: {
-                                    if data.finished {
+                                }
+                                if data.finished {
+                                withAnimation(.linear(duration: 0.5).delay(1)){
+                                    
                                         self.finishedGoals.append(data)
                                         self.savingGoals.remove(at: index)
                                         self.adjustSavingGoalCount()
-                                        
                                     }
+                                
                                 }
                             }
                         }
@@ -182,7 +186,7 @@ class WalletViewModel: ObservableObject {
                         if let data = try? change.document.data(as: SavingGoal.self) {
                             
                             if let index = self.savingGoals.firstIndex(where: {$0.id == data.id}) {
-                                withAnimation{
+                                withAnimation {
                                     self.savingGoals.remove(at: index)
                                 }
                             }

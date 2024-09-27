@@ -57,6 +57,16 @@ class FirestoreClient {
         
     }
     
+    func getFinishedGoals(uid: String) async throws -> [SavingGoal] {
+         return try await store.collection("users")
+            .document(uid)
+            .collection("wallet")
+            .whereField("finished", isEqualTo: true)
+            .getDocuments()
+            .documents
+            .map{ try $0.data(as: SavingGoal.self) }
+    }
+    
     func createSavingGoal(
         id: String,
         uid: String,

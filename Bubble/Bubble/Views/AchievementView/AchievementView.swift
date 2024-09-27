@@ -9,10 +9,10 @@ import SwiftUI
 
 struct AchievementView: View {
     
-    
+    @StateObject var viewModel = AchievementViewModel()
     
     var body: some View {
-        VStack{
+        ScrollView{
             VStack{
                 VStack{
                     CapsuleHeader(title: "Achievements", description: "Check out your Progress", offsetPercent: 0.5)
@@ -20,30 +20,31 @@ struct AchievementView: View {
                     VStack{
                         HStack{
                             Text("Finished SavingGoals:")
-                                .foregroundStyle(BubbleColors.darkBlue)
-                                .font(.title2)
+                                .foregroundStyle(BubbleColors.white)
+                                
                             Spacer()
-                            Text("4")
-                                .foregroundStyle(BubbleColors.darkBlue)
-                                .font(.title2)
+                            Text("\(viewModel.count)")
+                                .foregroundStyle(BubbleColors.white)
+                               
                         }
                         Spacer()
                             .frame(height: 26)
                         HStack{
                             Text("Total Amount Saved:")
-                                .foregroundStyle(BubbleColors.darkBlue)
-                                .font(.title2)
+                                .foregroundStyle(BubbleColors.white)
+                                
                             Spacer()
-                            Text("10000")
-                                .foregroundStyle(BubbleColors.darkBlue)
-                                .font(.title2)
+                            Text("\(viewModel.totalAmount, specifier: "%.2f")€")
+                                .foregroundStyle(BubbleColors.white)
+                                
                         }
                     }
                     .padding()
                     .padding(.horizontal)
                     .background{
                         RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(BubbleColors.lightBlue)
+                            .foregroundStyle(BubbleColors.darkBlue)
+                            .shadow(radius: 10)
                             .padding(.horizontal)
                     }
                     .padding(.top, -16)
@@ -54,15 +55,27 @@ struct AchievementView: View {
                     SettingsBackground()
                         .foregroundStyle(BubbleColors.midBlue)
                 }
+                .onAppear{
+                    viewModel.getFinishedGoals()
+                }
+                
                 
             }
             .padding(.horizontal)
             .padding(.top, 48)
             
-            ScrollView {
-                
-                
-            }
+            
+                HStack{
+                    Text("Finished Saving Goals")
+                        .foregroundStyle(BubbleColors.darkBlue)
+                        .font(.title)
+                    Spacer()
+                }
+                .padding(8)
+                ForEach(viewModel.goals){ goal in
+                    AchievementItem(savingGoal: goal)
+                        .padding(.vertical, 4)
+                }
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -16,11 +16,10 @@ struct AchievementItem: View {
             HStack{
                 Text(savingGoal.name)
                     .lineLimit(1)
-                    .font(.title)
+                    .font(.title2)
                     .foregroundStyle(BubbleColors.white)
                 Spacer()
                 Text("\(savingGoal.targetAmount, specifier: "%.2f")€")
-                    .font(.system(size: 20))
                     .foregroundStyle(BubbleColors.white)
             }
             
@@ -45,7 +44,7 @@ struct AchievementItem: View {
             }
             
         }
-        .padding(.horizontal, 24)
+        .padding(.horizontal)
         .padding(.vertical)
         .background{
             ZStack{
@@ -58,7 +57,6 @@ struct AchievementItem: View {
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                 
             }
-            
         }
         .padding(.horizontal, 8)
     }

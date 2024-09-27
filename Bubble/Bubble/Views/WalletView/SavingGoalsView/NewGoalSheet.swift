@@ -107,7 +107,6 @@ struct NewGoalSheet: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .padding(.top, 40)
-               
             }
             .padding(.vertical ,40)
             .padding(.horizontal, 32)

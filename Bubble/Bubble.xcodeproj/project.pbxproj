@@ -48,6 +48,7 @@
 		3A69FA042CA5CB9B00E8F4F7 /* ApiQuoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69FA032CA5CB9B00E8F4F7 /* ApiQuoteCard.swift */; };
 		3A69FA072CA5D67E00E8F4F7 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69FA062CA5D67E00E8F4F7 /* AchievementView.swift */; };
 		3A69FA092CA61E6D00E8F4F7 /* AchievementItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69FA082CA61E6D00E8F4F7 /* AchievementItem.swift */; };
+		3A69FA0B2CA6315300E8F4F7 /* AchievementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69FA0A2CA6315300E8F4F7 /* AchievementViewModel.swift */; };
 		3A8D89A32CA5509D008CF102 /* NewGoalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D89A22CA5509D008CF102 /* NewGoalSheet.swift */; };
 		3A8D89A72CA566E4008CF102 /* ChangeEmailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D89A62CA566E4008CF102 /* ChangeEmailSheet.swift */; };
 		3AE765A42C9C03EA008141F5 /* SettingsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE765A32C9C03EA008141F5 /* SettingsVIew.swift */; };
@@ -114,6 +115,7 @@
 		3A69FA032CA5CB9B00E8F4F7 /* ApiQuoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiQuoteCard.swift; sourceTree = "<group>"; };
 		3A69FA062CA5D67E00E8F4F7 /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		3A69FA082CA61E6D00E8F4F7 /* AchievementItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementItem.swift; sourceTree = "<group>"; };
+		3A69FA0A2CA6315300E8F4F7 /* AchievementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewModel.swift; sourceTree = "<group>"; };
 		3A8D89A22CA5509D008CF102 /* NewGoalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalSheet.swift; sourceTree = "<group>"; };
 		3A8D89A62CA566E4008CF102 /* ChangeEmailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailSheet.swift; sourceTree = "<group>"; };
 		3AE765A32C9C03EA008141F5 /* SettingsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVIew.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			children = (
 				3A69FA062CA5D67E00E8F4F7 /* AchievementView.swift */,
 				3A69FA082CA61E6D00E8F4F7 /* AchievementItem.swift */,
+				3A69FA0A2CA6315300E8F4F7 /* AchievementViewModel.swift */,
 			);
 			path = AchievementView;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				3A46069B2C733C950019EFA2 /* BubbleApp.swift in Sources */,
 				3A4606E42C7873F90019EFA2 /* AuthView.swift in Sources */,
 				3A69FA092CA61E6D00E8F4F7 /* AchievementItem.swift in Sources */,
+				3A69FA0B2CA6315300E8F4F7 /* AchievementViewModel.swift in Sources */,
 				3A21B8122C9C69FD00EA4081 /* SettingsViewItem.swift in Sources */,
 				3A4606D92C7610890019EFA2 /* BubbleUser.swift in Sources */,
 				3A55DA702C8849A50009D514 /* SavingGoalsView.swift in Sources */,
