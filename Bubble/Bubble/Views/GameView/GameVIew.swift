@@ -10,6 +10,7 @@ import SwiftUI
 struct GameVIew: View {
     var body: some View {
         VStack{
+            Image(systemName: "")
             Text("Coming Soon")
                 .foregroundStyle(BubbleColors.darkBlue.opacity(0.5))
                 .font(.title)

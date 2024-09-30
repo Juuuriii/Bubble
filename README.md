@@ -17,17 +17,16 @@ da der Nutzer Sparziele erstellen und verwalten kann.
 
 - [ ] Erstellen eines Nutzerprofils
 - [ ] Erstellen und Pflegen von Sparzielen(z.B. nächster Urlaub, neues Smartphone usw.)
+- [ ] Tracken von erreichten Sparzielen
 - [ ] Tracken von Einkommen und Ausgaben
-- [ ] Gamification durch ein kleines Spiel in der App. Vorteile für die App durch spielen des Spiels und Vorteile für das Spiel durch nutzung der App
 
 ## Technischer Aufbau
 
 #### Projektaufbau
-Das Projekt wird nach der MVVM-Architektur aufgebaut. Ich werde also Repositories, ViewModels, Models und Views anlegen. Die Ordnerstruktur wird featurebasiert sein.
+Das Projekt wird nach der MVVM-Architektur aufgebaut. Ich werde also Repositories, ViewModels, Models und Views anlegen. Die Ordnerstruktur wird viewbasiert sein.
 
 #### Datenspeicherung
-Für die Datenspeicherung wird Firebase und Core Data genutzt. Firebase um die Anmeldedaten zu speichern und eine kombination
-aus Core Data und Firebase um die restlichen Daten zu sichern.
+Für die Datenspeicherung wird Firebase genutzt. 
 
 #### API Calls
 https://api-ninjas.com/api/quotes
@@ -37,7 +36,6 @@ https://api-ninjas.com/api/quotes
 - Firebase iOS SDK
 - FirebaseAuth
 - FirebaseFirestore
-- FirebaseStorage
 
 ## Ausblick
-In Zukunft möchte ich das Spiel ausbauen. Außerdem möchte ich es dem Nutzer ermöglichen seine Konten einzubinden und dann Einkommen und Ausgaben direkt zu tracken.
+In Zukunft möchte ich ein Spiel einbauenbauen. Außerdem möchte ich es dem Nutzer ermöglichen seine Konten einzubinden und dann Einkommen und Ausgaben direkt zu tracken.

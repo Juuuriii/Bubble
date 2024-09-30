@@ -28,7 +28,7 @@ struct MainView: View {
                 .tag(TabScreen.wallet)
             
             AchievementView()
-                .tabItem { Label("Achievements", systemImage: "trophy")}
+                .tabItem { Label("Progress", systemImage: "trophy")}
                 .tag(TabScreen.achievement)
             
             GameVIew()
