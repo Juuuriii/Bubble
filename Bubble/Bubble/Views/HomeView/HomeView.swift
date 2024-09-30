@@ -77,7 +77,7 @@ struct HomeView: View {
                             screen = .achievement
                         }
                     } label: {
-                        Text("Go to Achievements")
+                        Text("Check out Progress")
                         Image(systemName: "chevron.right")
                        
                     }

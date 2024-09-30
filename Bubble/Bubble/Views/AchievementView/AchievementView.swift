@@ -34,7 +34,7 @@ struct AchievementView: View {
                                 .foregroundStyle(BubbleColors.white)
                                 
                             Spacer()
-                            Text("\(viewModel.totalAmount, specifier: "%.2f")€")
+                            Text("\(viewModel.totalAmount, specifier: "%.2f")\(viewModel.currency)")
                                 .foregroundStyle(BubbleColors.white)
                                 
                         }
@@ -72,7 +72,7 @@ struct AchievementView: View {
                 
             } else {
                 ForEach(viewModel.goals){ goal in
-                    AchievementItem(savingGoal: goal)
+                    AchievementItem(savingGoal: goal, currency: viewModel.currency)
                         .padding(.vertical, 4)
                 }
             }

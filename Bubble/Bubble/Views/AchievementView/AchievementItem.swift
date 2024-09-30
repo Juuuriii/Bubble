@@ -10,6 +10,7 @@ import SwiftUI
 struct AchievementItem: View {
     
     let savingGoal: SavingGoal
+    let currency: String
     
     var body: some View {
         VStack{
@@ -19,7 +20,7 @@ struct AchievementItem: View {
                     .font(.title2)
                     .foregroundStyle(BubbleColors.white)
                 Spacer()
-                Text("\(savingGoal.targetAmount, specifier: "%.2f")€")
+                Text("\(savingGoal.targetAmount, specifier: "%.2f")\(currency)")
                     .foregroundStyle(BubbleColors.white)
             }
             
@@ -63,5 +64,5 @@ struct AchievementItem: View {
 }
 
 #Preview {
-    AchievementItem(savingGoal: SavingGoal(id: "", name: "New PC", type: "Personal", targetDate: Date.now, repeats: "", targetAmount: 1000.0, savedAmount: 100.0, finished: false, uid: ""))
+    AchievementItem(savingGoal: SavingGoal(id: "", name: "New PC", type: "Personal", targetDate: Date.now, repeats: "", targetAmount: 1000.0, savedAmount: 100.0, finished: false, uid: ""), currency: "€")
 }

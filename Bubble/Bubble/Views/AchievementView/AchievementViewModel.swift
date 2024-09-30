@@ -18,9 +18,16 @@ class AchievementViewModel: ObservableObject {
     @Published var goals = [SavingGoal]()
     @Published var count = 0
     @Published var totalAmount = 0.0
+    @Published var currency = "€"
+    
+    @Published var bubbleUser: BubbleUser?
     
     init() {
         uid = authClient.checkAuth()?.uid
+        firestoreClient.addUserListener(uid: uid) { user in
+            self.bubbleUser = user
+            self.currency = user.currency
+        }
     }
     
     func getFinishedGoals() {
