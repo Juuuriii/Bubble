@@ -111,6 +111,7 @@ struct NewGoalSheet: View {
                     viewModel.isSavingGoalButtonDisabled()
                 )
             }
+            .ignoresSafeArea(.keyboard, edges: .bottom)
             .padding(.vertical ,40)
             .padding(.horizontal, 32)
             .background{
