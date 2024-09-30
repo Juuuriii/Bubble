@@ -68,7 +68,7 @@ struct HomeView: View {
                             Text("Saving Goals")
                                 .foregroundStyle(BubbleColors.darkBlue)
                         }
-                        .padding(.trailing, sizeAchievements.width*0.19)
+                        .padding(.trailing, 50)
                     }
                     
                     
