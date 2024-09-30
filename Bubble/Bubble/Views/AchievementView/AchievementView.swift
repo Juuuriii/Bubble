@@ -79,6 +79,7 @@ struct AchievementView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(BubbleColors.bgBlue)
+        
     }
 }
 

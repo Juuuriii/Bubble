@@ -39,11 +39,12 @@ class AchievementViewModel: ObservableObject {
                goals = try await firestoreClient.getFinishedGoals(uid: uid)
                 count = goals.count
                 
+                var amount = 0.0
+                
                 goals.forEach{ goal in
-                    
-                    totalAmount += goal.targetAmount
-                    
+                    amount += goal.targetAmount
                 }
+                totalAmount = amount
             } catch {
                 print(error)
             }
