@@ -11,6 +11,7 @@ struct Test: View {
     var body: some View {
         AchievementBackgroundShape()
             .stroke(lineWidth: 3)
+            .frame(width: 300, height: 200)
             .padding()
     }
 }
