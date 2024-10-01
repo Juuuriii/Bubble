@@ -132,7 +132,7 @@ struct NewCashFlowSheet: View {
                 )
                
             }
-            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .ignoresSafeArea(.keyboard, edges: .all)
             .padding(.vertical ,40)
             .padding(.horizontal, 32)
             .background{
