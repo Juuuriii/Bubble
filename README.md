@@ -41,3 +41,4 @@ In the future, I want to integrate a game. Additionally, I want to allow users t
 ## Credit
 
 Designer & Artist - Tuile (https://tuile.itch.io/)
+Developer - Juuuriii(Juri Huhn)
