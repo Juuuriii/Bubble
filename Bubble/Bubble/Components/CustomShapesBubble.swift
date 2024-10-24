@@ -25,6 +25,7 @@ struct AchievementBackgroundShape: Shape {
             path.addLine(to: CGPoint(x: rect.minX + cornerRadius * 2, y: rect.maxY - 16))
             path.addQuadCurve(to: CGPoint(x: rect.minX, y: rect.maxY - cornerRadius * 2 - 16),
                               control: CGPoint(x: rect.minX, y: rect.maxY - 16))
+            
             path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
         }
     }

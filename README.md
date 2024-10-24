@@ -8,9 +8,9 @@ da der Nutzer Sparziele erstellen und verwalten kann.
 
 ## Geplantes Design
 <p>
-  <img src="./img/home_screen.png" width="200">
-  <img src="./img/current_expenses.png" width="200">
-  <img src="./img/settings.png" width="200">
+  <img src="./img/img1.png" width="200">
+  <img src="./img/img2.png" width="200">
+  <img src="./img/img3.png" width="200">
 </p>
 
 ## Features
