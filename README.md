@@ -5,7 +5,7 @@ Bubble is for anyone who wants to make managing their money easier. With all the
 it's easy to lose track. On top of that, we also want to set money aside, for example, to go on vacation or 
 treat ourselves to a new smartphone. Bubble makes this easier, as users can create and manage savings goals.
 
-## Geplantes Design
+## Design
 <p>
   <img src="./img/img1.png" width="200">
   <img src="./img/img2.png" width="200">
